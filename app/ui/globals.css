@@ -1,0 +1,29 @@
+@import "tailwindcss";
+
+:root {
+  --background: linear-gradient(
+    to bottom,
+    #059669,
+    #10b981,
+    #34d399
+  );
+  --text-color-normal: #030712;
+  --text-color-faded: #27272a;
+
+  --font-jaro: 'Jaro', sans-serif;
+}
+
+body {
+  background: var(--background);
+  font-family: var(--font-jaro), Arial, Helvetica, sans-serif;
+}
+
+h1 {
+  color: var(--text-color-normal);
+}
+
+p {
+  color: var(--text-color-faded);
+}
+
+
