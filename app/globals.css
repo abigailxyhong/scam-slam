@@ -12,7 +12,7 @@
 
   --font-size-main-title: 10.5rem;
 
-  --font-jaro: 'Jaro', sans-serif;
+  --font-jaro: 'Jaro', sans-serif
 }
 
 body {
@@ -26,6 +26,19 @@ body {
   font-weight: bold;
   text-shadow: 2px 2px var(--color-gray-800);
   line-height: normal;
+}
+
+.page-title {
+  color: var(--text-color-normal);
+  font-size: var(--text-9xl);
+  font-weight: bold;
+  text-shadow: 2px 2px var(--color-gray-800);
+  line-height: normal
+}
+
+.error-message {
+  color: var(--color-red-500);
+  font-size: xx-large;
 }
 
 p {
