@@ -1,0 +1,36 @@
+@import "tailwindcss";
+
+:root {
+  --background: linear-gradient(
+    to bottom,
+    var(--color-emerald-500),
+    var(--color-emerald-400),
+    var(--color-emerald-100)
+  );
+  --text-color-normal: var(--color-gray-950);
+  --text-color-faded: var(--color-zinc-700);
+
+  --font-size-main-title: 10.5rem;
+
+  --font-jaro: 'Jaro', sans-serif;
+}
+
+body {
+  background: var(--background);
+  font-family: var(--font-jaro), Arial, Helvetica, sans-serif;
+}
+
+.main-title {
+  color: var(--text-color-normal);
+  font-size: var(--font-size-main-title);
+  font-weight: bold;
+  text-shadow: 2px 2px var(--color-gray-800);
+  line-height: normal;
+}
+
+p {
+  color: var(--text-color-faded);
+}
+
+
+

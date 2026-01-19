@@ -1,13 +1,12 @@
 import type { Metadata } from "next";
 import { Jaro } from "next/font/google";
-import './ui/globals.css';
+import './globals.css';
 
 
 const jaro = Jaro({
   variable: "--font-jaro",
   subsets: ["latin"]
 })
-
 
 export const metadata: Metadata = {
   title: "Scam Slam",
