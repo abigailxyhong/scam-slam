@@ -31,7 +31,7 @@ export default function Instructions() {
                 </ul>
 
                 <Link
-                    href="/"
+                    href="/pages/questions/email"
                     className=" bg-teal-500 hover:bg-teal-300 text-zinc-800 font-semibold px-14 py-6 rounded-full text-4xl shadow-md transition mt-8">
                     READY
                 </Link>
