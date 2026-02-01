@@ -7,28 +7,27 @@ import QuestionHeader from "@/app/components/QuestionHeader"
 import ProgressBar from "@/app/components/ProgressBar"
 import Buzzers from "@/app/components/Buzzers"
 import Timer from "@/app/components/Timer"
+import Image from "next/image"
 
-export default function Email() {
+export default function Message() {
 
     return (
         <main className="flex flex-col justify-start min-h-screen px-4 pl-6">
-            <QuestionHeader questionType="email" />
+            <QuestionHeader questionType="message" />
 
-            <div className="flex flex-row mt-8 ml-12 mr-6 gap-24">
-                <div className="text-center border border-b-cyan-800 w-1/2 h-[55vh] mr-4">
-                    <p>PLACEHOLDER</p>
-                </div>
-                
+            <div className="flex w-screen flex-row mt-8 px-12 gap-24">
+                <Image className="ml-5"
+                    src="/images/iPhone-message.png"
+                    alt="iPhone frame"
+                    width={200}
+                    height={70}
+                />
                 <div className="flex flex-col items-center gap-24">
                     <Timer />
-                    <Buzzers/>     
+                    <Buzzers />
                 </div>
-                
-                
             </div>
-            
             <ProgressBar currentStep={1} />
-
         </main>
     )
 }

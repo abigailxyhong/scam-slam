@@ -1,9 +1,11 @@
 interface ProgressBarProps {
-  currentStep: number; // 0 → 3
+  currentStep: number; 
   totalSteps?: number;
+  orientation?: "horizontal" | "vertical";
 }
 
 export default function ProgressBar({
+    orientation,
   currentStep,
   totalSteps = 4,
 }: ProgressBarProps) {
