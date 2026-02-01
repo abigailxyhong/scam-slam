@@ -31,7 +31,7 @@ export default function Timer() {
                 className={`absolute translate-x-16 text-3xl font-bold ${timeLeft <= 5 ? "text-red-500" : "text-white"
                     }`}
             >
-                :{timeLeft}s
+                : {timeLeft}s
             </span>
         </div>
     )

@@ -1,6 +1,6 @@
 import Image from "next/image"
 
-type QuestionType = "email" | "phone" | "website"
+type QuestionType = "email" | "phone" | "website" | "message"
 
 interface QuestionHeaderProps {
     questionType: QuestionType
@@ -10,6 +10,7 @@ const iconMap = {
     email: "/images/icons/email-icon.png",
     phone: "/images/icons/call-icon.png",
     website: "/images/icons/website-icon.png",
+    message: "/images/icons/message-icon.png"
 }
 
 export default function QuestionHeader({ questionType }: QuestionHeaderProps) {
