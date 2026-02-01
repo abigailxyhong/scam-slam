@@ -1,0 +1,5 @@
+export const GAME_CONFIG = {
+  INITIAL_LIVES: 3,
+  TIME_LIMIT: 20,
+  MAX_QUESTIONS: 10,
+};
