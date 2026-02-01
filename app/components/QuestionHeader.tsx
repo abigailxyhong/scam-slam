@@ -8,8 +8,8 @@ interface QuestionHeaderProps {
 
 const iconMap = {
     email: "/images/icons/email-icon.png",
-    phone: "/images/icons/phone.png",
-    website: "/images/icons/website.png",
+    phone: "/images/icons/call-icon.png",
+    website: "/images/icons/website-icon.png",
 }
 
 export default function QuestionHeader({ questionType }: QuestionHeaderProps) {
