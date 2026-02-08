@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Jaro } from "next/font/google";
 import './globals.css';
+import { GameProvider } from "./lib/game/gameContext";
 
 
 const jaro = Jaro({
@@ -21,7 +22,9 @@ export default function RootLayout({
   return (
     <html lang="en" className={jaro.className}>
       <body>
-        {children}
+        <GameProvider>
+          {children}
+        </GameProvider>
       </body>
     </html>
   );

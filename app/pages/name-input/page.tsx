@@ -1,12 +1,14 @@
 "use client"
 
-import { useState } from "react"
+import { use, useState } from "react"
 import Link from "next/link"
 import { useRouter } from 'next/navigation'
+import { useGame } from "@/app/lib/game/gameContext"
 
 export default function NameInput() {
     const router = useRouter()
-    const [name, setName] = useState("")
+    const { dispatch } = useGame()
+     const [name, setName] = useState("")
     const [error, setError] = useState("")
 
     const handleContinue = () => {
@@ -23,7 +25,11 @@ export default function NameInput() {
         }
 
         setError("");
-        localStorage.setItem("playerName", trimmed)
+
+        dispatch({ type: "SET_NAME", payload: trimmed })
+        dispatch({ type: "SET_PHASE", payload: "instructions" })
+
+        // localStorage.setItem("playerName", trimmed)
 
         router.push("/pages/instructions")
     }

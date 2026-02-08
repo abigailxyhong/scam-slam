@@ -2,10 +2,12 @@
 
 import Link from "next/link"
 import { useState } from "react"
+import { useGame } from "./lib/game/gameContext"
 
 export default function HomePage() {
   const [isOn, setIsOn] = useState(false)
   const handleToggle = () => setIsOn(!isOn)
+  const { dispatch } = useGame()
 
   const toggleButtonClasses = `w-auto px-8 py-4 rounded-full text-2xl font-bold shadow-md transition mt-4 ${
     isOn ? "bg-teal-400 text-white" : "bg-gray-300 text-zinc-800"
@@ -31,6 +33,7 @@ export default function HomePage() {
           </button>
 
           <Link
+            onClick={() => dispatch({ type: "SET_PHASE", payload: "name"})}
             href="/pages/name-input"
             className=" bg-emerald-500 hover:bg-emerald-300 text-zinc-800 font-semibold px-16 py-8 rounded-full text-6xl shadow-md transition mt-6">
               START ROUND

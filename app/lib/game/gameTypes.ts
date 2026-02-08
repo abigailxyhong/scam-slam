@@ -1,16 +1,23 @@
 export type Answer = "SAFE" | "SCAM"
 
+export type Difficulty = 
+    | "easy"
+    | "medium"
+    | "hard"
+    | "very hard"
+
 export type QuestionType =
     | "email"
     | "text"
     | "call"
     | "website"
 
-export interface Question {
+export interface BaseQuestion {
     id: string
     type: QuestionType
-    prompt: string
-    imageURL: string
+    isScam: boolean
+    imageURL?: string
     correctAnswer: Answer
+    difficulty: Difficulty
 }
 

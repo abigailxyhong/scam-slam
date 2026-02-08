@@ -1,11 +1,11 @@
-import { Question } from "./gameTypes"
+import { BaseQuestion } from "./gameTypes"
 
 export interface GameState {
     currentQuestionIndex: number
     score: number
     lives: number
     timeLeft: number
-    questions: Question[]
+    questions: BaseQuestion[]
     status: "playing" | "game-over" | "completed"
 }
 

@@ -3,8 +3,10 @@
 import { useState } from "react"
 import Link from "next/link"
 import { useRouter } from 'next/navigation'
+import { useGame } from "@/app/lib/game/gameContext"
 
 export default function Instructions() {
+    const { dispatch } = useGame()
 
     return (
         <main className=" justify-start min-h-screen px-4">
@@ -31,11 +33,17 @@ export default function Instructions() {
                 </ul>
 
                 <Link
-                    href="/pages/questions/email"
+                    onClick={() => {
+                        dispatch({ type: "SET_PHASE", payload: "playing" })
+                    }}
+                    href="/pages/questions/question-card"
                     className=" bg-teal-500 hover:bg-teal-300 text-zinc-800 font-semibold px-14 py-6 rounded-full text-4xl shadow-md transition mt-8">
                     READY
                 </Link>
                 <Link
+                    onClick={() => {
+                        dispatch({ type: "SET_PHASE", payload: "name" })
+                    }}
                     href="/pages/name-input"
                     className=" bg-teal-500 hover:bg-teal-300 text-zinc-800 font-semibold px-14 py-6 rounded-full text-4xl shadow-md transition mt-6">
                     BACK

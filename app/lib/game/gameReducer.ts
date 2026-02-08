@@ -19,6 +19,7 @@ export function gameReducer(
     case "TICK":
       return { ...state, timeLeft: state.timeLeft - 1 };
 
+
     case "NEXT_QUESTION":
       return { ...state, currentQuestionIndex: state.currentQuestionIndex + 1 };
 
