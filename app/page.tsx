@@ -33,7 +33,7 @@ export default function HomePage() {
           </button>
 
           <Link
-            onClick={() => dispatch({ type: "SET_PHASE", payload: "name"})}
+            //onClick={() => dispatch({ type: "SET_PHASE", payload: "name"})}
             href="/pages/name-input"
             className=" bg-emerald-500 hover:bg-emerald-300 text-zinc-800 font-semibold px-16 py-8 rounded-full text-6xl shadow-md transition mt-6">
               START ROUND

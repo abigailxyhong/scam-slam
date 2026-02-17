@@ -1,4 +1,4 @@
-import { QuestionType } from "./gameTypes";
+import { QuestionType } from "./content/baseQuestion";
 
 export function calculateScore(
   isCorrect: boolean,

@@ -1,7 +1,7 @@
 import Link from "next/link"
 import Image from "next/image"
 
-export default function IncorrectFeedback() {
+export default function TimeOut() {
   return (
     <main className="min-h-screen px-4 flex">
       <div className="flex flex-col items-center pl-16 pr-16 gap-6 w-full">
@@ -15,7 +15,7 @@ export default function IncorrectFeedback() {
                 />
 
             <h1 className="page-title mt-6">
-          INCORRECT
+          RAN OUT OF TIME
         </h1>
         </div>
 

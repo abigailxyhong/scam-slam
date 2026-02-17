@@ -1,4 +1,5 @@
 import Image from "next/image";
+import ScoreDisplay from "./ScoreDisplay";
 
 type QuestionType = "email" | "phone" | "website" | "message";
 
@@ -6,6 +7,7 @@ interface QuestionHeaderProps {
   questionType: QuestionType;
   level: number;
   lives: number;
+  score: number;
 }
 
 const iconMap: Record<QuestionType, string> = {
@@ -25,10 +27,11 @@ export default function QuestionHeader({
   questionType,
   level,
   lives,
+  score,
 }: QuestionHeaderProps) {
   return (
-    <header className="w-full px-6 py-4 flex items-center justify-between mt-6">
-      
+    <header className="w-full px-6 py-4 flex items-center justify-between mt-2">
+
       {/* Left: Question type icon */}
       <div className="flex items-center pl-6">
         <Image
@@ -40,13 +43,10 @@ export default function QuestionHeader({
         />
       </div>
 
-      {/* Centre: Level indicator */}
-      <h1 className="text-6xl font-extrabold text-gray-900">
-        LEVEL {level}/12
-      </h1>
+      {/* Score and Lives indicator */}
+      <div className="flex items-center gap-8 pr-6">
+        <ScoreDisplay score={score} />
 
-      {/* Right: Lives indicator */}
-      <div className="flex items-center pr-6">
         <Image
           src={livesMap[lives]}
           alt={`${lives} lives remaining`}

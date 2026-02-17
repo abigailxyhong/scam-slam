@@ -12,18 +12,18 @@ interface EmailContent {
 
 export default function EmailCard({ email }: { email: EmailContent }) {
     return (
-        <div className="bg-zinc-100 p-3 rounded-xl shadow-inner max-w-6xl mx-auto">
+        <div className="bg-zinc-100 p-3 rounded-xl shadow-inner w-3/5 h-full">
 
             {/* Email container */}
-            <div className="bg-white rounded-lg shadow-md border overflow-hidden">
+            <div className="bg-white h-full rounded-lg shadow-md border overflow-hidden">
 
                 {/* Toolbar */}
-                <div className="items-center border-b bg-zinc-50 ">
+                <div className="items-center border-b bg-zinc-50 h-12 ">
                     <Image 
                         src="/images/questions/email/toolbar.png"
                         alt="toolbar"
-                        height={250}
-                        width={200}
+                        height={50}
+                        width={900}
                     />
                 </div>
 

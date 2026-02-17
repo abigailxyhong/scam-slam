@@ -27,7 +27,7 @@ export default function CorrectFeedback() {
         <div className="grow" />
 
         <Link
-          href="/pages/questions/email"
+          href="/pages/questions/question-card"
           className="bg-teal-500 hover:bg-teal-300 text-zinc-800
                      font-semibold px-14 py-6 rounded-full text-4xl
                      shadow-md transition mb-16"

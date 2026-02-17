@@ -1,4 +1,4 @@
-import { BaseQuestion, QuestionType } from "../gameTypes"
+import { BaseQuestion, QuestionType } from "./baseQuestion"
 
 export interface EmailQuestion extends BaseQuestion{
     id: string

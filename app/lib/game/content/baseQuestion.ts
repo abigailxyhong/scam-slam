@@ -8,7 +8,7 @@ export type Difficulty =
 
 export type QuestionType =
     | "email"
-    | "text"
+    | "message"
     | "call"
     | "website"
 

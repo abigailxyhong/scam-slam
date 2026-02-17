@@ -1,27 +1,63 @@
-export default function Buzzers() {
+"use client"
+
+import { useState } from "react"
+import { useGame } from "../lib/game/gameContext"
+import { Answer } from "../lib/game/content/baseQuestion"
+import { useRouter } from "next/navigation"
+
+interface BuzzersProps {
+    correctAnswer: Answer
+}
+
+export default function Buzzers({ correctAnswer }: BuzzersProps) {
+    const { state, dispatch } = useGame()
+    const [pressed, setPressed] = useState(false)
+    const router = useRouter()
+
+    const handleAnswer = (choice: Answer) => {
+        if (pressed) return
+
+        setPressed(true)
+
+        dispatch({ type: "ANSWER_SUBMITTED", payload: choice })
+
+        if (choice === correctAnswer) {
+            router.push("../feedback/post-level/correct")
+
+        }
+        else {
+            router.push("../feedback/post-level/incorrect")
+
+        }
+    }
+
 
     return (
-       
-            <div className="flex flex-row space-x-14 ml-4 bottom-0">
-                <button
-                    className="w-32 h-32 bg-red-600 hover:bg-red-500 active:scale-95
+
+        <div className="flex flex-row space-x-14 bottom-0">
+            <button
+                onClick={() => handleAnswer("SCAM")}
+                disabled={pressed}
+                className="w-32 h-32 bg-red-600 hover:bg-red-500 active:scale-95
              text-white font-bold rounded-full text-4xl
              shadow-[0_8px_0_#7f1d1d] active:shadow-[0_2px_0_#7f1d1d]
              transition-all duration-150 flex items-center justify-center"
-                >
-                    SCAM
-                </button>
-                <button
-                    className="w-32 h-32 bg-green-500 hover:bg-green-400 active:scale-95
+            >
+                SCAM
+            </button>
+            <button
+                onClick={() => handleAnswer("SAFE")}
+                disabled={pressed}
+                className="w-32 h-32 bg-green-500 hover:bg-green-400 active:scale-95
              text-white font-bold rounded-full text-4xl
              shadow-[0_8px_0_#14532d] active:shadow-[0_2px_0_#14532d]
              transition-all duration-150
              flex items-center justify-center"
-                >
-                    SAFE
-                </button>
-            </div>
+            >
+                SAFE
+            </button>
+        </div>
 
-     
+
     )
 }

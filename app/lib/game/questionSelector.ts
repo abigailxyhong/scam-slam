@@ -1,5 +1,7 @@
 import { emailQuestions, EmailQuestion } from "./content/emailQuestions"
-import { QuestionType, Difficulty } from "./gameTypes";
+import { websiteQuestions, WebsiteQuestion } from "./content/websiteQuestions"
+import { messageQuestions, MessageQuestion } from "./content/messageQuestions";
+import { QuestionType, Difficulty } from "./content/baseQuestion"
 
 /**
  * Utility: get a random item from an array
@@ -25,8 +27,8 @@ export function getDifficultyFromLevel(level: number): Difficulty {
 const QUESTION_TYPES: QuestionType[] = [
   "email",
   // "phone",
-  // "website",
-  // "message",
+  "website",
+  "message",
 ];
 
 /**
@@ -51,6 +53,22 @@ function selectEmailQuestion(difficulty: Difficulty): EmailQuestion {
   return getRandomItem(filtered);
 }
 
+function selectWebsiteQuestion(difficulty: Difficulty): WebsiteQuestion {
+  const filtered = websiteQuestions.filter(
+    (q) => q.difficulty === difficulty
+  );
+
+  return filtered[Math.floor(Math.random() * filtered.length)];
+}
+
+function selectMessageQuestion(difficulty: Difficulty): MessageQuestion {
+  const filtered = messageQuestions.filter(
+    (q) => q.difficulty === difficulty
+  );
+
+  return filtered[Math.floor(Math.random() * filtered.length)];
+}
+
 /**
  * Main selector used by page.tsx
  */
@@ -73,19 +91,19 @@ export function selectQuestion(level: number) {
     //     question: selectPhoneQuestion(difficulty),
     //   };
 
-    // case "website":
-    //   return {
-    //     questionType,
-    //     difficulty,
-    //     question: selectWebsiteQuestion(difficulty),
-    //   };
+    case "website":
+       return {
+         questionType,
+         difficulty,
+         question: selectWebsiteQuestion(difficulty),
+       };
 
-    // case "message":
-    //   return {
-    //     questionType,
-    //     difficulty,
-    //     question: selectMessageQuestion(difficulty),
-    //   };
+    case "message":
+       return {
+         questionType,
+         difficulty,
+         question: selectMessageQuestion(difficulty),
+       };
 
     default:
       throw new Error("Unsupported question type");

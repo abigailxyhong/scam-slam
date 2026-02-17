@@ -27,7 +27,7 @@ export default function NameInput() {
         setError("");
 
         dispatch({ type: "SET_NAME", payload: trimmed })
-        dispatch({ type: "SET_PHASE", payload: "instructions" })
+        //dispatch({ type: "SET_PHASE", payload: "instructions" })
 
         // localStorage.setItem("playerName", trimmed)
 

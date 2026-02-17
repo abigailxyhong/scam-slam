@@ -2,12 +2,19 @@
 
 import { useEffect, useState } from "react"
 import Image from "next/image"
+import { useRouter } from "next/navigation"
+import { useGame } from "../lib/game/gameContext"
+
 
 export default function Timer() {
     const [timeLeft, setTimeLeft] = useState(20)
+    const { state, dispatch } = useGame()
+    const router = useRouter()
 
     useEffect(() => {
-        if (timeLeft === 0) return
+        if (timeLeft === 0) {
+            router.push("../feedback/post-level/time-out")
+        }
 
         const interval = setInterval(() => {
             setTimeLeft((prev) => prev - 1)
@@ -17,7 +24,7 @@ export default function Timer() {
     }, [timeLeft])
 
     return (
-        <div className="relative flex items-center justify-center">
+        <div className="relative flex items-center justify-center mt-6">
             <Image
                 src="/images/icons/timer.png"
                 alt="Timer icon"
