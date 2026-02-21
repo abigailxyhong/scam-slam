@@ -1,4 +1,4 @@
-export type Answer = "SAFE" | "SCAM"
+export type Answer = "SAFE" | "SCAM" | "TIME-OUT"
 
 export type Difficulty = 
     | "easy"

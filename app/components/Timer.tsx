@@ -14,6 +14,7 @@ export default function Timer() {
     useEffect(() => {
         if (timeLeft === 0) {
             router.push("../feedback/post-level/time-out")
+        dispatch({ type: "ANSWER_SUBMITTED", payload: "TIME-OUT" })
         }
 
         const interval = setInterval(() => {
@@ -28,17 +29,17 @@ export default function Timer() {
             <Image
                 src="/images/icons/timer.png"
                 alt="Timer icon"
-                width={100}
+                width={70}
                 height={100}
                 priority
             />
 
             {/* Countdown number */}
             <span
-                className={`absolute translate-x-16 text-3xl font-bold ${timeLeft <= 5 ? "text-red-500" : "text-white"
+                className={`absolute translate-x-16 text-5xl font-bold ${timeLeft <= 5 ? "text-red-500" : "text-white"
                     }`}
             >
-                : {timeLeft}s
+                {timeLeft}
             </span>
         </div>
     )

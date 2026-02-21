@@ -14,10 +14,9 @@ function getRandomItem<T>(items: T[]): T {
  * Map level number to difficulty
  */
 export function getDifficultyFromLevel(level: number): Difficulty {
-  if (level <= 3) return "easy";
-  if (level <= 6) return "medium";
-  if (level <= 9) return "hard";
-  return "very hard";
+  if (level <= 2) return "easy";
+  if (level <= 4) return "medium";
+  return "hard";
 }
 
 /**

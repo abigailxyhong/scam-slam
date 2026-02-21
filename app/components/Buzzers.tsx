@@ -21,6 +21,7 @@ export default function Buzzers({ correctAnswer }: BuzzersProps) {
 
         dispatch({ type: "ANSWER_SUBMITTED", payload: choice })
 
+
         if (choice === correctAnswer) {
             router.push("../feedback/post-level/correct")
 
@@ -34,12 +35,12 @@ export default function Buzzers({ correctAnswer }: BuzzersProps) {
 
     return (
 
-        <div className="flex flex-row space-x-14 bottom-0">
+        <div className="flex flex-row space-x-14">
             <button
                 onClick={() => handleAnswer("SCAM")}
                 disabled={pressed}
-                className="w-32 h-32 bg-red-600 hover:bg-red-500 active:scale-95
-             text-white font-bold rounded-full text-4xl
+                className="w-42 h-42 bg-red-600 hover:bg-red-500 active:scale-95
+             text-white font-bold rounded-full text-6xl
              shadow-[0_8px_0_#7f1d1d] active:shadow-[0_2px_0_#7f1d1d]
              transition-all duration-150 flex items-center justify-center"
             >
@@ -48,8 +49,8 @@ export default function Buzzers({ correctAnswer }: BuzzersProps) {
             <button
                 onClick={() => handleAnswer("SAFE")}
                 disabled={pressed}
-                className="w-32 h-32 bg-green-500 hover:bg-green-400 active:scale-95
-             text-white font-bold rounded-full text-4xl
+                className="w-42 h-42 bg-green-500 hover:bg-green-400 active:scale-95
+             text-white font-bold rounded-full text-6xl
              shadow-[0_8px_0_#14532d] active:shadow-[0_2px_0_#14532d]
              transition-all duration-150
              flex items-center justify-center"

@@ -1,54 +1,97 @@
 import { BaseQuestion, QuestionType } from "./baseQuestion"
 
-export interface EmailQuestion extends BaseQuestion{
-    id: string
-    type: "email"
-    email: {
-        from: string
-        to: string
-        subject: string
-        body: string
-        link?: string
-        footer?: string
-    }
+export interface EmailQuestion extends BaseQuestion {
+  id: string
+  type: "email"
+  email: {
+    from: string
+    to: string
+    subject: string
+    imageURL?: string
+    body?: string
+    link?: string
+    footer?: string
+    buttonText?: string
+  }
 }
 
 export const emailQuestions: EmailQuestion[] = [
   {
-    id: "email_apple_scam_1",
+    id: "email_ups_scam",
     type: "email",
     difficulty: "easy",
     isScam: true,
     correctAnswer: "SCAM",
     email: {
-      from: "Apple Support <security@apple-id-alerts.com>",
+      from: "account-ups-noreply@upss.com",
       to: "user@email.com",
-      subject: "Your Apple ID has been suspended",
-      body: 
-      `Dear Customer,
-
-            We detected suspicious activity on your account.
-            Please verify your details immediately to avoid permanent suspension.
-            Click the link below to secure your account.
-
-      Sincerely,
-      Apple Inc.`,
-      link: "https://secure-apple-id.com/login",
+      subject: "REWARD",
+      imageURL: "/images/questions/scam/email-ups.png"
     },
   },
   {
-    id: "email_bank_legit_1",
+    id: "email_aaa_scam",
     type: "email",
     difficulty: "easy",
-    isScam: false,
-    correctAnswer: "SAFE",
+    isScam: true,
+    correctAnswer: "SCAM",
     email: {
-      from: "Your Bank <no-reply@yourbank.co.uk>",
+      from: "account-aaa-noreply@aaaa.com",
       to: "user@email.com",
-      subject: "Monthly Statement Available",
-      body: `Your monthly bank statement is now available.
-
-Please log in to your online banking account to view it.`,
+      subject: "SURVEY",
+      imageURL: "/images/questions/scam/email-aaa.png"
+    },
+  },
+  {
+    id: "email_netflix_scam",
+    type: "email",
+    difficulty: "easy",
+    isScam: true,
+    correctAnswer: "SCAM",
+    email: {
+      from: "account-netflix-noreply@netf1ix.com",
+      to: "user@email.com",
+      subject: "Payment Failure",
+      imageURL: "/images/questions/scam/email-netflix.png"
+    },
+  },
+  {
+    id: "email_paypal_scam",
+    type: "email",
+    difficulty: "easy",
+    isScam: true,
+    correctAnswer: "SCAM",
+    email: {
+      from: "paypal-noreply@paypal.com",
+      to: "user@email.com",
+      subject: "REWARD",
+      imageURL: "/images/questions/scam/email-paypal.jpg"
+    },
+  },
+  {
+    id: "email_microsoft_scam",
+    type: "email",
+    difficulty: "easy",
+    isScam: true,
+    correctAnswer: "SCAM",
+    email: {
+      from: "disney-official@hotmail.com",
+      to: "user@email.com",
+      subject: "Unusual Sign-In Activity",
+      imageURL: "/images/questions/scam/email-microsoft.jpg"
+    },
+  },
+  {
+    id: "email_disney_scam",
+    type: "email",
+    difficulty: "medium",
+    isScam: true,
+    correctAnswer: "SCAM",
+    email: {
+      from: "disney-official@hotmail.com",
+      to: "user@email.com",
+      subject: "Congratulations! You've won a Disney prize!",
+      imageURL: "/images/questions/scam/email-disney.jpg"
     },
   },
 ];

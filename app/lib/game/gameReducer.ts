@@ -1,5 +1,6 @@
 import { GameState } from "./gameState"
 import { Answer, BaseQuestion } from "./content/baseQuestion"
+import { GAME_CONFIG } from "./gameConfig";
 
 export type GameAction =
   | { type: "SET_NAME"; payload: string }
@@ -52,6 +53,7 @@ export function gameReducer(
         ...state,
         score: newScore,
         lives: newLives,
+        level: state.level + 1
       }
     }
 
@@ -81,7 +83,7 @@ export function gameReducer(
       return {
         ...state,
         currentQuestionIndex: nextIndex,
-        timeLeft: 20, // reset timer per question
+        timeLeft: GAME_CONFIG.TIME_LIMIT, // reset timer per question
       }
     }
 

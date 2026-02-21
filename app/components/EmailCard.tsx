@@ -1,16 +1,28 @@
 import Image from "next/image"
+import { useEffect, useState } from "react"
 
 interface EmailContent {
     from: string
     to: string
     subject: string
-    body: string
+    imageURL?: string
+    body?: string
     link?: string
     footer?: string
+    buttonText?: string
     attachments?: string[]
 }
 
 export default function EmailCard({ email }: { email: EmailContent }) {
+    const [mounted, setMounted] = useState(false);
+
+    useEffect(() => {
+        setMounted(true);
+    }, []);
+
+    if (!mounted) {
+        return null; // Prevent hydration mismatch
+    }
     return (
         <div className="bg-zinc-100 p-3 rounded-xl shadow-inner w-3/5 h-full">
 
@@ -19,7 +31,7 @@ export default function EmailCard({ email }: { email: EmailContent }) {
 
                 {/* Toolbar */}
                 <div className="items-center border-b bg-zinc-50 h-12 ">
-                    <Image 
+                    <Image
                         src="/images/questions/email/toolbar.png"
                         alt="toolbar"
                         height={50}
@@ -28,7 +40,7 @@ export default function EmailCard({ email }: { email: EmailContent }) {
                 </div>
 
                 {/* Header */}
-                <div className="font-sans px-6 py-4 border-b space-y-1">
+                <div className="font-sans px-4 py-2 border-b space-y-1">
                     <h2 className="text-xl font-semibold text-zinc-900 mb-2">
                         {email.subject}
                     </h2>
@@ -45,21 +57,45 @@ export default function EmailCard({ email }: { email: EmailContent }) {
                     </div>
                 </div>
 
-                {/* Body */}
-                <div className="font-sans px-6 py-6 text-zinc-800 leading-relaxed whitespace-pre-wrap text-[15px]">
-                    {email.body}
-                </div>
+                {/* Content Image */}
+                {email.imageURL && (
+                    <div className="flex items-center justify-center align-middle">
+                        <Image
+                            src={email.imageURL}
+                            alt="COULDN'T LOAD CONTENT"
+                            height={50}
+                            width={300}
+                        />
+                    </div>
+                )}
 
-                {/* Fake Link */}
-                {email.link && (
-                    <div className="font-sans leading-relaxed text-center">
-                    <span className="text-blue-600 underline cursor-default">
-                        {email.link}
-                    </span>
+                {/* Body */}
+                {email.body && (
+                    <div className="font-sans px-6 py-6 text-zinc-800 leading-relaxed whitespace-pre-wrap text-[15px]">
+                        {email.body}
                     </div>
                 )}
 
 
+                {/* Fake Link */}
+                {email.link && (
+                    <div className="font-sans leading-relaxed text-center">
+                        <span className="text-blue-600 underline cursor-default">
+                            {email.link}
+                        </span>
+                    </div>
+                )}
+
+                {/* Button */}
+                {email.buttonText && (
+                    <button
+                        className="bg-blue-600 hover:bg-blue-500 text-white font-semibold
+                     px-6 py-3 rounded-md transition-all duration-150"
+                    >
+                        Review recent activity
+                    </button>
+
+                )}
 
                 {/* Attachments */}
                 {email.attachments && email.attachments.length > 0 && (

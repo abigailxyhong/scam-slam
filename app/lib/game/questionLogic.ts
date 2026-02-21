@@ -13,7 +13,7 @@ export function getCurrentQuestion(
 }
 
 export function getRandomEmailQuestion(
-  difficulty: "easy" | "medium" | "hard" | "very hard",
+  difficulty: "easy" | "medium" | "hard",
   usedIds: string[] = []
 ) {
   const pool = emailQuestions.filter(

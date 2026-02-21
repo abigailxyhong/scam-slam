@@ -1,5 +1,7 @@
 import Image from "next/image";
 import ScoreDisplay from "./ScoreDisplay";
+import Timer from "./Timer";
+import { useEffect, useState } from "react";
 
 type QuestionType = "email" | "phone" | "website" | "message";
 
@@ -29,6 +31,17 @@ export default function QuestionHeader({
   lives,
   score,
 }: QuestionHeaderProps) {
+
+  const [mounted, setMounted] = useState(false);
+  
+      useEffect(() => {
+          setMounted(true);
+      }, []);
+  
+      if (!mounted) {
+          return null; // Prevent hydration mismatch
+      }
+
   return (
     <header className="w-full px-6 py-4 flex items-center justify-between mt-2">
 
@@ -41,6 +54,10 @@ export default function QuestionHeader({
           height={70}
           priority
         />
+      </div>
+
+      <div className="flex items-center">
+        <Timer />
       </div>
 
       {/* Score and Lives indicator */}

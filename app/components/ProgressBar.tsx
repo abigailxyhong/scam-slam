@@ -1,4 +1,6 @@
 import { GAME_CONFIG } from "../lib/game/gameConfig"
+import { useGame } from "../lib/game/gameContext"
+
 
 interface ProgressBarProps {
   currentQuestion: number
@@ -10,6 +12,7 @@ export default function ProgressBar({
   const totalQuestions = GAME_CONFIG.MAX_QUESTIONS
 
   const difficultyLabels = ["Easy", "Medium", "Hard", "Very Hard"]
+  const { state, dispatch } = useGame()
 
   const checkpoints = difficultyLabels.length
 
@@ -47,10 +50,9 @@ export default function ProgressBar({
               {/* Circle */}
               <div
                 className={`w-6 h-6 rounded-full border-2 transition-all
-                  ${
-                    progressPercentage >= positionPercent
-                      ? "bg-green-400 border-green-300 shadow-[0_0_6px_#22c55e]"
-                      : "bg-gray-900 border-gray-500"
+                  ${progressPercentage >= positionPercent
+                    ? "bg-green-400 border-green-300 shadow-[0_0_6px_#22c55e]"
+                    : "bg-gray-900 border-gray-500"
                   }`}
               />
 
@@ -59,7 +61,7 @@ export default function ProgressBar({
                 {label}
               </span>
 
-              
+
             </div>
           )
         })}
@@ -67,7 +69,7 @@ export default function ProgressBar({
       {/* Level Indicator */}
       <div className="mt-10 text-center">
         <span className="text-3xl font-extrabold text-gray-900">
-          Level {Math.min(safeQuestion + 1, totalQuestions)} / {totalQuestions}
+          Level {state.level} / {totalQuestions}
         </span>
       </div>
     </div>

@@ -1,19 +1,17 @@
 "use client"
 
-import { useState } from "react"
 import { useEffect } from "react"
-import Link from "next/link"
-import { useRouter } from 'next/navigation'
+import { motion } from "framer-motion"
+
 import QuestionHeader from "@/app/components/QuestionHeader"
 import ProgressBar from "@/app/components/ProgressBar"
 import Buzzers from "@/app/components/Buzzers"
-import Timer from "@/app/components/Timer"
 import { useGame } from "@/app/lib/game/gameContext"
 import { selectQuestion } from "@/app/lib/game/questionSelector"
 import EmailCard from "@/app/components/EmailCard"
 import WebsiteCard from "@/app/components/WebsiteCard"
 import MessageCard from "@/app/components/MessageCard"
-import ScoreDisplay from "@/app/components/ScoreDisplay"
+
 
 
 
@@ -21,7 +19,7 @@ export default function QuestionCard() {
     const { state, dispatch } = useGame()
     const { questionType, difficulty, question } = selectQuestion(state.level)
     //dispatch({ type: "SET_QUESTIONS", payload: [question]})
-    
+
     useEffect(() => {
         dispatch({ type: "SET_QUESTIONS", payload: [question] })
     }, [question, dispatch])
@@ -35,19 +33,39 @@ export default function QuestionCard() {
                 {/* LEFT SIDE */}
                 <div className="flex-1 justify-start">
                     {questionType === "email" && (
-                        <EmailCard email={question.email} />
+                        <motion.div
+                            initial={{ opacity: 0, y: 20 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            exit={{ opacity: 0, y: -20 }}
+                            transition={{ duration: 0.5 }}
+                        >
+                            <EmailCard email={question.email} />
+                        </motion.div>
                     )}
                     {questionType === "website" && (
-                        <WebsiteCard site={question.site} />
+                        <motion.div
+                            initial={{ opacity: 0, y: 20 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            exit={{ opacity: 0, y: -20 }}
+                            transition={{ duration: 0.5 }}
+                        >
+                            <WebsiteCard site={question.site} />
+                        </motion.div>
                     )}
                     {questionType === "message" && (
-                        <MessageCard message={question.message} />
+                        <motion.div
+                            initial={{ opacity: 0, y: 20 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            exit={{ opacity: 0, y: -20 }}
+                            transition={{ duration: 0.5 }}
+                        >
+                            <MessageCard message={question.message} />
+                        </motion.div>
                     )}
                 </div>
 
                 {/* RIGHT SIDE */}
-                <div className="w-72 flex flex-col items-center gap-24 absolute right-42">
-                    <Timer />
+                <div className="h-full flex items-center justify-center absolute right-32 bottom-12">
                     <Buzzers correctAnswer={question.correctAnswer} />
                 </div>
 

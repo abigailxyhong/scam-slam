@@ -3,6 +3,7 @@
 import Link from "next/link"
 import { useState } from "react"
 import { useGame } from "./lib/game/gameContext"
+import { Toggle } from "./components/ToggleButton"
 
 export default function HomePage() {
   const [isOn, setIsOn] = useState(false)
@@ -23,6 +24,7 @@ export default function HomePage() {
         <p className="text-6xl mt-2 mb-2">
           SEE HOW YOU RANK IN SPOTTING SCAMS
         </p>
+
 
         <div className="flex flex-col items-center mt-8 space-y-6">
           <button

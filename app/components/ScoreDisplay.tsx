@@ -8,8 +8,8 @@ export default function ScoreDisplay({ score }: ScoreDisplayProps) {
       <div className="flex flex-row items-center bg-teal-200 border-2 border-emerald-400 rounded-2xl px-8 py-4 shadow-[0_0_15px_rgba(34,197,94,0.4)] transition-all duration-300 gap-4">
 
         {/* Label */}
-        <p className="text-m uppercase tracking-widest text-teal-300 text-center">
-          Score
+        <p className="text-m tracking-widest text-teal-300 text-center">
+          SCORE
         </p>
 
         {/* Score Value */}
