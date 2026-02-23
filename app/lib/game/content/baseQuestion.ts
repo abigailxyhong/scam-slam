@@ -16,7 +16,9 @@ export interface BaseQuestion {
     id: string
     type: QuestionType
     isScam: boolean
-    imageURL?: string
+    content: {
+        imageURL?: string
+    }
     correctAnswer: Answer
     difficulty: Difficulty
 }

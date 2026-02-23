@@ -1,5 +1,5 @@
-import { GAME_CONFIG } from "../lib/game/gameConfig"
-import { useGame } from "../lib/game/gameContext"
+import { GAME_CONFIG } from "../lib/game/logic/gameConfig"
+import { useGame } from "../lib/game/logic/gameContext"
 
 
 interface ProgressBarProps {
@@ -11,18 +11,22 @@ export default function ProgressBar({
 }: ProgressBarProps) {
   const totalQuestions = GAME_CONFIG.MAX_QUESTIONS
 
-  const difficultyLabels = ["Easy", "Medium", "Hard", "Very Hard"]
+  const checkpointLabels = ["Start", "Halfway","Complete!"]
   const { state, dispatch } = useGame()
 
-  const checkpoints = difficultyLabels.length
+  const checkpoints = checkpointLabels.length
 
   // Clamp value to avoid overflow
   const safeQuestion = Math.min(
-    Math.max(currentQuestion, 0),
+    Math.max(currentQuestion, 1),
     totalQuestions
   )
 
-  const progressPercentage = (safeQuestion / totalQuestions) * 100
+  const progressPercentage = Math.max(
+    0,
+    ((safeQuestion - 1) / totalQuestions) * 100
+  )
+
 
   return (
     <div className="w-7xl px-6 mt-12 ml-18">
@@ -35,7 +39,7 @@ export default function ProgressBar({
         />
 
         {/* Difficulty Checkpoints */}
-        {difficultyLabels.map((label, index) => {
+        {checkpointLabels.map((label, index) => {
           const positionPercent = (index / (checkpoints - 1)) * 100
 
           return (
@@ -69,7 +73,7 @@ export default function ProgressBar({
       {/* Level Indicator */}
       <div className="mt-10 text-center">
         <span className="text-3xl font-extrabold text-gray-900">
-          Level {state.level} / {totalQuestions}
+          Level {state.level} / {GAME_CONFIG.MAX_QUESTIONS}
         </span>
       </div>
     </div>

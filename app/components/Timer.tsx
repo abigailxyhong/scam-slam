@@ -3,11 +3,12 @@
 import { useEffect, useState } from "react"
 import Image from "next/image"
 import { useRouter } from "next/navigation"
-import { useGame } from "../lib/game/gameContext"
+import { useGame } from "../lib/game/logic/gameContext"
+import { GAME_CONFIG } from "../lib/game/logic/gameConfig"
 
 
 export default function Timer() {
-    const [timeLeft, setTimeLeft] = useState(20)
+    const [timeLeft, setTimeLeft] = useState(GAME_CONFIG.TIME_LIMIT)
     const { state, dispatch } = useGame()
     const router = useRouter()
 

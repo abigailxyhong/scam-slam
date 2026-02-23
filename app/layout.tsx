@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { Jaro } from "next/font/google";
 import './globals.css';
-import { GameProvider } from "./lib/game/gameContext";
+import { GameProvider } from "./lib/game/logic/gameContext";
 
 
 const jaro = Jaro({

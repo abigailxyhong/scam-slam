@@ -2,9 +2,9 @@ import Image from "next/image";
 import ScoreDisplay from "./ScoreDisplay";
 import Timer from "./Timer";
 import { useEffect, useState } from "react";
+import { QuestionType
 
-type QuestionType = "email" | "phone" | "website" | "message";
-
+ } from "../lib/game/content/baseQuestion";
 interface QuestionHeaderProps {
   questionType: QuestionType;
   level: number;
@@ -14,7 +14,7 @@ interface QuestionHeaderProps {
 
 const iconMap: Record<QuestionType, string> = {
   email: "/images/icons/email-icon.png",
-  phone: "/images/icons/call-icon.png",
+  call: "/images/icons/call-icon.png",
   website: "/images/icons/website-icon.png",
   message: "/images/icons/message-icon.png",
 };

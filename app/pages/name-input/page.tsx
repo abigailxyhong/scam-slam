@@ -1,14 +1,17 @@
 "use client"
 
-import { use, useState } from "react"
+import { useState } from "react"
 import Link from "next/link"
 import { useRouter } from 'next/navigation'
-import { useGame } from "@/app/lib/game/gameContext"
+import { motion } from "framer-motion"
+
+import { useGame } from "@/app/lib/game/logic/gameContext"
+
 
 export default function NameInput() {
     const router = useRouter()
     const { dispatch } = useGame()
-     const [name, setName] = useState("")
+    const [name, setName] = useState("")
     const [error, setError] = useState("")
 
     const handleContinue = () => {
@@ -35,19 +38,25 @@ export default function NameInput() {
     }
 
     return (
-        <main className="flex flex-col items-center justify-start min-h-screen px-4">
-            <h1 className="page-title mt-6">
-                ENTER A NICKNAME
-            </h1>
-            <p className="text-4xl mt-4 mb-8">
-                *USE YOUR FIRST NAME OR A NICKNAME
-            </p>
-            <input
-                type="text"
-                value={name}
-                onChange={(e) => setName(e.target.value)}
-                placeholder="Enter a name"
-                className="
+        <motion.main
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, ease: "easeOut" }}
+            className="justify-start min-h-screen px-4"
+        >
+            <main className="flex flex-col items-center justify-start min-h-screen px-4">
+                <h1 className="page-title mt-6">
+                    ENTER A NICKNAME
+                </h1>
+                <p className="text-4xl mt-4 mb-8">
+                    *USE YOUR FIRST NAME OR A NICKNAME
+                </p>
+                <input
+                    type="text"
+                    value={name}
+                    onChange={(e) => setName(e.target.value)}
+                    placeholder="Enter a name"
+                    className="
                     px-10 py-6 
                     text-3xl 
                     rounded-lg 
@@ -58,24 +67,25 @@ export default function NameInput() {
                     focus:ring-2
                     focus:ring-emerald-400
                     mb-4"
-            />
-            {error && (
-                <div className="error-message">
-                    {error}
-                </div>
-            )}
-            <button
-                onClick={handleContinue}
-                className="px-14 py-6 text-4xl rounded-full bg-teal-500 hover:bg-teal-300 font-bold mt-8"
-            >
-                CONTINUE
-            </button>
-            <Link
-                href="/"
-                className=" bg-teal-500 hover:bg-teal-300 text-zinc-800 font-semibold px-14 py-6 rounded-full text-4xl shadow-md transition mt-6">
-                BACK
-            </Link>
+                />
+                {error && (
+                    <div className="error-message">
+                        {error}
+                    </div>
+                )}
+                <button
+                    onClick={handleContinue}
+                    className="px-14 py-6 text-4xl rounded-full bg-teal-500 hover:bg-teal-300 font-bold mt-8"
+                >
+                    CONTINUE
+                </button>
+                <Link
+                    href="/"
+                    className=" bg-teal-500 hover:bg-teal-300 text-zinc-800 font-semibold px-14 py-6 rounded-full text-4xl shadow-md transition mt-6">
+                    BACK
+                </Link>
 
-        </main>
+            </main>
+        </motion.main>
     )
 }

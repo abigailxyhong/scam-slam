@@ -1,19 +1,8 @@
 import Image from "next/image"
 import { useEffect, useState } from "react"
+import { EmailQuestion } from "../lib/game/content/emailQuestions"
 
-interface EmailContent {
-    from: string
-    to: string
-    subject: string
-    imageURL?: string
-    body?: string
-    link?: string
-    footer?: string
-    buttonText?: string
-    attachments?: string[]
-}
-
-export default function EmailCard({ email }: { email: EmailContent }) {
+export default function EmailCard({ email }: { email: EmailQuestion }) {
     const [mounted, setMounted] = useState(false);
 
     useEffect(() => {
@@ -42,82 +31,30 @@ export default function EmailCard({ email }: { email: EmailContent }) {
                 {/* Header */}
                 <div className="font-sans px-4 py-2 border-b space-y-1">
                     <h2 className="text-xl font-semibold text-zinc-900 mb-2">
-                        {email.subject}
+                        {email?.content?.subject || "Loading..."}
                     </h2>
 
                     <div className="text-sm text-zinc-600">
                         <p>
                             <span className="font-medium text-zinc-800">From:</span>{" "}
-                            {email.from}
+                            {email?.content?.from || "Loading..."}
                         </p>
                         <p>
                             <span className="font-medium text-zinc-800">To:</span>{" "}
-                            {email.to}
+                            {email?.content?.to || "Loading..."}
                         </p>
                     </div>
                 </div>
 
                 {/* Content Image */}
-                {email.imageURL && (
+                {email?.content?.imageURL && (
                     <div className="flex items-center justify-center align-middle">
                         <Image
-                            src={email.imageURL}
+                            src={email?.content?.imageURL}
                             alt="COULDN'T LOAD CONTENT"
-                            height={50}
-                            width={300}
+                            height={email?.content?.height || 200}
+                            width={email?.content?.width || 250}
                         />
-                    </div>
-                )}
-
-                {/* Body */}
-                {email.body && (
-                    <div className="font-sans px-6 py-6 text-zinc-800 leading-relaxed whitespace-pre-wrap text-[15px]">
-                        {email.body}
-                    </div>
-                )}
-
-
-                {/* Fake Link */}
-                {email.link && (
-                    <div className="font-sans leading-relaxed text-center">
-                        <span className="text-blue-600 underline cursor-default">
-                            {email.link}
-                        </span>
-                    </div>
-                )}
-
-                {/* Button */}
-                {email.buttonText && (
-                    <button
-                        className="bg-blue-600 hover:bg-blue-500 text-white font-semibold
-                     px-6 py-3 rounded-md transition-all duration-150"
-                    >
-                        Review recent activity
-                    </button>
-
-                )}
-
-                {/* Attachments */}
-                {email.attachments && email.attachments.length > 0 && (
-                    <div className="px-6 pb-4">
-                        <p className="text-sm text-zinc-500 mb-2">Attachments</p>
-                        <div className="flex flex-wrap gap-2">
-                            {email.attachments.map((file) => (
-                                <div
-                                    key={file}
-                                    className="flex items-center gap-2 px-3 py-1 border rounded-md text-sm bg-zinc-50"
-                                >
-                                    📎 {file}
-                                </div>
-                            ))}
-                        </div>
-                    </div>
-                )}
-
-                {/* Footer / signature */}
-                {email.footer && (
-                    <div className="px-6 py-4 border-t text-sm text-zinc-500 whitespace-pre-wrap">
-                        {email.footer}
                     </div>
                 )}
             </div>

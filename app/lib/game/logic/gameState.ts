@@ -1,8 +1,9 @@
-import { BaseQuestion } from "./content/baseQuestion"
+import { BaseQuestion } from "../content/baseQuestion"
 
 export interface GameState {
     playerName: string
     currentQuestionIndex: number
+    currentQuestion: BaseQuestion | null
     score: number
     level: number
     lives: number
@@ -14,6 +15,7 @@ export interface GameState {
 export const initialGameState: GameState = {
     playerName: "",
     currentQuestionIndex: 0,
+    currentQuestion: null,
     score: 0,
     level: 1,
     lives: 3,

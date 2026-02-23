@@ -1,7 +1,7 @@
 "use client"
 
 import { useState } from "react"
-import { useGame } from "../lib/game/gameContext"
+import { useGame } from "../lib/game/logic/gameContext"
 import { Answer } from "../lib/game/content/baseQuestion"
 import { useRouter } from "next/navigation"
 
