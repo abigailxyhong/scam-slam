@@ -3,6 +3,7 @@ import { Answer, BaseQuestion } from "../content/baseQuestion"
 import { GAME_CONFIG } from "./gameConfig";
 import { generateQuestionSet } from "./questionSelector";
 
+
 export type GameAction =
   | { type: "SET_NAME"; payload: string }
   | { type: "SET_QUESTIONS"; payload: BaseQuestion[] }
@@ -12,6 +13,26 @@ export type GameAction =
   | { type: "TICK" }
   | { type: "NEXT_QUESTION" }
   | { type: "RESET_GAME" }
+
+function calculateScoreIncrement(difficulty: string, timeLeft: number, timeLimit: number) {
+  const timeTaken = timeLimit - timeLeft;
+  const speedRatio = Math.max(0, Math.min(1, 1 - timeTaken / timeLimit));
+  // 1 = instant answer, 0 = slowest
+
+  let min = 0;
+  let max = 0;
+
+  if (difficulty === "easy") {
+    min = 0; max = 50;
+  } else if (difficulty === "medium") {
+    min = 50; max = 100;
+  } else if (difficulty === "hard") {
+    min = 100; max = 150;
+  }
+
+  return Math.round(min + (max - min) * speedRatio);
+}
+
 
 export function gameReducer(
   state: GameState,
@@ -44,34 +65,55 @@ export function gameReducer(
         currentQuestion: action.payload
       }
 
+    case "TICK":
+      if (state.timeLeft <= 1) {
+        return {
+          ...state,
+          timeLeft: 0,
+        };
+      }
+      return {
+        ...state,
+        timeLeft: state.timeLeft - 1,
+      };
 
     case "ANSWER_SUBMITTED": {
-      const currentQuestion =
-        state.questions[state.currentQuestionIndex]
+      const currentQuestion = state.questions[state.currentQuestionIndex];
+      if (!currentQuestion) return state;
 
-      if (!currentQuestion) return state
+      const isCorrect = action.payload === currentQuestion.correctAnswer;
 
-      const isCorrect =
-        action.payload === currentQuestion.correctAnswer
+      let scoreIncrement = 0;
 
-      const newLives = isCorrect ? state.lives : state.lives - 1
-      const newScore = isCorrect ? state.score + 100 : state.score
+      if (isCorrect) {
+        scoreIncrement = calculateScoreIncrement(
+          currentQuestion.difficulty,
+          state.timeLeft,
+          GAME_CONFIG.TIME_LIMIT
+        );
+      }
+
+      const newScore = state.score + scoreIncrement;
+      const newLives = isCorrect ? state.lives : state.lives - 1;
 
       if (newLives <= 0) {
         return {
           ...state,
           lives: 0,
           status: "game-over",
-        }
+          score: newScore,
+        };
       }
 
       return {
         ...state,
-        score: newScore,
         lives: newLives,
         level: state.level + 1,
-      }
+        score: newScore,
+      };
     }
+
+
 
     case "NEXT_QUESTION": {
       const nextIndex = state.currentQuestionIndex + 1
