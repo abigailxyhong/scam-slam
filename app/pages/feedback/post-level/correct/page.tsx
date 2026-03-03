@@ -37,7 +37,7 @@ export default function CorrectFeedback() {
 
           {/* Header */}
           <div className="flex flex-row gap-6 items-center">
-            <Image 
+            <Image
               src="/images/icons/thumbs-up.png"
               alt="thumbs up"
               width={50}
@@ -49,24 +49,43 @@ export default function CorrectFeedback() {
           </div>
 
           {/* FEEDBACK CONTENT */}
-          <div className="text-3xl max-w-6xl leading-relaxed space-y-8">
+          <div className="w-full max-w-5xl space-y-10 mt-4">
 
-            <p className="font-bold text-green-700 whitespace-pre-line">
-              {question?.infoWhy}
-            </p>
-
-            <p className="text-gray-800 whitespace-pre-line">
-              {question?.infoHow}
-            </p>
-
-            {/* {question?.infoMore && (
-              <p className="text-gray-700 italic whitespace-pre-line">
-                {question?.infoMore}
+            {/* WHY YOU WERE RIGHT */}
+            <div className="bg-green-50 border-l-8 border-green-500 p-6 rounded-lg shadow-sm">
+              <h2 className="text-4xl font-extrabold text-green-700 mb-3 flex items-center gap-3">
+                <span>✅</span> WHY YOU GOT IT RIGHT
+              </h2>
+              <p className="text-2xl text-gray-800 leading-relaxed whitespace-pre-line">
+                {question?.infoWhy}
               </p>
+            </div>
+
+            {/* HOW THE SCAM WORKS */}
+            {question?.infoHow && (
+              <div className="bg-yellow-50 border-l-8 border-yellow-500 p-6 rounded-lg shadow-sm">
+              <h2 className="text-4xl font-extrabold text-yellow-700 mb-3 flex items-center gap-3">
+                <span>🔍</span> HOW IT WORKS
+              </h2>
+              <p className="text-2xl text-gray-800 leading-relaxed whitespace-pre-line">
+                {question?.infoHow}
+              </p>
+            </div>)}
+
+
+            {/* EXTRA TIPS */}
+            {/* {question?.infoMore && (
+              <div className="bg-blue-50 border-l-8 border-blue-500 p-6 rounded-lg shadow-sm">
+                <h2 className="text-4xl font-extrabold text-blue-700 mb-3 flex items-center gap-3">
+                  <span>💡</span> EXTRA TIPS TO STAY SAFE
+                </h2>
+                <p className="text-2xl text-gray-800 leading-relaxed whitespace-pre-line">
+                  {question.infoMore}
+                </p>
+              </div>
             )} */}
           </div>
 
-          <div className="grow" />
 
           {/* Continue Button */}
           <Link

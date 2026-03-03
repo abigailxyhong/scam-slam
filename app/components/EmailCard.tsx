@@ -1,6 +1,8 @@
 import Image from "next/image"
 import { useEffect, useState } from "react"
 import { EmailQuestion } from "../lib/game/content/emailQuestions"
+import { Tooltip, TooltipTrigger, TooltipContent } from "@heroui/react"
+import ZoomableImage from "../lib/game/functions/ZoomImage"
 
 export default function EmailCard({ email }: { email: EmailQuestion }) {
     const [mounted, setMounted] = useState(false);
@@ -16,7 +18,7 @@ export default function EmailCard({ email }: { email: EmailQuestion }) {
         <div className="bg-zinc-100 p-3 rounded-xl shadow-inner w-3/5 h-full">
 
             {/* Email container */}
-            <div className="bg-white h-full rounded-lg shadow-md border overflow-hidden">
+            <div className="bg-white h-full rounded-lg shadow-md border overflow-visible">
 
                 {/* Toolbar */}
                 <div className="items-center border-b bg-zinc-50 h-12 ">
@@ -29,34 +31,44 @@ export default function EmailCard({ email }: { email: EmailQuestion }) {
                 </div>
 
                 {/* Header */}
-                <div className="font-sans px-4 py-2 border-b space-y-1">
+                {email?.content?.subject && (<div className="font-sans px-4 py-2 border-b space-y-1">
                     <h2 className="text-xl font-semibold text-zinc-900 mb-2">
                         {email?.content?.subject || "Loading..."}
                     </h2>
 
                     <div className="text-sm text-zinc-600">
-                        <p>
-                            <span className="font-medium text-zinc-800">From:</span>{" "}
-                            {email?.content?.from || "Loading..."}
-                        </p>
+                        <Tooltip delay={0}>
+                            <Tooltip.Trigger>
+                                <p className="flex items-center gap-2 cursor-pointer">
+                                    <span className="font-medium text-zinc-800">From:</span>
+                                    {email?.content?.from || "Loading..."}
+                                    <span className="text-teal-600 font-bold">ⓘ</span>
+                                </p>
+                            </Tooltip.Trigger>
+
+                            <Tooltip.Content showArrow className="bg-white shadow-xl p-4 rounded-xl border border-gray-200 max-w-xs">
+                                <Tooltip.Arrow className="fill-white" />
+                                <div className="max-w-md px-1 py-1.5">
+                                    <p className="mb-1 text-xl font-semibold text-gray-900">Sender Email Address:</p>
+                                    <p className="text-lg font-sans text-muted">{email?.tooltipAddress || "Check the address for red flags such as typos or unusual domains."}</p>
+                                </div>
+                            </Tooltip.Content>
+                        </Tooltip>
+
                         <p>
                             <span className="font-medium text-zinc-800">To:</span>{" "}
                             {email?.content?.to || "Loading..."}
                         </p>
                     </div>
-                </div>
+                </div>)}
 
                 {/* Content Image */}
                 {email?.content?.imageURL && (
-                    <div className="flex items-center justify-center align-middle">
-                        <Image
-                            src={email?.content?.imageURL}
-                            alt="COULDN'T LOAD CONTENT"
-                            height={email?.content?.height || 200}
-                            width={email?.content?.width || 250}
-                        />
+                    <div className="flex items-center justify-center align-middle mt-4">
+                        <ZoomableImage src={email?.content?.imageURL} width={email?.content?.width || 250} height={email?.content?.height || 200} />
                     </div>
                 )}
+
             </div>
         </div>
     )

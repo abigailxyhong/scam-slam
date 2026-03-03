@@ -4,11 +4,11 @@ import Link from "next/link"
 import { motion } from "framer-motion"
 import { useGame } from "@/app/lib/game/logic/gameContext"
 import type { Variants } from "framer-motion"
+import { GAME_CONFIG } from "@/app/lib/game/logic/gameConfig"
 
 export default function Instructions() {
     const { dispatch } = useGame()
 
-    // Each line is now JSX so we can style individual words
     const lines = [
         <>
             EACH LEVEL YOU WILL BE <span className="font-bold text-blue-700">TEXTED, EMAILED, CALLED</span> OR <span className="font-bold text-blue-700">SHOWN A WEBSITE</span>.
@@ -20,7 +20,7 @@ export default function Instructions() {
             PRESS THE <span className="font-bold text-green-700">GREEN BUZZER</span> FOR 'SAFE' AND <span className="font-bold text-red-600">RED BUZZER</span> FOR 'SCAM'.
         </>,
         <>
-            YOU WILL BE GIVEN <span className="font-bold">20 SECONDS</span> PER LEVEL.
+            YOU WILL BE GIVEN <span className="font-bold">{GAME_CONFIG.TIME_LIMIT} SECONDS</span> PER LEVEL.
         </>,
         <>
             GET IT? <span className="font-bold">PRESS READY TO BEGIN!</span>

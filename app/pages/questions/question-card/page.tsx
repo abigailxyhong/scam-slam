@@ -2,6 +2,7 @@
 
 import { useEffect } from "react"
 import { motion } from "framer-motion"
+import { Tooltip } from "@heroui/react"
 
 import QuestionHeader from "@/app/components/QuestionHeader"
 import ProgressBar from "@/app/components/ProgressBar"

@@ -21,5 +21,8 @@ export interface BaseQuestion {
     }
     correctAnswer: Answer
     difficulty: Difficulty
+    infoWhy: string
+    infoHow?: string
+    infoMore?: string
 }
 

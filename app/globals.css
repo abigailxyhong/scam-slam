@@ -46,6 +46,11 @@ p {
   color: var(--text-color-faded);
 }
 
+.cursor-magnify {
+  cursor: zoom-in;
+}
+
+
 
 
 
