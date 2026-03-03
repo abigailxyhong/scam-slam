@@ -1,4 +1,5 @@
 @import "tailwindcss";
+@import "@heroui/styles";
 
 :root {
   --background: linear-gradient(
@@ -44,6 +45,11 @@ body {
 p {
   color: var(--text-color-faded);
 }
+
+.cursor-magnify {
+  cursor: zoom-in;
+}
+
 
 
 

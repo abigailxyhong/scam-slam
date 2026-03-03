@@ -2,45 +2,56 @@
 
 import Link from "next/link"
 import { useState } from "react"
+import { useGame } from "@/app/lib/game/logic/gameContext"
+import { Toggle } from "./components/ToggleButton"
+import { motion } from "framer-motion"
 
 export default function HomePage() {
   const [isOn, setIsOn] = useState(false)
   const handleToggle = () => setIsOn(!isOn)
+  const { dispatch } = useGame()
 
-  const toggleButtonClasses = `w-auto px-8 py-4 rounded-full text-2xl font-bold shadow-md transition mt-4 ${
-    isOn ? "bg-teal-400 text-white" : "bg-gray-300 text-zinc-800"
-  }`
+  const toggleButtonClasses = `w-auto px-8 py-4 rounded-full text-2xl font-bold shadow-md transition mt-4 ${isOn ? "bg-teal-400 text-white" : "bg-gray-300 text-zinc-800"
+    }`
 
   return (
-    <main className="flex flex-col items-center justify-start min-h-screen px-4">
-      <div className="flex flex-col text-center mt-8 space-y-2">
-        <h1 className="main-title">
-          SCAM SLAM
-        </h1>
+    <motion.main
+      initial={{ opacity: 0, y: 20 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.6, ease: "easeOut" }}
+      className="justify-start min-h-screen px-4"
+    >
+      <main className="flex flex-col items-center justify-start min-h-screen px-4">
+        <div className="flex flex-col text-center mt-8 space-y-2">
+          <h1 className="main-title">
+            SCAM SLAM
+          </h1>
 
-        <p className="text-6xl mt-2 mb-2">
-          SEE HOW YOU RANK IN SPOTTING SCAMS
-        </p>
+          <p className="text-6xl mt-2 mb-2">
+            SEE HOW YOU RANK IN SPOTTING SCAMS
+          </p>
 
-        <div className="flex flex-col items-center mt-8 space-y-6">
-          <button
-            onClick={handleToggle}
-            className={toggleButtonClasses}
-          >
-            {isOn ? "DIGITAL BUZZERS ON" : "DIGITAL BUZZERS OFF"}
-          </button>
+          <div className="flex flex-col items-center mt-8 space-y-6">
+            {/* <button
+              onClick={handleToggle}
+              className={toggleButtonClasses}
+            >
+              {isOn ? "DIGITAL BUZZERS ON" : "DIGITAL BUZZERS OFF"}
+            </button> */}
 
-          <Link
-            href="/pages/name-input"
-            className=" bg-emerald-500 hover:bg-emerald-300 text-zinc-800 font-semibold px-16 py-8 rounded-full text-6xl shadow-md transition mt-6">
+            <Link
+              //onClick={() => dispatch({ type: "SET_PHASE", payload: "name"})}
+              href="/pages/name-input"
+              className=" bg-emerald-500 hover:bg-emerald-300 text-zinc-800 font-semibold px-16 py-8 rounded-full text-6xl shadow-md transition mt-10">
               START ROUND
-          </Link>
+            </Link>
+          </div>
         </div>
-      </div>
 
-      <footer className="mt-4 flex justify-center py-4 mb-10">
-        <img src="images/icons/Icons(b).svg" alt="Icons" className="h-20 w-auto" />
-      </footer>
-    </main>
+        <footer className="mt-4 flex justify-center py-4 mb-10 absolute bottom-4">
+          <img src="images/icons/Icons(b).svg" alt="Icons" className="h-20 w-auto" />
+        </footer>
+      </main>
+    </motion.main>
   )
 }

@@ -1,38 +1,46 @@
 "use client"
 
-import { useEffect, useState } from "react"
+import { useEffect } from "react"
 import Image from "next/image"
+import { useRouter } from "next/navigation"
+import { useGame } from "../lib/game/logic/gameContext"
 
 export default function Timer() {
-    const [timeLeft, setTimeLeft] = useState(20)
+  const { state, dispatch } = useGame()
+  const router = useRouter()
 
-    useEffect(() => {
-        if (timeLeft === 0) return
+  useEffect(() => {
+    // If time hits zero, trigger timeout behaviour
+    if (state.timeLeft === 0) {
+      dispatch({ type: "ANSWER_SUBMITTED", payload: "TIME-OUT" })
+      router.push("../feedback/post-level/time-out")
+      return
+    }
 
-        const interval = setInterval(() => {
-            setTimeLeft((prev) => prev - 1)
-        }, 1000)
+    const interval = setInterval(() => {
+      dispatch({ type: "TICK" })
+    }, 1000)
 
-        return () => clearInterval(interval)
-    }, [timeLeft])
+    return () => clearInterval(interval)
+  }, [state.timeLeft, dispatch, router])
 
-    return (
-        <div className="relative flex items-center justify-center">
-            <Image
-                src="/images/icons/timer.png"
-                alt="Timer icon"
-                width={100}
-                height={100}
-                priority
-            />
+  return (
+    <div className="relative flex items-center justify-center mt-6">
+      <Image
+        src="/images/icons/timer.png"
+        alt="Timer icon"
+        width={70}
+        height={100}
+        priority
+      />
 
-            {/* Countdown number */}
-            <span
-                className={`absolute translate-x-16 text-3xl font-bold ${timeLeft <= 5 ? "text-red-500" : "text-white"
-                    }`}
-            >
-                : {timeLeft}s
-            </span>
-        </div>
-    )
+      <span
+        className={`absolute translate-x-16 text-5xl font-bold ${
+          state.timeLeft <= 5 ? "text-red-500" : "text-white"
+        }`}
+      >
+        {state.timeLeft}
+      </span>
+    </div>
+  )
 }
