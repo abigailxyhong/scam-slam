@@ -2,9 +2,10 @@ import Image from "next/image";
 import ScoreDisplay from "./ScoreDisplay";
 import Timer from "./Timer";
 import { useEffect, useState } from "react";
-import { QuestionType
+import {
+  QuestionType
 
- } from "../lib/game/content/baseQuestion";
+} from "../lib/game/content/baseQuestion";
 interface QuestionHeaderProps {
   questionType: QuestionType;
   level: number;
@@ -33,14 +34,15 @@ export default function QuestionHeader({
 }: QuestionHeaderProps) {
 
   const [mounted, setMounted] = useState(false);
-  
-      useEffect(() => {
-          setMounted(true);
-      }, []);
-  
-      if (!mounted) {
-          return null; // Prevent hydration mismatch
-      }
+  const lifeImage = livesMap[lives];
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  if (!mounted) {
+    return null; // Prevent hydration mismatch
+  }
 
   return (
     <header className="w-full px-6 py-4 flex items-center justify-between mt-2">
@@ -64,13 +66,9 @@ export default function QuestionHeader({
       <div className="flex items-center gap-8 pr-6">
         <ScoreDisplay score={score} />
 
-        <Image
-          src={livesMap[lives]}
-          alt={`${lives} lives remaining`}
-          width={160}
-          height={60}
-          priority
-        />
+        {lifeImage && (
+          <Image src={lifeImage} alt={`${lives} lives remaining`} width={160} height={60} />
+        )}
       </div>
     </header>
   );

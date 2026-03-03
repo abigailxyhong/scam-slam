@@ -113,8 +113,6 @@ export function gameReducer(
       };
     }
 
-
-
     case "NEXT_QUESTION": {
       const nextIndex = state.currentQuestionIndex + 1
 
