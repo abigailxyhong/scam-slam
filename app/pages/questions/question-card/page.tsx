@@ -42,7 +42,7 @@ export default function QuestionCard() {
             <main className="flex flex-col justify-start min-h-screen px-4 pl-6">
                 <QuestionHeader questionType={questionType} level={state.level} lives={state.lives} score={state.score} />
 
-                <div className="flex w-full h-[65vh] px-6 justify-start ml-4">
+                <div className="flex flex-row w-full h-[65vh] px-6 justify-startml-4">
                     {/* LEFT SIDE */}
                     <div className="flex-1 justify-start">
                         {questionType === "email" && (

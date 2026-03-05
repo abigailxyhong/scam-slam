@@ -6,8 +6,15 @@ import { useGame } from "@/app/lib/game/logic/gameContext"
 import type { Variants } from "framer-motion"
 import { GAME_CONFIG } from "@/app/lib/game/logic/gameConfig"
 
+
 export default function Instructions() {
-    const { dispatch } = useGame()
+    const { dispatch, state } = useGame()
+
+    if (!state.playerName) {
+        console.error("Player name missing")
+        return
+    }
+
 
     const lines = [
         <>

@@ -21,6 +21,9 @@ export default function CorrectFeedback() {
     if (!isFinalLevel) {
       dispatch({ type: "NEXT_QUESTION" })
     }
+    else if (isFinalLevel) {
+      dispatch({ type: "FINISH_GAME" })
+    }
   }
 
   console.log("Current Question in Feedback:", question?.infoWhy)  // Debug log to check question data

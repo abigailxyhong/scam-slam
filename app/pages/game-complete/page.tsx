@@ -4,6 +4,7 @@ import { motion } from "framer-motion"
 import Link from "next/link"
 import { useGame } from "@/app/lib/game/logic/gameContext"
 import type { Variants } from "framer-motion"
+import { GAME_CONFIG } from "@/app/lib/game/logic/gameConfig"
 
 export default function GameOver() {
     const { dispatch, state } = useGame()
@@ -42,11 +43,20 @@ export default function GameOver() {
                 GAME COMPLETE!
             </motion.h1>
 
-            <motion.div
+            {/* <motion.div
                 variants={popVariants}
                 initial="hidden"
                 animate="visible"
                 transition={{ delay: 0.3 }}
+                className="text-4xl font-semibold text-gray-800 mb-12">
+                Questions Answered Correctly: <span className="text-green-600">{state.questionsCorrect}/{GAME_CONFIG.MAX_QUESTIONS}</span>
+            </motion.div> */}
+
+            <motion.div
+                variants={popVariants}
+                initial="hidden"
+                animate="visible"
+                transition={{ delay: 0.5 }}
                 className="text-4xl font-semibold text-gray-800 mb-12"
             >
                 Final Score: <span className="text-blue-700">{state.score}</span>
@@ -59,13 +69,13 @@ export default function GameOver() {
                 transition={{ delay: 0.5 }}
                 className="flex flex-col items-center space-y-6"
             >
-                {/* <Link
-                    onClick={() => dispatch({ type: "RESET_GAME" })}
-                    href="/pages/questions/question-card"
+                <Link
+                    // onClick={() => dispatch({ type: "RESET_GAME" })}
+                    href="/pages/leaderboard"
                     className="bg-teal-500 hover:bg-teal-300 text-zinc-800 font-semibold px-16 py-6 rounded-full text-4xl shadow-md transition"
                 >
                     SEE LEADERBOARD
-                </Link> */}
+                </Link>  
 
                 <Link
                     href="/"

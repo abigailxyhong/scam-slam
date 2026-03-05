@@ -2,16 +2,22 @@ import { GameState } from "./gameState";
 import { Answer, BaseQuestion } from "../content/baseQuestion"
 import { GAME_CONFIG } from "./gameConfig";
 import { generateQuestionSet } from "./questionSelector";
+import { createPlayer } from "@/app/lib/supabase/players"
+import { create } from "domain";
+import { s } from "motion/react-client";
 
 
 export type GameAction =
   | { type: "SET_NAME"; payload: string }
+  | { type: "SET_PLAYER_ID"; payload: string }
+  | { type: "SET_GAME_ID"; payload: string }
   | { type: "SET_QUESTIONS"; payload: BaseQuestion[] }
   | { type: "START_GAME" }
   | { type: "SET_CURRENT_QUESTION"; payload: BaseQuestion }
   | { type: "ANSWER_SUBMITTED"; payload: Answer }
   | { type: "TICK" }
   | { type: "NEXT_QUESTION" }
+  | { type: "FINISH_GAME" }
   | { type: "RESET_GAME" }
 
 function calculateScoreIncrement(difficulty: string, timeLeft: number, timeLimit: number) {
@@ -42,10 +48,27 @@ export function gameReducer(
     case "SET_NAME":
       return {
         ...state,
+        playerName: action.payload,
+      }
 
+    case "SET_PLAYER_ID":
+      return {
+        ...state,
+        playerId: action.payload,
+      }
+
+    case "SET_GAME_ID":
+      return {
+        ...state,
+        gameId: action.payload,
       }
 
     case "START_GAME":
+      // createPlayer(state.playerName).then(res => {
+      //   dispatchEvent({ type: "SET_PLAYER_ID", payload: res.data.id })
+      // })  
+
+
       const allQuestions = generateQuestionSet(GAME_CONFIG.MAX_QUESTIONS)
 
       return {
@@ -82,6 +105,7 @@ export function gameReducer(
       if (!currentQuestion) return state;
 
       const isCorrect = action.payload === currentQuestion.correctAnswer;
+
 
       let scoreIncrement = 0;
 
@@ -129,6 +153,13 @@ export function gameReducer(
         timeLeft: GAME_CONFIG.TIME_LIMIT, // reset timer per question
       }
     }
+
+    case "FINISH_GAME":
+      return {
+        ...state,
+        status: "completed", // or "game-over"
+      }
+
 
     case "RESET_GAME":
       return {

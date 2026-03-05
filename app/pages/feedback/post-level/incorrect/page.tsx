@@ -12,6 +12,7 @@ export default function IncorrectFeedback() {
   const question = state.currentQuestion   // ← Pull the full question object
 
   const isFinalLevel = state.level >= GAME_CONFIG.MAX_QUESTIONS
+
   const isOutOfLives = state.lives <= 0
 
   const nextHref =
@@ -23,7 +24,12 @@ export default function IncorrectFeedback() {
     if (!isOutOfLives && !isFinalLevel) {
       dispatch({ type: "NEXT_QUESTION" })
     }
+
+    if (isFinalLevel || isOutOfLives) {
+      dispatch({ type: "FINISH_GAME" })
+    }
   }
+
 
   return (
     <motion.main
