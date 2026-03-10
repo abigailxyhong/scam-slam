@@ -8,6 +8,7 @@ import { s } from "motion/react-client";
 
 
 export type GameAction =
+  | { type: "TOGGLE_BUZZERS" }
   | { type: "SET_NAME"; payload: string }
   | { type: "SET_PLAYER_ID"; payload: string }
   | { type: "SET_GAME_ID"; payload: string }
@@ -45,6 +46,12 @@ export function gameReducer(
   action: GameAction
 ): GameState {
   switch (action.type) {
+    case "TOGGLE_BUZZERS":
+      return {
+        ...state,
+        digitalBuzzersOn: !state.digitalBuzzersOn,
+      }
+      
     case "SET_NAME":
       return {
         ...state,

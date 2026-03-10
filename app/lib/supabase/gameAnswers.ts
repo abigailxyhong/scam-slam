@@ -1,4 +1,4 @@
-import { supabase } from "./client";
+import { createClientB } from "./client";
 
 interface SaveAnswerParams {
   gameId: string;
@@ -17,6 +17,7 @@ export async function saveAnswer({
   playerAnswer,
  
 }: SaveAnswerParams) {
+  const supabase = await createClientB();
   return supabase.from("answers").insert({
     question_id: questionId,
     player_answer: playerAnswer,

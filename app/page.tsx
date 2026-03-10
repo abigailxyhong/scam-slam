@@ -8,8 +8,13 @@ import { motion } from "framer-motion"
 
 export default function HomePage() {
   const [isOn, setIsOn] = useState(false)
-  const handleToggle = () => setIsOn(!isOn)
-  const { dispatch } = useGame()
+  const handleToggle = () => {
+  setIsOn(prev => !prev)
+  dispatch({ type: "TOGGLE_BUZZERS" })
+}
+  const { state, dispatch } = useGame()
+  console.log("Digital Buzzers On (HomePage):", state.digitalBuzzersOn)
+
 
   const toggleButtonClasses = `w-auto px-8 py-4 rounded-full text-2xl font-bold shadow-md transition mt-4 ${isOn ? "bg-teal-400 text-white" : "bg-gray-300 text-zinc-800"
     }`
@@ -32,12 +37,12 @@ export default function HomePage() {
           </p>
 
           <div className="flex flex-col items-center mt-8 space-y-6">
-            {/* <button
+            <button
               onClick={handleToggle}
               className={toggleButtonClasses}
             >
               {isOn ? "DIGITAL BUZZERS ON" : "DIGITAL BUZZERS OFF"}
-            </button> */}
+            </button> 
 
             <Link
               //onClick={() => dispatch({ type: "SET_PHASE", payload: "name"})}

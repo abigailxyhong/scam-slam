@@ -26,6 +26,7 @@ export default function QuestionCard() {
 
     const questionType = currentQuestion?.type
     console.log("Current Question:", currentQuestion)
+    console.log("Digital Buzzers On:", state.digitalBuzzersOn)
     // const { questionType, difficulty, question } = selectQuestion(state.level) // optional, if still used
 
     if (!currentQuestion) {
@@ -37,14 +38,14 @@ export default function QuestionCard() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, ease: "easeOut" }}
-            className="justify-start min-h-screen px-4"
+            className="min-h-screen px-4"
         >
-            <main className="flex flex-col justify-start min-h-screen px-4 pl-6">
+            <main className="flex flex-col min-h-screen px-4 pl-6">
                 <QuestionHeader questionType={questionType} level={state.level} lives={state.lives} score={state.score} />
 
-                <div className="flex flex-row w-full h-[65vh] px-6 justify-startml-4">
+                <div className="flex flex-row w-full items-center justify-center h-[65vh] px-6 ml-4">
                     {/* LEFT SIDE */}
-                    <div className="flex-1 justify-start">
+                    <div className="flex items-center justify-center h-full">
                         {questionType === "email" && (
                             <motion.div
                                 initial={{ opacity: 0, y: 20 }}
@@ -78,10 +79,11 @@ export default function QuestionCard() {
                     </div>
 
                     {/* RIGHT SIDE */}
-                    <div className="h-full flex items-center justify-center absolute right-32 bottom-12">
-                        <Buzzers correctAnswer={currentQuestion.correctAnswer} />
+                    {state.digitalBuzzersOn &&
+                        (<div className="h-full flex items-center justify-center absolute right-32 bottom-12">
+                            <Buzzers correctAnswer={currentQuestion.correctAnswer} />
+                        </div>)}
 
-                    </div>
                 </div>
 
                 <ProgressBar currentQuestion={state.level} />

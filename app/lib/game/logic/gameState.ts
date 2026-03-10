@@ -11,6 +11,7 @@ export interface GameState {
     lives: number
     timeLeft: number
     questionsCorrect: number
+    digitalBuzzersOn: boolean
     questions: BaseQuestion[]
     status: "playing" | "game-over" | "completed"
 }
@@ -26,6 +27,7 @@ export const initialGameState: GameState = {
     lives: 3,
     timeLeft: 20,
     questionsCorrect: 0,
+    digitalBuzzersOn: false,
     questions: [],
     status: "playing",
 }
