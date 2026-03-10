@@ -1,19 +1,23 @@
-import { supabase } from "./client";
+import { createClientB } from "./client";
 
-export async function createGame(playerId: string, name: string) {
+export async function createGame(name: string) {
+  const supabase = await createClientB();
   const { data, error } = await supabase
     .from("games")
     .insert({
-      player_id: playerId,
       player_name: name,
     })
     .select()
     .single();
 
+  console.log("createGame:", { data, error });
+
+
   return { data, error };
 }
 
 export async function finishGame(gameId: string, score: number) {
+  const supabase = await createClientB();
   const { data, error } = await supabase
     .from("games")
     .update({

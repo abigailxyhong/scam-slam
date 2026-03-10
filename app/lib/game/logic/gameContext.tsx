@@ -29,9 +29,9 @@ async function enhancedDispatch(action: GameAction) {
     return
   }
 
-  dispatch({ type: "SET_PLAYER_ID", payload: playerRes.data.id })
+  // dispatch({ type: "SET_PLAYER_ID", payload: playerRes.data.id })
 
-  const gameRes = await createGame(playerRes.data.id, state.playerName)
+  const gameRes = await createGame(state.playerName)
 
   if (!gameRes.data) {
     console.error("Failed to create game:", gameRes.error)
@@ -67,8 +67,13 @@ async function enhancedDispatch(action: GameAction) {
 
 
     case "RESET_GAME":
+
+    case "FINISH_GAME":
+      if (state.gameId) { await finishGame(state.gameId, state.score) }
+      break
+
     case "NEXT_QUESTION":
-    if (state.gameId) { await finishGame(state.gameId, state.score) } break
+    //if (state.gameId) { await finishGame(state.gameId, state.score) } break
 
     case "TICK":
       // no DB writes needed
