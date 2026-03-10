@@ -29,7 +29,7 @@ export default function ProgressBar({
 
 
   return (
-    <div className="w-7xl px-6 mt-12 ml-18">
+    <div className="w-full px-6 mt-12 ml-18 mr-18">
       <div className="relative w-full h-5 bg-gray-800 rounded-full">
 
         {/* Progress Fill */}
