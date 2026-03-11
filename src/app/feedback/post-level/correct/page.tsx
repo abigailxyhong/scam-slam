@@ -1,0 +1,107 @@
+"use client"
+
+import Link from "next/link"
+import Image from "next/image"
+import { useGame } from "@/src/app/providers/GameProvider"
+import { motion } from "framer-motion"
+import { GAME_CONFIG } from "@/src/lib/constants/gameConfig"
+
+export default function CorrectFeedback() {
+  const { state, dispatch } = useGame()
+
+  const question = state.currentQuestion  // ← THIS IS THE KEY
+
+  const isFinalLevel = state.level >= GAME_CONFIG.MAX_QUESTIONS
+
+  const nextHref = isFinalLevel
+    ? "/pages/game-complete"
+    : "/pages/questions/question-card"
+
+  const handleContinue = () => {
+    if (!isFinalLevel) {
+      dispatch({ type: "NEXT_QUESTION" })
+    }
+    else if (isFinalLevel) {
+      dispatch({ type: "FINISH_GAME" })
+    }
+  }
+
+  console.log("Current Question in Feedback:", question?.infoWhy)  // Debug log to check question data
+
+  return (
+    <motion.main
+      initial={{ opacity: 0, y: 20 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.6, ease: "easeOut" }}
+      className="justify-start min-h-screen px-4"
+    >
+      <main className="min-h-screen px-4 flex">
+        <div className="flex flex-col items-center pl-16 pr-16 gap-10 w-full">
+
+          {/* Header */}
+          <div className="flex flex-row gap-6 items-center">
+            <Image
+              src="/images/icons/thumbs-up.png"
+              alt="thumbs up"
+              width={50}
+              height={50}
+              className="h-25 w-auto mt-8"
+            />
+
+            <h1 className="page-title mt-6">CORRECT!</h1>
+          </div>
+
+          {/* FEEDBACK CONTENT */}
+          <div className="w-full max-w-5xl space-y-10 mt-4">
+
+            {/* WHY YOU WERE RIGHT */}
+            <div className="bg-green-50 border-l-8 border-green-500 p-6 rounded-lg shadow-sm">
+              <h2 className="text-4xl font-extrabold text-green-700 mb-3 flex items-center gap-3">
+                <span>✅</span> WHY YOU GOT IT RIGHT
+              </h2>
+              <p className="text-2xl text-gray-800 leading-relaxed whitespace-pre-line">
+                {question?.infoWhy}
+              </p>
+            </div>
+
+            {/* HOW THE SCAM WORKS */}
+            {question?.infoHow && (
+              <div className="bg-yellow-50 border-l-8 border-yellow-500 p-6 rounded-lg shadow-sm">
+              <h2 className="text-4xl font-extrabold text-yellow-700 mb-3 flex items-center gap-3">
+                <span>🔍</span> HOW IT WORKS
+              </h2>
+              <p className="text-2xl text-gray-800 leading-relaxed whitespace-pre-line">
+                {question?.infoHow}
+              </p>
+            </div>)}
+
+
+            {/* EXTRA TIPS */}
+            {/* {question?.infoMore && (
+              <div className="bg-blue-50 border-l-8 border-blue-500 p-6 rounded-lg shadow-sm">
+                <h2 className="text-4xl font-extrabold text-blue-700 mb-3 flex items-center gap-3">
+                  <span>💡</span> EXTRA TIPS TO STAY SAFE
+                </h2>
+                <p className="text-2xl text-gray-800 leading-relaxed whitespace-pre-line">
+                  {question.infoMore}
+                </p>
+              </div>
+            )} */}
+          </div>
+
+
+          {/* Continue Button */}
+          <Link
+            onClick={handleContinue}
+            href={nextHref}
+            className="bg-teal-500 hover:bg-teal-300 text-zinc-800
+                       font-semibold px-14 py-6 rounded-full text-4xl
+                       shadow-md transition mb-16"
+          >
+            {isFinalLevel ? "FINISH" : "CONTINUE"}
+          </Link>
+        </div>
+      </main>
+    </motion.main>
+  )
+}
