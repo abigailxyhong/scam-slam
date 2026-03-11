@@ -1,7 +1,7 @@
 import Image from "next/image"
 import { useEffect, useState } from "react"
 import { EmailQuestion } from "../lib/game/content/emailQuestions"
-import { Tooltip, TooltipTrigger, TooltipContent } from "@heroui/react"
+import { Tooltip } from "@heroui/react"
 import ZoomableImage from "../lib/game/functions/ZoomImage"
 
 export default function EmailCard({ email }: { email: EmailQuestion }) {
@@ -12,7 +12,7 @@ export default function EmailCard({ email }: { email: EmailQuestion }) {
     }, []);
 
     if (!mounted) {
-        return null; // Prevent hydration mismatch
+        return null; // Prevent hydration mismatch, wtf does this even mean
     }
     return (
         <div className="bg-zinc-100 p-3 rounded-xl shadow-inner w-3/5 h-full">

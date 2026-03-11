@@ -64,8 +64,6 @@ export default function ProgressBar({
               <span className="mt-2 text-lg font-semibold text-gray-800 whitespace-nowrap">
                 {label}
               </span>
-
-
             </div>
           )
         })}

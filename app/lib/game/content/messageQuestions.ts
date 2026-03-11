@@ -18,7 +18,7 @@ export interface MessageQuestion extends BaseQuestion {
         height?: number;
     };
     infoWhy: string;
-    infoHow: string;
+    infoHow?: string;
     infoMore?: string;
 }
 
@@ -57,6 +57,33 @@ export const messageQuestions: MessageQuestion[] = [
     },
 
     // Medium
+    {
+        id: "message_hsbc_safe_1",
+        type: "message",
+        difficulty: "medium",
+        isScam: false,
+        correctAnswer: "SAFE",
+        content: {
+            sender: "HSBC UK",
+            customText: "To protect your HSBC account from fraud, we may have placed a temporary block on your card. Please respond to the next message from HSBC UK on +447537438061 which will ask you to confirm your recent transactions and guide you on next steps. Standard network charges apply.",
+            timestamp: "11:24",
+        },
+        infoWhy: "This is an example of a legitimate fraud alert message from HSBC.",
+
+    },
+    {
+        id: "message_hsbc_safe_2",
+        type: "message",
+        difficulty: "medium",
+        isScam: false,
+        correctAnswer: "SAFE",
+        content: {
+            sender: "HSBC UK",
+            customText: "This is a fraud alert from HSBC. To protect our customers, we are carefully monitoring transactions for fraud. Shortly you will receive a message from +447860093059 with direction on how to respond. Please respond by 8pm (GMT) today, or your payment may be cancelled.",
+            timestamp: "4:38",
+        },
+        infoWhy: "This is an example of a legitimate fraud alert message from HSBC.",
+    }
     
     // Hard
 ];

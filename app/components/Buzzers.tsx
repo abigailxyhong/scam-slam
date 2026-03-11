@@ -9,6 +9,8 @@ interface BuzzersProps {
     correctAnswer: Answer
 }
 
+// Maybe need to change the routing logic here - update state instead
+
 export default function Buzzers({ correctAnswer }: BuzzersProps) {
     const { state, dispatch } = useGame()
     const [pressed, setPressed] = useState(false)

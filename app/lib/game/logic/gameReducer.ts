@@ -2,10 +2,6 @@ import { GameState } from "./gameState";
 import { Answer, BaseQuestion } from "../content/baseQuestion"
 import { GAME_CONFIG } from "./gameConfig";
 import { generateQuestionSet } from "./questionSelector";
-import { createPlayer } from "@/app/lib/supabase/players"
-import { create } from "domain";
-import { s } from "motion/react-client";
-
 
 export type GameAction =
   | { type: "TOGGLE_BUZZERS" }
@@ -20,6 +16,8 @@ export type GameAction =
   | { type: "NEXT_QUESTION" }
   | { type: "FINISH_GAME" }
   | { type: "RESET_GAME" }
+
+// should probs take out some of the random shit in here
 
 function calculateScoreIncrement(difficulty: string, timeLeft: number, timeLimit: number) {
   const timeTaken = timeLimit - timeLeft;
@@ -51,7 +49,7 @@ export function gameReducer(
         ...state,
         digitalBuzzersOn: !state.digitalBuzzersOn,
       }
-      
+
     case "SET_NAME":
       return {
         ...state,

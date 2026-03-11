@@ -4,7 +4,6 @@ export type Difficulty =
     | "easy"
     | "medium"
     | "hard"
-    | "very hard"
 
 export type QuestionType =
     | "email"

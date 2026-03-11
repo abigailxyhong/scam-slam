@@ -18,6 +18,8 @@ export interface EmailQuestion extends BaseQuestion {
   tooltipAddress?: string
 }
 
+// there must be a fucking better way to do this than hardcoding every single question in a giant array but for now this is fine ig
+
 export const emailQuestions: EmailQuestion[] = [
   // Easy
   // Scam: 
