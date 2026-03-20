@@ -2,18 +2,16 @@
 
 import Link from "next/link"
 import { useState } from "react"
-import { useGame } from "./providers/GameProvider"
-import { Toggle } from "./components/ToggleButton"
+import { useGame } from "../../src/app/lib/game/logic/gameContext"
 import { motion } from "framer-motion"
 
 export default function HomePage() {
   const [isOn, setIsOn] = useState(false)
-  const { state, dispatch } = useGame()
-
   const handleToggle = () => {
   setIsOn(prev => !prev)
   dispatch({ type: "TOGGLE_BUZZERS" })
 }
+  const { state, dispatch } = useGame()
   console.log("Digital Buzzers On (HomePage):", state.digitalBuzzersOn)
 
 
@@ -47,7 +45,7 @@ export default function HomePage() {
 
             <Link
               //onClick={() => dispatch({ type: "SET_PHASE", payload: "name"})}
-              href="/name-input"
+              href="/pages/name-input"
               className=" bg-emerald-500 hover:bg-emerald-300 text-zinc-800 font-semibold px-16 py-8 rounded-full text-6xl shadow-md transition mt-10">
               START ROUND
             </Link>

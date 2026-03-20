@@ -71,7 +71,7 @@ export default function ProgressBar({
       {/* Level Indicator */}
       <div className="mt-10 text-center">
         <span className="text-3xl font-extrabold text-gray-900">
-          Level {state.level} / {GAME_CONFIG.MAX_QUESTIONS}
+          Level {state.currentQuestionIndex + 1} / {GAME_CONFIG.MAX_QUESTIONS}
         </span>
       </div>
     </div>

@@ -2,34 +2,27 @@
 
 import Link from "next/link"
 import Image from "next/image"
-import { motion } from "framer-motion"
 import { useGame } from "@/src/app/providers/GameProvider"
+import { motion } from "framer-motion"
 import { GAME_CONFIG } from "@/src/lib/constants/gameConfig"
+import { Button } from "@heroui/react"
 
-export default function IncorrectFeedback() {
+export default function CorrectFeedback() {
   const { state, dispatch } = useGame()
 
-  const question = state.currentQuestion   // ← Pull the full question object
-
-  const isFinalLevel = state.level >= GAME_CONFIG.MAX_QUESTIONS
-
-  const isOutOfLives = state.lives <= 0
-
-  const nextHref =
-    isOutOfLives || isFinalLevel
-      ? "/pages/game-complete"
-      : "/pages/questions/question-card"
+  const question = state.currentQuestion  
 
   const handleContinue = () => {
-    if (!isOutOfLives && !isFinalLevel) {
-      dispatch({ type: "NEXT_QUESTION" })
-    }
 
-    if (isFinalLevel || isOutOfLives) {
-      dispatch({ type: "FINISH_GAME" })
+    if (state.status === "completed") {
+      dispatch({ type: "COMPLETE_GAME" })
+    }
+    else{
+      dispatch({ type: "NEXT_QUESTION" })
     }
   }
 
+  console.log("Current Question in Feedback:", question?.infoWhy)  // Debug log to check question data
 
   return (
     <motion.main
@@ -44,23 +37,23 @@ export default function IncorrectFeedback() {
           {/* Header */}
           <div className="flex flex-row gap-6 items-center">
             <Image
-              src="/images/icons/skull.png"
-              alt="incorrect"
+              src="/images/icons/thumbs-up.png"
+              alt="thumbs up"
               width={50}
               height={50}
               className="h-25 w-auto mt-8"
             />
 
-            <h1 className="page-title mt-6">INCORRECT</h1>
+            <h1 className="page-title mt-6">CORRECT!</h1>
           </div>
 
           {/* FEEDBACK CONTENT */}
-          <div className="w-full max-w-4xl space-y-10 mt-4">
+          <div className="w-full max-w-5xl space-y-10 mt-4">
 
-            {/* WHY IT WAS WRONG */}
-            <div className="bg-red-50 border-l-8 border-red-600 p-6 rounded-lg shadow-sm">
-              <h2 className="text-4xl font-extrabold text-red-700 mb-3 flex items-center gap-3">
-                <span>⚠️</span> WHY THIS WAS INCORRECT
+            {/* WHY YOU WERE RIGHT */}
+            <div className="bg-green-50 border-l-8 border-green-500 p-6 rounded-lg shadow-sm">
+              <h2 className="text-4xl font-extrabold text-green-700 mb-3 flex items-center gap-3">
+                <span>✅</span> WHY YOU GOT IT RIGHT
               </h2>
               <p className="text-2xl text-gray-800 leading-relaxed whitespace-pre-line">
                 {question?.infoWhy}
@@ -78,30 +71,30 @@ export default function IncorrectFeedback() {
               </p>
             </div>)}
 
+
             {/* EXTRA TIPS */}
-            {question?.infoMore && (
+            {/* {question?.infoMore && (
               <div className="bg-blue-50 border-l-8 border-blue-500 p-6 rounded-lg shadow-sm">
                 <h2 className="text-4xl font-extrabold text-blue-700 mb-3 flex items-center gap-3">
-                  <span>💡</span> WHAT TO DO 
+                  <span>💡</span> EXTRA TIPS TO STAY SAFE
                 </h2>
                 <p className="text-2xl text-gray-800 leading-relaxed whitespace-pre-line">
                   {question.infoMore}
                 </p>
               </div>
-            )}
+            )} */}
           </div>
 
 
           {/* Continue Button */}
-          <Link
+          <Button
             onClick={handleContinue}
-            href={nextHref}
             className="bg-teal-500 hover:bg-teal-300 text-zinc-800
                        font-semibold px-14 py-6 rounded-full text-4xl
                        shadow-md transition mb-16"
           >
-            {isOutOfLives || isFinalLevel ? "FINISH" : "CONTINUE"}
-          </Link>
+            NEXT
+          </Button>
         </div>
       </main>
     </motion.main>

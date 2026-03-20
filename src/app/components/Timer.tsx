@@ -6,23 +6,7 @@ import { useRouter } from "next/navigation"
 import { useGame } from "../providers/GameProvider"
 
 export default function Timer() {
-  const { state, dispatch } = useGame()
-  const router = useRouter()
-
-  useEffect(() => {
-    // If time hits zero, trigger timeout behaviour
-    if (state.timeLeft === 0) {
-      dispatch({ type: "ANSWER_SUBMITTED", payload: "TIME-OUT" })
-      router.push("../feedback/post-level/time-out")
-      return
-    }
-
-    const interval = setInterval(() => {
-      dispatch({ type: "TICK" })
-    }, 1000)
-
-    return () => clearInterval(interval)
-  }, [state.timeLeft, dispatch, router])
+  const { state } = useGame()
 
   return (
     <div className="relative flex items-center justify-center mt-6">

@@ -29,12 +29,12 @@ export default function NameInput() {
 
         setError("");
 
-        dispatch({ type: "SET_PLAYER_NAME", payload: trimmed })
+        dispatch({ type: "CREATE_GAME", payload: trimmed })
         //dispatch({ type: "SET_PHASE", payload: "instructions" })
 
         // localStorage.setItem("playerName", trimmed)
 
-        router.push("/pages/instructions")
+        router.push("/instructions")
     }
 
     return (

@@ -10,11 +10,6 @@ import { GAME_CONFIG } from "@/src/lib/constants/gameConfig"
 export default function Instructions() {
     const { dispatch, state } = useGame()
 
-    if (!state.playerName) {
-        console.error("Player name missing")
-        return
-    }
-
 
     const lines = [
         <>
@@ -81,15 +76,15 @@ export default function Instructions() {
                 </motion.ul>
 
                 <Link
-                    onClick={() => dispatch({ type: "START_GAME" })}
-                    href="/pages/game-start"
+                    onClick={() => dispatch({ type: "SELECT_QUESTIONS" })}
+                    href="/game-start"
                     className="bg-teal-500 hover:bg-teal-300 text-zinc-800 font-semibold px-14 py-6 rounded-full text-4xl shadow-md transition mt-8"
                 >
                     READY
                 </Link>
 
                 <Link
-                    href="/pages/name-input"
+                    href="/name-input"
                     className="bg-teal-500 hover:bg-teal-300 text-zinc-800 font-semibold px-14 py-6 rounded-full text-4xl shadow-md transition mt-6"
                 >
                     BACK

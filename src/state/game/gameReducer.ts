@@ -2,72 +2,91 @@
 
 import { GameState } from "./gameState"
 import { GameAction } from "./gameActions"
+import { GAME_CONFIG } from "./gameConfig"
 
 export function gameReducer(state: GameState, action: GameAction): GameState {
+  
   switch (action.type) {
-    case "SET_PLAYER_NAME":
+
+    case "TOGGLE_BUZZERS":
       return {
         ...state,
-        playerName: action.payload,
+        digitalBuzzersOn: !state.digitalBuzzersOn
       }
 
-    case "SET_GAME_ID":
+    case "SET_QUESTIONS":
       return {
         ...state,
-        gameId: action.payload,
+        questions: action.payload,
+        currentQuestionIndex: 0,
+        currentQuestion: action.payload[0]
+      }
+    
+    case "SET_CURRENT_QUESTION":
+      return {
+        ...state,
+        currentQuestion: action.payload
       }
 
-    case "SET_PLAYER_ID":
-      return {
-        ...state,
-        playerId: action.payload,
-      }
-
-    case "NEXT_QUESTION":
-      return {
-        ...state,
-        currentQuestion: action.payload,
-        timeLeft: state.timeLimit, // reset timer for each question
-      }
-
-    case "ANSWER_SUBMITTED":
-      return {
-        ...state,
-        lastAnswer: action.payload,
-      }
 
     case "INCREMENT_SCORE":
       return {
         ...state,
         score: state.score + action.payload,
+        status: "feedback",
+        lastFeedback: "correct",
       }
 
-    case "SET_CURRENT_QUESTION":
+    case "LOSE_LIFE":
       return {
         ...state,
-        currentQuestion: action.payload,
+        lives: state.lives - 1,
+        status: "feedback",
+        lastFeedback: "incorrect",
       }
 
-    case "TICK":
+    case "TIME_OUT":
       return {
         ...state,
-        timeLeft: Math.max(0, state.timeLeft - 1),
+        lives: state.lives - 1,
+        status: "feedback",
+        lastFeedback: "timeout"
       }
+    
+    case "CHECK_GAME_STATUS": {
+      const nextIndex = state.currentQuestionIndex + 1
+      const isLast = nextIndex >= state.questions.length
 
-    case "RESET_GAME":
-      return {
-        ...state,
-        gameId: null,
-        playerId: null,
-        score: 0,
-        currentQuestion: null,
-        timeLeft: state.timeLimit,
+      console.log("Is Last:", isLast)
+
+      if (isLast) {
+        return {
+          ...state,
+          status: "completed"
+        }
       }
+    }
 
-    case "FINISH_GAME":
+    case "NEXT_QUESTION": {
+      console.log("why oh why")
+      if (state.status === "playing") return state
+
       return {
         ...state,
-        isFinished: true,
+        currentQuestionIndex: state.currentQuestionIndex + 1,
+        currentQuestion: state.questions[state.currentQuestionIndex],
+
+        status: "playing",
+        lastFeedback: null
+      }
+      
+      
+    }
+
+    case "COMPLETE_GAME":
+      return {
+        ...state,
+        status: "completed"
       }
 
     default:

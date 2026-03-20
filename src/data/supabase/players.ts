@@ -1,4 +1,4 @@
-import { createClientB } from "../../../data/supabase/client";
+import { createClientB } from "./client";
 
 export async function createPlayer(name: string) {
     const supabase = await createClientB();

@@ -1,9 +1,9 @@
 // core/game/scoring.ts
+import { GAME_CONFIG } from "@/src/state/game/gameConfig"
 
 export function calculateScoreIncrement(
   difficulty: "easy" | "medium" | "hard",
   timeLeft: number,
-  timeLimit: number
 ): number {
   const baseScore = {
     easy: 10,
@@ -11,7 +11,7 @@ export function calculateScoreIncrement(
     hard: 30,
   }[difficulty]
 
-  const speedBonus = Math.floor((timeLeft / timeLimit) * 10)
+  const speedBonus = Math.floor((timeLeft / GAME_CONFIG.TIME_LIMIT) * 10)
 
   return baseScore + speedBonus
 }

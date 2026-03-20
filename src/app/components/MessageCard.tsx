@@ -30,13 +30,11 @@ export default function MessageCard({ message }: { message: MessageQuestion }) {
         relative
       "
     >
-      {/* Top notch */}
-      <div className="absolute top-3 w-24 h-2 bg-zinc-700 rounded-full opacity-60"></div>
+      
+      <div className="w-24 h-2 bg-zinc-700 rounded-full opacity-60"></div>
 
-      <div className="w-full mt-6">
-        {/* --------------------------- */}
-        {/* OPTION 1: IMAGE ONLY        */}
-        {/* --------------------------- */}
+      <div className="w-full item-center justify-center mt-6">
+     
         {hasImage && (
           <div className="flex justify-center">
             <Image
@@ -49,9 +47,6 @@ export default function MessageCard({ message }: { message: MessageQuestion }) {
           </div>
         )}
 
-        {/* --------------------------- */}
-        {/* OPTION 2: TEXT MESSAGE ONLY */}
-        {/* --------------------------- */}
         {!hasImage && hasText && (
           <div>
             {/* Timestamp + app label */}

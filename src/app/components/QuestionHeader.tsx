@@ -8,7 +8,6 @@ import {
 } from "../../core/game/questions/baseQuestion";
 interface QuestionHeaderProps {
   questionType: QuestionType;
-  level: number;
   lives: number;
   score: number;
 }
@@ -28,7 +27,6 @@ const livesMap: Record<number, string> = {
 
 export default function QuestionHeader({
   questionType,
-  level,
   lives,
   score,
 }: QuestionHeaderProps) {

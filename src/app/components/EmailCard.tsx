@@ -12,10 +12,10 @@ export default function EmailCard({ email }: { email: EmailQuestion }) {
     }, []);
 
     if (!mounted) {
-        return null; // Prevent hydration mismatch, wtf does this even mean
+        return null; // Prevent hydration mismatch
     }
     return (
-        <div className="bg-zinc-100 p-3 rounded-xl shadow-inner w-3/5 h-full">
+        <div className="bg-zinc-100 p-3 rounded-xl shadow-inner h-full">
 
             {/* Email container */}
             <div className="bg-white h-full rounded-lg shadow-md border overflow-visible">

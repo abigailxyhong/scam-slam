@@ -12,7 +12,7 @@ export default function GameStart() {
     // Countdown logic
     useEffect(() => {
         if (count === 0) {
-            router.push("/pages/questions/question-card")
+            router.push("/questions")
             return
         }
 

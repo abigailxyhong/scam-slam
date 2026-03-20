@@ -5,35 +5,18 @@ import { useGame } from "../providers/GameProvider"
 import { Answer } from "../../core/game/questions/baseQuestion"
 import { useRouter } from "next/navigation"
 
-interface BuzzersProps {
-    correctAnswer: Answer
-}
-
 // Maybe need to change the routing logic here - update state instead
 
-export default function Buzzers({ correctAnswer }: BuzzersProps) {
+export default function Buzzers() {
     const { state, dispatch } = useGame()
     const [pressed, setPressed] = useState(false)
     const router = useRouter()
 
     const handleAnswer = (choice: Answer) => {
         if (pressed) return
-
         setPressed(true)
-
-        dispatch({ type: "ANSWER_SUBMITTED", payload: choice })
-
-
-        if (choice === correctAnswer) {
-            router.push("../feedback/post-level/correct")
-
-        }
-        else {
-            router.push("../feedback/post-level/incorrect")
-
-        }
+        dispatch({ type: "HANDLE_ANSWER", payload: {answer: choice, timeLeft: 20}})
     }
-
 
     return (
 
@@ -60,7 +43,5 @@ export default function Buzzers({ correctAnswer }: BuzzersProps) {
                 SAFE
             </button>
         </div>
-
-
     )
 }

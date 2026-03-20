@@ -3,17 +3,24 @@
 import Link from "next/link"
 import Image from "next/image"
 import { useGame } from "@/src/app/providers/GameProvider"
+import { Button } from "@heroui/react"
+
 
 export default function TimeOut() {
-  const { state } = useGame()
+  const { state, dispatch } = useGame()
 
   const question = state.currentQuestion   // ← Pull the question
 
-  const isOutOfLives = state.lives <= 0
 
-  const nextHref = isOutOfLives
-    ? "/pages/game-complete"
-    : "/pages/questions/question-card"
+  const handleContinue = () => {
+
+    if (state.status === "completed") {
+      dispatch({ type: "COMPLETE_GAME" })
+    }
+    else{
+      dispatch({ type: "NEXT_QUESTION" })
+    }
+  }
 
   return (
     <main className="min-h-screen px-4 flex">
@@ -72,14 +79,14 @@ export default function TimeOut() {
 
 
         {/* Continue Button */}
-        <Link
-          href={nextHref}
+        <Button
+          onClick={handleContinue}
           className="bg-teal-500 hover:bg-teal-300 text-zinc-800
-                     font-semibold px-14 py-6 rounded-full text-4xl
+                     font-semibold px-14 py-6 rounded-full text-6xl
                      shadow-md transition mb-16"
         >
-          {isOutOfLives ? "FINISH" : "CONTINUE"}
-        </Link>
+          NEXT
+        </Button>
       </div>
     </main>
   )

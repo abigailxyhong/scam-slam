@@ -1,16 +1,22 @@
 // state/game/gameActions.ts
 
-import { Question } from "@/core/game/questionBank"
+import { BaseQuestion, Answer } from "@/src/core/game/questions/baseQuestion";
 
 export type GameAction =
-  | { type: "SET_PLAYER_NAME"; payload: string }
-  | { type: "SET_PLAYER_ID"; payload: string }
+  | { type: "TOGGLE_BUZZERS"}
+  | { type: "CREATE_GAME"; payload: string }
   | { type: "SET_GAME_ID"; payload: string }
-  | { type: "START_GAME" }
-  | { type: "NEXT_QUESTION"; payload: Question }
-  | { type: "ANSWER_SUBMITTED"; payload: string }
-  | { type: "SET_CURRENT_QUESTION"; payload: Question }
-  | { type: "INCREMENT_SCORE"; payload: number }
+  | { type: "SELECT_QUESTIONS" }
+  | { type: "SET_QUESTIONS"; payload: BaseQuestion[]}
+  | { type: "SET_CURRENT_QUESTION"; payload: BaseQuestion}
+  | { type: "HANDLE_ANSWER"; payload: { answer: Answer; timeLeft: number }}
+  | { type: "ANSWER_UPDATE"; payload: { feedback: string ; scoreAwarded: number } }
+  | { type: "INCREMENT_SCORE"; payload: number}
+  | { type: "LOSE_LIFE" }
+  | { type: "TIME_OUT" }
+  | { type: "CHECK_GAME_STATUS" }
+  | { type: "NEXT_QUESTION"}
   | { type: "TICK" }
+  | { type: "COMPLETE_GAME" }
+  | { type: "SEE_LEADERBOARD" }
   | { type: "RESET_GAME" }
-  | { type: "FINISH_GAME" }
