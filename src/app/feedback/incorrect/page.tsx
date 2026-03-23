@@ -14,13 +14,9 @@ export default function IncorrectFeedback() {
 
 
   const handleContinue = () => {
-    
-    console.log("Current Status:", state.status)
-    if (state.status === "completed") {
-      dispatch({ type: "COMPLETE_GAME" })
-    } else {
-      dispatch({ type: "NEXT_QUESTION"})
-    }
+
+    dispatch({ type: "CHECK_GAME_COMPLETE" })
+
   }
 
 
@@ -63,19 +59,19 @@ export default function IncorrectFeedback() {
             {/* HOW THE SCAM WORKS */}
             {question?.infoHow && (
               <div className="bg-yellow-50 border-l-8 border-yellow-500 p-6 rounded-lg shadow-sm">
-              <h2 className="text-4xl font-extrabold text-yellow-700 mb-3 flex items-center gap-3">
-                <span>🔍</span> HOW IT WORKS
-              </h2>
-              <p className="text-2xl text-gray-800 leading-relaxed whitespace-pre-line">
-                {question?.infoHow}
-              </p>
-            </div>)}
+                <h2 className="text-4xl font-extrabold text-yellow-700 mb-3 flex items-center gap-3">
+                  <span>🔍</span> HOW IT WORKS
+                </h2>
+                <p className="text-2xl text-gray-800 leading-relaxed whitespace-pre-line">
+                  {question?.infoHow}
+                </p>
+              </div>)}
 
             {/* EXTRA TIPS */}
             {question?.infoMore && (
               <div className="bg-blue-50 border-l-8 border-blue-500 p-6 rounded-lg shadow-sm">
                 <h2 className="text-4xl font-extrabold text-blue-700 mb-3 flex items-center gap-3">
-                  <span>💡</span> WHAT TO DO 
+                  <span>💡</span> WHAT TO DO
                 </h2>
                 <p className="text-2xl text-gray-800 leading-relaxed whitespace-pre-line">
                   {question.infoMore}

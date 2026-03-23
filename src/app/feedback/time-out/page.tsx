@@ -13,13 +13,9 @@ export default function TimeOut() {
 
 
   const handleContinue = () => {
-
-    if (state.status === "completed") {
-      dispatch({ type: "COMPLETE_GAME" })
-    }
-    else{
-      dispatch({ type: "NEXT_QUESTION" })
-    }
+    
+    dispatch({ type: "CHECK_GAME_COMPLETE" })
+  
   }
 
   return (

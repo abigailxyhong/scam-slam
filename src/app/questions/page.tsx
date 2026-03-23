@@ -39,7 +39,7 @@ export default function QuestionCard() {
             <main className="flex flex-col min-h-screen px-4 pl-6">
                 <QuestionHeader questionType={questionType} lives={state.lives} score={state.score} />
 
-                <div className="flex flex-row w-full items-center justify-evenly h-[65vh] px-6 ml-4 gap-8">
+                <div className="flex flex-row w-full items-center justify-evenly h-[65vh] px-6 mt-6 mr-6 ml-6 gap-8">
                         {questionType === "email" && (
                             <motion.div
                                 initial={{ opacity: 0, y: 20 }}

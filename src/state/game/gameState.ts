@@ -1,4 +1,5 @@
 import { BaseQuestion } from "@/src/core/game/questions/baseQuestion"
+import { GAME_CONFIG } from "@/src/lib/constants/gameConfig"
 
 export interface GameState {
     playerName: string
@@ -22,7 +23,7 @@ export const initialGameState: GameState = {
     currentQuestion: null,
     score: 0,
     lives: 3,
-    timeLeft: 20,
+    timeLeft: GAME_CONFIG.TIME_LIMIT,
     questionsCorrect: 0,
     digitalBuzzersOn: false,
     questions: [],

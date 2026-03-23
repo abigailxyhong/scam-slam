@@ -1,32 +1,28 @@
 import { GAME_CONFIG } from "../../lib/constants/gameConfig"
 import { useGame } from "../providers/GameProvider"
 
-
 interface ProgressBarProps {
   currentQuestion: number
 }
 
-export default function ProgressBar({
-  currentQuestion,
-}: ProgressBarProps) {
+export default function ProgressBar({ currentQuestion }: ProgressBarProps) {
   const totalQuestions = GAME_CONFIG.MAX_QUESTIONS
+  const { state } = useGame()
 
-  const checkpointLabels = ["Start", "Halfway","Complete!"]
-  const { state, dispatch } = useGame()
-
+  const checkpointLabels = ["Start", "Halfway", "Complete!"]
   const checkpoints = checkpointLabels.length
 
-  // Clamp value to avoid overflow
-  const safeQuestion = Math.min(
-    Math.max(currentQuestion, 1),
-    totalQuestions
-  )
+  // Use 0-based index directly
+  const index = currentQuestion
 
-  const progressPercentage = Math.max(
-    0,
-    ((safeQuestion - 1) / totalQuestions) * 100
-  )
+  // Last index (ensures final question = 100%)
+  const maxIndex = totalQuestions - 1
 
+  // Correct fill percentage
+  const progressPercentage = Math.min(
+    100,
+    Math.max(0, (index / maxIndex) * 100)
+  )
 
   return (
     <div className="w-full px-6 mt-8">
@@ -54,9 +50,10 @@ export default function ProgressBar({
               {/* Circle */}
               <div
                 className={`w-6 h-6 rounded-full border-2 transition-all
-                  ${progressPercentage >= positionPercent
-                    ? "bg-green-400 border-green-300 shadow-[0_0_6px_#22c55e]"
-                    : "bg-gray-900 border-gray-500"
+                  ${
+                    progressPercentage >= positionPercent
+                      ? "bg-green-400 border-green-300 shadow-[0_0_6px_#22c55e]"
+                      : "bg-gray-900 border-gray-500"
                   }`}
               />
 
@@ -68,6 +65,7 @@ export default function ProgressBar({
           )
         })}
       </div>
+
       {/* Level Indicator */}
       <div className="mt-10 text-center">
         <span className="text-3xl font-extrabold text-gray-900">

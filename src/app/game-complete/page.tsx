@@ -78,6 +78,7 @@ export default function GameOver() {
                 </Link>  
 
                 <Link
+                    onClick={() => dispatch({ type: "UPDATE_GAME"; payload: })}
                     href="/"
                     className="bg-gray-300 hover:bg-gray-200 text-zinc-800 font-semibold px-16 py-6 rounded-full text-3xl shadow-md transition"
                 >

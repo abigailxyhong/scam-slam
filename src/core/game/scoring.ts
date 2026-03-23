@@ -1,5 +1,5 @@
 // core/game/scoring.ts
-import { GAME_CONFIG } from "@/src/state/game/gameConfig"
+import { GAME_CONFIG } from "@/src/lib/constants/gameConfig"
 
 export function calculateScoreIncrement(
   difficulty: "easy" | "medium" | "hard",

@@ -5,6 +5,8 @@ import { useState } from "react"
 import { useGame } from "./providers/GameProvider"
 import { Toggle } from "./components/ToggleButton"
 import { motion } from "framer-motion"
+import { initialGameState } from "../state/game/gameState"
+import { GAME_CONFIG } from "../lib/constants/gameConfig"
 
 export default function HomePage() {
   const [isOn, setIsOn] = useState(false)
@@ -13,8 +15,12 @@ export default function HomePage() {
   const handleToggle = () => {
   setIsOn(prev => !prev)
   dispatch({ type: "TOGGLE_BUZZERS" })
-}
-  console.log("Digital Buzzers On (HomePage):", state.digitalBuzzersOn)
+  }
+
+  const handleClick = () => {
+    console.log("Initial Game State:", state)
+    console.log("Questions:", GAME_CONFIG.MAX_QUESTIONS)
+  }
 
 
   const toggleButtonClasses = `w-auto px-8 py-4 rounded-full text-2xl font-bold shadow-md transition mt-4 ${isOn ? "bg-teal-400 text-white" : "bg-gray-300 text-zinc-800"
@@ -46,7 +52,7 @@ export default function HomePage() {
             </button> 
 
             <Link
-              //onClick={() => dispatch({ type: "SET_PHASE", payload: "name"})}
+              onClick={handleClick}
               href="/name-input"
               className=" bg-emerald-500 hover:bg-emerald-300 text-zinc-800 font-semibold px-16 py-8 rounded-full text-6xl shadow-md transition mt-10">
               START ROUND
@@ -54,7 +60,7 @@ export default function HomePage() {
           </div>
         </div>
 
-        <footer className="mt-4 flex justify-center py-4 mb-10 absolute bottom-4">
+        <footer className="mt-4 flex justify-center py-4 mb-10 bottom-4">
           <img src="images/icons/Icons(b).svg" alt="Icons" className="h-20 w-auto" />
         </footer>
       </main>

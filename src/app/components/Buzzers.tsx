@@ -15,7 +15,7 @@ export default function Buzzers() {
     const handleAnswer = (choice: Answer) => {
         if (pressed) return
         setPressed(true)
-        dispatch({ type: "HANDLE_ANSWER", payload: {answer: choice, timeLeft: 20}})
+        dispatch({ type: "HANDLE_ANSWER", payload: {answer: choice, timeLeft: state.timeLeft}})
     }
 
     return (

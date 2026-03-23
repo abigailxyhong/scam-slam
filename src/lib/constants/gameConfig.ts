@@ -1,5 +1,4 @@
 export const GAME_CONFIG = {
-  INITIAL_LIVES: 3, // its always 3 bro
   TIME_LIMIT: 60, // seconds
-  MAX_QUESTIONS: 12,
+  MAX_QUESTIONS: 6,
 };

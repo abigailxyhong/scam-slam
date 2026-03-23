@@ -13,13 +13,7 @@ export default function CorrectFeedback() {
   const question = state.currentQuestion  
 
   const handleContinue = () => {
-
-    if (state.status === "completed") {
-      dispatch({ type: "COMPLETE_GAME" })
-    }
-    else{
-      dispatch({ type: "NEXT_QUESTION" })
-    }
+    dispatch({ type: "CHECK_GAME_COMPLETE" })
   }
 
   console.log("Current Question in Feedback:", question?.infoWhy)  // Debug log to check question data

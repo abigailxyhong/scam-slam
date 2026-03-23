@@ -4,7 +4,7 @@ import { Answer, BaseQuestion } from "./questions/baseQuestion"
 import { calculateScoreIncrement } from "./scoring"
 import { GameState } from "@/src/state/game/gameState"
 import { generateQuestionSet } from "./questionSelection"
-import { GAME_CONFIG } from "@/src/state/game/gameConfig"
+import { GAME_CONFIG } from "@/src/lib/constants/gameConfig"
 
 export function selectQuestions(){
   let questions: BaseQuestion[] = [];

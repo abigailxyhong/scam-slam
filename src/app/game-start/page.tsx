@@ -4,15 +4,18 @@ import { useEffect, useState } from "react"
 import { motion } from "framer-motion"
 import { useRouter } from "next/navigation"
 import type { Variants } from "framer-motion"
+import { useGame } from "../providers/GameProvider"
 
 export default function GameStart() {
     const router = useRouter()
     const [count, setCount] = useState(3)
+    const {dispatch} = useGame()
 
     // Countdown logic
     useEffect(() => {
         if (count === 0) {
-            router.push("/questions")
+            dispatch({type: "START_PLAY"})
+            //router.push("/questions")
             return
         }
 
