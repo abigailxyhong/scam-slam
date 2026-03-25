@@ -4,7 +4,7 @@ import { createContext, useContext, useReducer, useEffect } from "react"
 import { gameReducer } from "@/src/state/game/gameReducer"
 import { initialGameState, GameState } from "@/src/state/game/gameState"
 import { GameAction } from "@/src/state/game/gameActions"
-import { createGame, updateGame } from "@/src/app/api/game"
+import { createGame, updateGame } from "@/src/lib/utils/game"
 import { selectQuestions } from "@/src/core/game/engine"
 import { GAME_CONFIG } from "@/src/lib/constants/gameConfig"
 import { useRouter } from "next/navigation"
@@ -45,6 +45,7 @@ export function GameProvider({ children }: { children: React.ReactNode }) {
 
   useEffect(() => {
     if (state.status === "completed") {
+      dispatch({ type: "UPDATE_GAME"})
       router.push("/game-complete")
     }
   }, [state.status])
@@ -64,8 +65,9 @@ export function GameProvider({ children }: { children: React.ReactNode }) {
 
       case "CREATE_GAME": {
         const game = await createGame(action.payload)
+        console.log("what has this made:", game.id)
         baseDispatch({ type: "SET_GAME_ID", payload: game.id})
-        return 
+        return
       }
 
       case "SELECT_QUESTIONS": {
@@ -87,8 +89,13 @@ export function GameProvider({ children }: { children: React.ReactNode }) {
       }
 
       case "UPDATE_GAME": {
-        await updateGame()
-        baseDispatch({ type: "COMPLETE_GAME"})
+        console.log("Calling updateGame with:", state.gameId)
+        await updateGame(state.gameId, {
+          score: state.score,
+          finished_at: new Date().toISOString(),
+        })
+
+        baseDispatch({ type: "COMPLETE_GAME" })
         return
       }
 

@@ -3,7 +3,7 @@ import { GAME_CONFIG } from "@/src/lib/constants/gameConfig"
 
 export interface GameState {
     playerName: string
-    gameId: string | null
+    gameId: string 
     currentQuestionIndex: number
     currentQuestion: BaseQuestion | null
     score: number
@@ -18,7 +18,7 @@ export interface GameState {
 
 export const initialGameState: GameState = {
     playerName: "",
-    gameId: null,
+    gameId: "",
     currentQuestionIndex: 0,
     currentQuestion: null,
     score: 0,

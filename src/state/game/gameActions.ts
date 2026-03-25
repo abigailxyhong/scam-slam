@@ -20,7 +20,7 @@ export type GameAction =
   | { type: "CHECK_GAME_COMPLETE" }
   | { type: "NEXT_QUESTION"}
   | { type: "TICK" }
-  | { type: "UPDATE_GAME"; payload: any }
+  | { type: "UPDATE_GAME" }
   | { type: "COMPLETE_GAME" }
   | { type: "SEE_LEADERBOARD" }
   | { type: "RESET_GAME" }

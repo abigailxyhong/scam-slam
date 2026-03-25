@@ -10,7 +10,6 @@ import { useRouter } from "next/navigation"
 export default function Buzzers() {
     const { state, dispatch } = useGame()
     const [pressed, setPressed] = useState(false)
-    const router = useRouter()
 
     const handleAnswer = (choice: Answer) => {
         if (pressed) return

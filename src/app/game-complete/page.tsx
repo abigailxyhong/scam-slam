@@ -70,15 +70,16 @@ export default function GameOver() {
                 className="flex flex-col items-center space-y-6"
             >
                 <Link
-                    // onClick={() => dispatch({ type: "RESET_GAME" })}
-                    href="/pages/leaderboard"
+                    onClick={() => dispatch({ type: "UPDATE_GAME" })}
+
+                    href="/leaderboard"
                     className="bg-teal-500 hover:bg-teal-300 text-zinc-800 font-semibold px-16 py-6 rounded-full text-4xl shadow-md transition"
                 >
                     SEE LEADERBOARD
-                </Link>  
+                </Link>
 
                 <Link
-                    onClick={() => dispatch({ type: "UPDATE_GAME"; payload: })}
+                    onClick={() => dispatch({ type: "RESET_GAME" })}
                     href="/"
                     className="bg-gray-300 hover:bg-gray-200 text-zinc-800 font-semibold px-16 py-6 rounded-full text-3xl shadow-md transition"
                 >
