@@ -21,7 +21,7 @@ export default function QuestionCard() {
     useEffect(() => { dispatch({ type: "SET_CURRENT_QUESTION", payload: currentQuestion }) }, [currentQuestion])
 
     const questionType = currentQuestion?.type
-    console.log("Current Question:", currentQuestion)
+    console.log("Current Question Index:", state.currentQuestionIndex)
     console.log("Digital Buzzers On:", state.digitalBuzzersOn)
     // const { questionType, difficulty, question } = selectQuestion(state.level) // optional, if still used
 
@@ -78,7 +78,7 @@ export default function QuestionCard() {
                     </div>
 
 
-                <ProgressBar currentQuestion={state.currentQuestionIndex} />
+                <ProgressBar currentQuestionIndex={state.currentQuestionIndex} />
             </main>
         </motion.main>
     )

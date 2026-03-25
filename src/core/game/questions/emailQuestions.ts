@@ -60,6 +60,23 @@ export const emailQuestions: EmailQuestion[] = [
 
   },
   {
+    id: "email_apple_legit",
+    type: "email",
+    difficulty: "medium",
+    isScam: false,
+    correctAnswer: "SAFE",
+    content: {
+      imageURL: "/images/questions/legit/email-apple.png",
+      width: 600,
+      height: 300,
+    },
+    infoWhy: "This is a legitimate email from Apple, notifiying the user of a new login. The language and tone used is professional with no attempts at creating urgency or using scare tactics.",
+    tooltipAddress: "noreply@email.apple.com"
+    //infoHow: "Clicking the link opens a brand-themed page offering a cash or gift reward if you take a short survey.\nAfter the survey, the site asks for your name, address, and a credit/debit card to pay a small fee or 'verify identity'.\nScammers may make unauthorized charges, enroll you in a subscription, or collect your personal details for future scams.",
+    //infoMore: "Go directly to the carrier's website by typing it yourself (e.g., ups.com, dhl.com) or use the official app.\nDo not click links, scan QR codes, or call phone numbers in unexpected emails.\nDo not assume a logo or colours mean the site is real- check the web address carefully.",
+
+  },
+  {
     id: "email_aaa_scam",
     type: "email",
     difficulty: "easy",

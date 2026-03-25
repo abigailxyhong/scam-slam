@@ -48,13 +48,13 @@ export default function MessageCard({ message }: { message: MessageQuestion }) {
         {!hasImage && hasText && (
           <div>
             {/* Timestamp + app label */}
-            <div className="w-full flex justify-between text-xs text-zinc-400 mb-4">
+            <div className="w-full flex justify-between text-xs text-zinc-400 mb-4 font-sans">
               <span>{message.content?.timestamp || "Today"}</span>
               <span>Messages</span>
             </div>
 
             {/* Sender */}
-            <div className="text-xs text-zinc-400 mb-1">
+            <div className="text-xs text-zinc-400 mb-1 font-sans">
               {message.content?.sender || "Unknown"}
             </div>
 
@@ -69,6 +69,7 @@ export default function MessageCard({ message }: { message: MessageQuestion }) {
                 leading-relaxed
                 shadow-md
                 border border-zinc-700
+                font-sans
               "
             >
               {message.content!.customText!}

@@ -3,10 +3,8 @@
 import Link from "next/link"
 import { useState } from "react"
 import { useGame } from "./providers/GameProvider"
-import { Toggle } from "./components/ToggleButton"
-import { motion } from "framer-motion"
-import { initialGameState } from "../state/game/gameState"
 import { GAME_CONFIG } from "../lib/constants/gameConfig"
+import Transition from "./components/MotionTransition"
 
 export default function HomePage() {
   const [isOn, setIsOn] = useState(false)
@@ -27,12 +25,7 @@ export default function HomePage() {
     }`
 
   return (
-    <motion.main
-      initial={{ opacity: 0, y: 20 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.6, ease: "easeOut" }}
-      className="justify-start min-h-screen px-4"
-    >
+    <Transition>
       <main className="flex flex-col items-center justify-start min-h-screen px-4">
         <div className="flex flex-col text-center mt-8 space-y-2">
           <h1 className="main-title">
@@ -64,6 +57,6 @@ export default function HomePage() {
           <img src="images/icons/Icons(b).svg" alt="Icons" className="h-20 w-auto" />
         </footer>
       </main>
-    </motion.main>
+    </Transition>
   )
 }

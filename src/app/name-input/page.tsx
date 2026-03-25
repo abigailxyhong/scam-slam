@@ -3,9 +3,9 @@
 import { useState } from "react"
 import Link from "next/link"
 import { useRouter } from 'next/navigation'
-import { motion } from "framer-motion"
 
 import { useGame } from "../providers/GameProvider"
+import Transition from "../components/MotionTransition"
 
 
 export default function NameInput() {
@@ -38,12 +38,7 @@ export default function NameInput() {
     }
 
     return (
-        <motion.main
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, ease: "easeOut" }}
-            className="justify-start min-h-screen px-4"
-        >
+        <Transition>
             <main className="flex flex-col items-center justify-start min-h-screen px-4">
                 <h1 className="page-title mt-6">
                     ENTER A NICKNAME
@@ -86,6 +81,6 @@ export default function NameInput() {
                 </Link>
 
             </main>
-        </motion.main>
+        </Transition>
     )
 }

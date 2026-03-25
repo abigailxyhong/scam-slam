@@ -1,4 +1,3 @@
-// core/game/scoring.ts
 import { GAME_CONFIG } from "@/src/lib/constants/gameConfig"
 
 export function calculateScoreIncrement(
@@ -6,9 +5,9 @@ export function calculateScoreIncrement(
   timeLeft: number,
 ): number {
   const baseScore = {
-    easy: 10,
-    medium: 20,
-    hard: 30,
+    easy: 50,
+    medium: 100,
+    hard: 150,
   }[difficulty]
 
   const speedBonus = Math.floor((timeLeft / GAME_CONFIG.TIME_LIMIT) * 10)

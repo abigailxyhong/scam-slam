@@ -4,11 +4,12 @@ import { createContext, useContext, useReducer, useEffect } from "react"
 import { gameReducer } from "@/src/state/game/gameReducer"
 import { initialGameState, GameState } from "@/src/state/game/gameState"
 import { GameAction } from "@/src/state/game/gameActions"
-import { createGame, updateGame } from "@/src/lib/utils/game"
+import { createGame, updateGame, recordQuestionAttempt } from "@/src/lib/utils/game"
 import { selectQuestions } from "@/src/core/game/engine"
 import { GAME_CONFIG } from "@/src/lib/constants/gameConfig"
 import { useRouter } from "next/navigation"
 import { calculateScoreIncrement } from "@/src/core/game/scoring"
+import { useState } from "react"
 
 const GameContext = createContext<{
   state: GameState
@@ -18,9 +19,13 @@ const GameContext = createContext<{
 export function GameProvider({ children }: { children: React.ReactNode }) {
   const [state, baseDispatch] = useReducer(gameReducer, initialGameState)
   const router = useRouter()
+  const [questionStartTime, setQuestionStartTime] = useState(Date.now())
+
+  const timeTaken = Date.now() - questionStartTime;
 
   useEffect(() => {
     if (state.status === "playing") {
+      setQuestionStartTime(Date.now())
       router.push("/questions")
     }
   }, [state.status])
@@ -78,11 +83,26 @@ export function GameProvider({ children }: { children: React.ReactNode }) {
       }
 
       case "HANDLE_ANSWER": {
-        if (action.payload.answer === state.currentQuestion?.correctAnswer) {
+        if (!state.currentQuestion) return
+        if (action.payload.answer === state.currentQuestion.correctAnswer) {
+          await recordQuestionAttempt({
+            gameId: state.gameId,
+            questionId: state.currentQuestion.id,
+            isCorrect: true,
+            timeTakenMs: timeTaken,
+            questionType: state.currentQuestion.type
+          })
           const scoreAwarded = calculateScoreIncrement(state.currentQuestion.difficulty, action.payload.timeLeft)
           baseDispatch({ type: "INCREMENT_SCORE", payload: scoreAwarded })
           return
-        } else {
+        } else if(action.payload.answer !== state.currentQuestion.correctAnswer){
+          await recordQuestionAttempt({
+            gameId: state.gameId,
+            questionId: state.currentQuestion.id,
+            isCorrect: false,
+            timeTakenMs: timeTaken,
+            questionType: state.currentQuestion.type
+          })
           baseDispatch({ type: "LOSE_LIFE" })
           return
         }

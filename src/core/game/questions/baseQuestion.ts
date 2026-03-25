@@ -8,7 +8,6 @@ export type Difficulty =
 export type QuestionType =
     | "email"
     | "message"
-    | "call"
     | "website"
 
 export interface BaseQuestion {

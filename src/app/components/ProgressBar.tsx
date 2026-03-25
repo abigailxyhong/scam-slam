@@ -1,28 +1,28 @@
+"use client";
+
 import { GAME_CONFIG } from "../../lib/constants/gameConfig"
 import { useGame } from "../providers/GameProvider"
 
 interface ProgressBarProps {
-  currentQuestion: number
+  currentQuestionIndex: number
 }
 
-export default function ProgressBar({ currentQuestion }: ProgressBarProps) {
+export default function ProgressBar({ currentQuestionIndex }: ProgressBarProps) {
   const totalQuestions = GAME_CONFIG.MAX_QUESTIONS
   const { state } = useGame()
+  
 
-  const checkpointLabels = ["Start", "Halfway", "Complete!"]
+  const checkpointLabels = ["Start", "Complete!"]
   const checkpoints = checkpointLabels.length
 
-  // Use 0-based index directly
-  const index = currentQuestion
+  const level = currentQuestionIndex + 1
 
-  // Last index (ensures final question = 100%)
-  const maxIndex = totalQuestions - 1
-
-  // Correct fill percentage
   const progressPercentage = Math.min(
     100,
-    Math.max(0, (index / maxIndex) * 100)
+    Math.max(0, (level / totalQuestions) * 100)
   )
+
+  console.log({ currentQuestionIndex, level, progressPercentage });
 
   return (
     <div className="w-full px-6 mt-8">
@@ -35,8 +35,8 @@ export default function ProgressBar({ currentQuestion }: ProgressBarProps) {
         />
 
         {/* Difficulty Checkpoints */}
-        {checkpointLabels.map((label, index) => {
-          const positionPercent = (index / (checkpoints - 1)) * 100
+        {checkpointLabels.map((label, i) => {
+          const positionPercent = (i / (checkpoints - 1)) * 100
 
           return (
             <div
@@ -47,7 +47,6 @@ export default function ProgressBar({ currentQuestion }: ProgressBarProps) {
                 transform: "translateX(-50%)",
               }}
             >
-              {/* Circle */}
               <div
                 className={`w-6 h-6 rounded-full border-2 transition-all
                   ${
@@ -57,7 +56,6 @@ export default function ProgressBar({ currentQuestion }: ProgressBarProps) {
                   }`}
               />
 
-              {/* Label */}
               <span className="mt-2 text-lg font-semibold text-gray-800 whitespace-nowrap">
                 {label}
               </span>
@@ -66,10 +64,9 @@ export default function ProgressBar({ currentQuestion }: ProgressBarProps) {
         })}
       </div>
 
-      {/* Level Indicator */}
       <div className="mt-10 text-center">
         <span className="text-3xl font-extrabold text-gray-900">
-          Level {state.currentQuestionIndex + 1} / {GAME_CONFIG.MAX_QUESTIONS}
+          Level {level} / {totalQuestions}
         </span>
       </div>
     </div>

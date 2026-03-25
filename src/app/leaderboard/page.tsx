@@ -1,54 +1,73 @@
+import Image from "next/image"
+import HomePageLink from "../components/LinkHomePage";
+import { getTopGames } from "@/src/lib/utils/game";
+import Transition from "../components/MotionTransition";
 
+export default async function Leaderboard() {
 
-import Link from "next/link";
-import { getTopGames } from "../../lib/utils/game";
-import { useGame } from "../providers/GameProvider";
-
-export default async function LeaderboardPage() {
     const topGames = await getTopGames();
-    const { state, dispatch } = useGame();
+    console.log("Top Games:", topGames)
 
     return (
-        <main className="flex flex-col items-center justify-center min-h-screen px-6 py-12 bg-black text-white">
-            <h1 className="text-4xl font-extrabold tracking-tight mb-8 text-center">
-                Leaderboard
-            </h1>
+        <Transition>
+            <main className="flex flex-col items-center justifiy-center min-h-screen py-4">
 
-            <div className="w-full max-w-xl bg-zinc-900/60 backdrop-blur-md rounded-xl p-6 border border-zinc-700 shadow-xl">
-                <h2 className="text-xl font-semibold mb-4 text-zinc-300">
-                    Top 15 Players
-                </h2>
+            
+            <div className="flex flex-row gap-6 items-center">
+                <Image
+                    src="/images/icons/crown.png"
+                    alt="thumbs up"
+                    width={50}
+                    height={50}
+                    className="h-25 w-auto mt-6 mb-6 "
+                />
 
-                <ul className="space-y-3">
-                    {topGames.map((game: any, index: number) => (
-                        <li
-                            key={index}
-                            className="flex items-center justify-between px-4 py-3 rounded-lg bg-zinc-800 border border-zinc-700"
-                        >
-                            <span className="flex items-center gap-3">
-                                <span className="text-zinc-500 font-bold w-6 text-right">
-                                    {index + 1}.
-                                </span>
-                                <span className="font-medium text-zinc-200">
-                                    {game.playerName}
-                                </span>
-                            </span>
-
-                            <span className="text-lg font-bold text-emerald-400">
-                                {game.score}
-                            </span>
-                        </li>
-                    ))}
-                </ul>
+                <h1 className="page-title mt-6 mb-6">LEADERBOARD</h1>
             </div>
 
-            <Link
-                onClick={() => dispatch({ type: "RESET_GAME" })}
-                href="/"
-                className="bg-gray-300 hover:bg-gray-200 text-zinc-800 font-semibold px-16 py-6 rounded-full text-3xl shadow-md transition"
-            >
-                HOME PAGE
-            </Link>
-        </main>
+            <div className="w-2/3 max-h-[60vh] overflow-y-auto bg-black/40 backdrop-blur-md rounded-xl p-6 shadow-xl border border-white/10 scrollbar-thin scrollbar-thumb-green-400 scrollbar-track-black/20">
+                <table className="w-full text-left">
+                    <thead>
+                        <tr className="text-gray-300 border-b border-white/10">
+                            <th className="py-3 px-2">Rank</th>
+                            <th className="py-3 px-2">Player</th>
+                            <th className="py-3 px-2 text-right">Score</th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+                        {topGames.map((game: any, index: number) => (
+                            <tr
+                                key={index}
+                                className="border-b border-white/5 hover:bg-white/5 transition"
+                            >
+                                <td className="py-3 px-2 font-bold text-lg text-purple-300">
+                                    #{index + 1}
+                                </td>
+
+                                <td className="py-3 px-2 text-white font-medium">
+                                    {game.playerName || "Unknown Player"}
+                                </td>
+
+                                <td className="py-3 px-2 text-right text-green-300 font-bold">
+                                    {game.score}
+                                </td>
+                            </tr>
+                        ))}
+                    </tbody>
+                </table>
+
+                {topGames.length === 0 && (
+                    <p className="text-center text-gray-400 mt-6">
+                        No completed games yet — be the first to play!
+                    </p>
+                )}
+            </div>
+
+            <div className="mt-16">
+                <HomePageLink/>
+            </div>
+            </main>
+        </Transition>
     );
 }
