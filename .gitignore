@@ -21,7 +21,7 @@
 /build
 
 # Assets
-/public
+public/
 
 # misc
 .DS_Store
