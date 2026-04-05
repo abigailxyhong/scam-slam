@@ -13,6 +13,8 @@ import MessageCard from "@/src/app/components/MessageCard"
 import { EmailQuestion } from "@/src/core/game/questions/emailQuestions"
 import { WebsiteQuestion } from "@/src/core/game/questions/websiteQuestions"
 import { MessageQuestion } from "@/src/core/game/questions/messageQuestions"
+import Transition from "../components/MotionTransition"
+
 
 
 export default function QuestionCard() {
@@ -21,65 +23,57 @@ export default function QuestionCard() {
     useEffect(() => { dispatch({ type: "SET_CURRENT_QUESTION", payload: currentQuestion }) }, [currentQuestion])
 
     const questionType = currentQuestion?.type
-    console.log("Current Question Index:", state.currentQuestionIndex)
-    console.log("Digital Buzzers On:", state.digitalBuzzersOn)
-    // const { questionType, difficulty, question } = selectQuestion(state.level) // optional, if still used
 
     if (!currentQuestion) {
         return <div>Loading questions...</div>
     }
 
     return (
-        <motion.main
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, ease: "easeOut" }}
-            className="min-h-screen px-4"
-        >
+        <Transition>
             <main className="flex flex-col min-h-screen px-4 pl-6">
                 <QuestionHeader questionType={questionType} lives={state.lives} score={state.score} />
 
                 <div className="flex flex-row w-full items-center justify-evenly h-[65vh] px-6 mt-6 mr-6 ml-6 gap-8">
-                        {questionType === "email" && (
-                            <motion.div
-                                initial={{ opacity: 0, y: 20 }}
-                                animate={{ opacity: 1, y: 0 }}
-                                exit={{ opacity: 0, y: -20 }}
-                                transition={{ duration: 0.5 }}
-                            >
-                                <EmailCard email={currentQuestion as EmailQuestion} />
-                            </motion.div>
-                        )}
-                        {questionType === "website" && (
-                            <motion.div
-                                initial={{ opacity: 0, y: 20 }}
-                                animate={{ opacity: 1, y: 0 }}
-                                exit={{ opacity: 0, y: -20 }}
-                                transition={{ duration: 0.5 }}
-                            >
-                                <WebsiteCard site={currentQuestion as WebsiteQuestion} />
-                            </motion.div>
-                        )}
-                        {questionType === "message" && (
-                            <motion.div
-                                initial={{ opacity: 0, y: 20 }}
-                                animate={{ opacity: 1, y: 0 }}
-                                exit={{ opacity: 0, y: -20 }}
-                                transition={{ duration: 0.5 }}
-                            >
-                                <MessageCard message={currentQuestion as MessageQuestion} />
-                            </motion.div>
-                        )}
-                        {/* RIGHT SIDE */}
-                        {state.digitalBuzzersOn &&
-                            (<div className="h-full flex items-center">
-                                <Buzzers />
-                            </div>)}
-                    </div>
+                    {questionType === "email" && (
+                        <motion.div
+                            initial={{ opacity: 0, y: 20 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            exit={{ opacity: 0, y: -20 }}
+                            transition={{ duration: 0.5 }}
+                        >
+                            <EmailCard email={currentQuestion as EmailQuestion} />
+                        </motion.div>
+                    )}
+                    {questionType === "website" && (
+                        <motion.div
+                            initial={{ opacity: 0, y: 20 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            exit={{ opacity: 0, y: -20 }}
+                            transition={{ duration: 0.5 }}
+                        >
+                            <WebsiteCard site={currentQuestion as WebsiteQuestion} />
+                        </motion.div>
+                    )}
+                    {questionType === "message" && (
+                        <motion.div
+                            initial={{ opacity: 0, y: 20 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            exit={{ opacity: 0, y: -20 }}
+                            transition={{ duration: 0.5 }}
+                        >
+                            <MessageCard message={currentQuestion as MessageQuestion} />
+                        </motion.div>
+                    )}
+
+                    {state.digitalBuzzersOn &&
+                        (<div className="h-full flex items-center">
+                            <Buzzers />
+                        </div>)}
+                </div>
 
 
                 <ProgressBar currentQuestionIndex={state.currentQuestionIndex} />
             </main>
-        </motion.main>
+        </Transition>
     )
 }

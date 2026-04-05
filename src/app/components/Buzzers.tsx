@@ -3,9 +3,6 @@
 import { useState } from "react"
 import { useGame } from "../providers/GameProvider"
 import { Answer } from "../../core/game/questions/baseQuestion"
-import { useRouter } from "next/navigation"
-
-// Maybe need to change the routing logic here - update state instead
 
 export default function Buzzers() {
     const { state, dispatch } = useGame()

@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Jaro } from "next/font/google";
 import './globals.css';
 import { GameProvider } from "./providers/GameProvider";
+import PageTransition from "./components/MotionTransition";
 
 
 const jaro = Jaro({

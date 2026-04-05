@@ -1,12 +1,11 @@
 "use client"
 
 import { createContext, useContext, useReducer, useEffect } from "react"
-import { gameReducer } from "@/src/state/game/gameReducer"
-import { initialGameState, GameState } from "@/src/state/game/gameState"
-import { GameAction } from "@/src/state/game/gameActions"
+import { gameReducer } from "@/src/state/gameReducer"
+import { initialGameState, GameState } from "@/src/state/gameState"
+import { GameAction } from "@/src/state/gameActions"
 import { createGame, updateGame, recordQuestionAttempt } from "@/src/lib/utils/game"
 import { selectQuestions } from "@/src/core/game/engine"
-import { GAME_CONFIG } from "@/src/lib/constants/gameConfig"
 import { useRouter } from "next/navigation"
 import { calculateScoreIncrement } from "@/src/core/game/scoring"
 import { useState } from "react"
@@ -70,14 +69,12 @@ export function GameProvider({ children }: { children: React.ReactNode }) {
 
       case "CREATE_GAME": {
         const game = await createGame(action.payload)
-        console.log("what has this made:", game.id)
         baseDispatch({ type: "SET_GAME_ID", payload: game.id})
         return
       }
 
       case "SELECT_QUESTIONS": {
         const questions = selectQuestions()
-        console.log("Questions Selected:", questions)
         baseDispatch({ type: "SET_QUESTIONS", payload: questions })
         return
       }
@@ -124,7 +121,6 @@ export function GameProvider({ children }: { children: React.ReactNode }) {
         return
       }
 
-      // Any action not handled above goes straight to the reducer.
       default: {
         baseDispatch(action)
         return

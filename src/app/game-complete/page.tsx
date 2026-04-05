@@ -4,19 +4,11 @@ import { motion } from "framer-motion"
 import Link from "next/link"
 import { useGame } from "../providers/GameProvider"
 import type { Variants } from "framer-motion"
-import { GAME_CONFIG } from "@/src/lib/constants/gameConfig"
+import Transition from "../components/MotionTransition"
+import HomePageLink from "../components/LinkHomePage"
 
 export default function GameOver() {
     const { dispatch, state } = useGame()
-
-    const pageVariants: Variants = {
-        hidden: { opacity: 0, y: 20 },
-        visible: {
-            opacity: 1,
-            y: 0,
-            transition: { duration: 0.6, ease: [0.17, 0.55, 0.55, 1] }
-        }
-    }
 
     const popVariants: Variants = {
         hidden: { opacity: 0, scale: 0.8 },
@@ -28,12 +20,8 @@ export default function GameOver() {
     }
 
     return (
-        <motion.main
-            variants={pageVariants}
-            initial="hidden"
-            animate="visible"
-            className="flex flex-col items-center justify-center min-h-screen px-4"
-        >
+        <Transition>
+            <main className="min h-screen items-center justify-center flex flex-col">
             <motion.h1
                 variants={popVariants}
                 initial="hidden"
@@ -78,14 +66,9 @@ export default function GameOver() {
                     SEE LEADERBOARD
                 </Link>
 
-                <Link
-                    onClick={() => dispatch({ type: "RESET_GAME" })}
-                    href="/"
-                    className="bg-gray-300 hover:bg-gray-200 text-zinc-800 font-semibold px-16 py-6 rounded-full text-3xl shadow-md transition"
-                >
-                    HOME PAGE
-                </Link>
+                <HomePageLink />
             </motion.div>
-        </motion.main>
+            </main>
+        </Transition>
     )
 }

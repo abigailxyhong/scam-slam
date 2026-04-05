@@ -15,8 +15,6 @@ export async function PATCH(req: Request, context: { params: Promise<{ id: strin
   return Response.json({ data, error });
 }
 
-
-
 export async function GET(
   req: Request,
   { params }: { params: { id: string } }

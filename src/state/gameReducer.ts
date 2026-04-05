@@ -1,5 +1,3 @@
-// state/game/gameReducer.ts
-
 import { GameState } from "./gameState"
 import { GameAction } from "./gameActions"
 import { GAME_CONFIG } from "@/src/lib/constants/gameConfig"
@@ -68,8 +66,6 @@ export function gameReducer(state: GameState, action: GameAction): GameState {
       const nextIndex = state.currentQuestionIndex + 1
       const isLast = (nextIndex >= state.questions.length || state.lives === 0)
 
-      console.log("Is Last:", isLast)
-
       if (isLast) {
         return {
           ...state,
@@ -90,7 +86,6 @@ export function gameReducer(state: GameState, action: GameAction): GameState {
     }
 
     case "NEXT_QUESTION": {
-      console.log("why oh why")
       if (state.status === "playing") return state
 
       return {
@@ -130,7 +125,6 @@ export function gameReducer(state: GameState, action: GameAction): GameState {
     case "SET_STATE": {
       return action.payload
     }
-
 
     default:
       return state

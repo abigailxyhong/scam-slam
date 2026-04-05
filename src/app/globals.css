@@ -4,7 +4,7 @@
 :root {
   --background: linear-gradient(
     to bottom,
-    var(--color-emerald-500),
+    var(--color-emerald-600),
     var(--color-emerald-400),
     var(--color-emerald-100)
   );
@@ -37,18 +37,10 @@ body {
   line-height: normal
 }
 
-.error-message {
-  color: var(--color-red-500);
-  font-size: xx-large;
-}
-
 p {
   color: var(--text-color-faded);
 }
 
-.cursor-magnify {
-  cursor: zoom-in;
-}
 
 
 

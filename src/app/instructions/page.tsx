@@ -5,6 +5,7 @@ import { motion } from "framer-motion"
 import { useGame } from "../providers/GameProvider"
 import type { Variants } from "framer-motion"
 import { GAME_CONFIG } from "@/src/lib/constants/gameConfig"
+import Transition from "../components/MotionTransition"
 
 
 export default function Instructions() {
@@ -13,16 +14,16 @@ export default function Instructions() {
 
     const lines = [
         <>
-            EACH LEVEL YOU WILL BE <span className="font-bold text-blue-700">TEXTED, EMAILED, CALLED</span> OR <span className="font-bold text-blue-700">SHOWN A WEBSITE</span>.
+            EACH LEVEL YOU WILL SEE A <span className="font-bold text-blue-700">TEXT, EMAIL</span> OR <span className="font-bold text-blue-700">WEBSITE PAGE</span>.
         </>,
         <>
             IT IS YOUR JOB TO DECIDE WHETHER THEY COME FROM A <span className="font-bold text-yellow-700">LEGITIMATE SOURCE</span> OR A <span className="font-bold text-red-600">CYBER CRIMINAL</span>.
         </>,
         <>
-            PRESS THE <span className="font-bold text-green-700">GREEN BUZZER</span> FOR 'SAFE' AND <span className="font-bold text-red-600">RED BUZZER</span> FOR 'SCAM'.
+            PRESS THE <span className="font-bold text-green-700">GREEN BUZZER</span> FOR 'SAFE' AND <span className="font-bold text-red-600">RED BUZZER</span> FOR 'SCAM', BE CAREFUL AS YOU ONLY GET THREE LIVES!
         </>,
         <>
-            YOU WILL BE GIVEN <span className="font-bold">{GAME_CONFIG.TIME_LIMIT} SECONDS</span> PER LEVEL.
+            YOU WILL BE GIVEN <span className="font-bold">{GAME_CONFIG.TIME_LIMIT} SECONDS</span> PER LEVEL, BUT IF YOU'RE UNSURE ALWAYS TAKE YOUR TIME TO CAREFULLY THINK AND ANALYSE THE PROMPT.
         </>,
         <>
             GET IT? <span className="font-bold">PRESS READY TO BEGIN!</span>
@@ -53,12 +54,8 @@ export default function Instructions() {
     }
 
     return (
-        <motion.main
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, ease: "easeOut" }}
-            className="justify-start min-h-screen px-4"
-        >
+        <Transition>
+            <main className="min h-screen">
             <div className="flex flex-col items-start pl-16 pr-16">
                 <h1 className="page-title mt-6">INSTRUCTIONS</h1>
 
@@ -90,6 +87,7 @@ export default function Instructions() {
                     BACK
                 </Link>
             </div>
-        </motion.main>
+            </main>
+        </Transition>
     )
 }

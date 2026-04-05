@@ -1,7 +1,4 @@
-"use client";
-
 import { GAME_CONFIG } from "../../lib/constants/gameConfig"
-import { useGame } from "../providers/GameProvider"
 
 interface ProgressBarProps {
   currentQuestionIndex: number
@@ -9,9 +6,7 @@ interface ProgressBarProps {
 
 export default function ProgressBar({ currentQuestionIndex }: ProgressBarProps) {
   const totalQuestions = GAME_CONFIG.MAX_QUESTIONS
-  const { state } = useGame()
   
-
   const checkpointLabels = ["Start", "Complete!"]
   const checkpoints = checkpointLabels.length
 
@@ -21,8 +16,6 @@ export default function ProgressBar({ currentQuestionIndex }: ProgressBarProps) 
     100,
     Math.max(0, (level / totalQuestions) * 100)
   )
-
-  console.log({ currentQuestionIndex, level, progressPercentage });
 
   return (
     <div className="w-full px-6 mt-8">

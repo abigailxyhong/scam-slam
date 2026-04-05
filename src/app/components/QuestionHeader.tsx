@@ -14,7 +14,6 @@ interface QuestionHeaderProps {
 
 const iconMap: Record<QuestionType, string> = {
   email: "/images/icons/email-icon.png",
-  call: "/images/icons/call-icon.png",
   website: "/images/icons/website-icon.png",
   message: "/images/icons/message-icon.png",
 };
@@ -43,7 +42,7 @@ export default function QuestionHeader({
   }
 
   return (
-    <header className="w-full px-6 py-4 flex items-center justify-between mt-2">
+    <header className="w-full px-6 py-4 flex items-center justify-between">
 
       {/* Left: Question type icon */}
       <div className="flex items-center pl-6">

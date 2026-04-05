@@ -9,7 +9,6 @@ export function generateQuestionSet(totalQuestions: number): BaseQuestion[] {
   const usedIds = new Set<string>();
   const QUESTION_TYPES: QuestionType[] = [
   "email",
-  // "phone",
   "website",
   "message",
 ];

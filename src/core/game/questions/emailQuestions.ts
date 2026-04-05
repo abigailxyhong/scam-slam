@@ -18,11 +18,7 @@ export interface EmailQuestion extends BaseQuestion {
   tooltipAddress?: string
 }
 
-// there must be a fucking better way to do this than hardcoding every single question in a giant array but for now this is fine ig
-
 export const emailQuestions: EmailQuestion[] = [
-  // Easy
-  // Scam: 
   {
     id: "email_ups_scam",
     type: "email",
@@ -55,8 +51,6 @@ export const emailQuestions: EmailQuestion[] = [
     },
     infoWhy: "This is a legitimate email from KFC UK. Companies/ business' like KFC will often send promotional emails. The email contains typical promotional content without any urgent language or suspicious links.",
     tooltipAddress: "KFC@email.kfc.co.uk"
-    //infoHow: "Clicking the link opens a brand-themed page offering a cash or gift reward if you take a short survey.\nAfter the survey, the site asks for your name, address, and a credit/debit card to pay a small fee or 'verify identity'.\nScammers may make unauthorized charges, enroll you in a subscription, or collect your personal details for future scams.",
-    //infoMore: "Go directly to the carrier's website by typing it yourself (e.g., ups.com, dhl.com) or use the official app.\nDo not click links, scan QR codes, or call phone numbers in unexpected emails.\nDo not assume a logo or colours mean the site is real- check the web address carefully.",
 
   },
   {
@@ -72,9 +66,34 @@ export const emailQuestions: EmailQuestion[] = [
     },
     infoWhy: "This is a legitimate email from Apple, notifiying the user of a new login. The language and tone used is professional with no attempts at creating urgency or using scare tactics.",
     tooltipAddress: "noreply@email.apple.com"
-    //infoHow: "Clicking the link opens a brand-themed page offering a cash or gift reward if you take a short survey.\nAfter the survey, the site asks for your name, address, and a credit/debit card to pay a small fee or 'verify identity'.\nScammers may make unauthorized charges, enroll you in a subscription, or collect your personal details for future scams.",
-    //infoMore: "Go directly to the carrier's website by typing it yourself (e.g., ups.com, dhl.com) or use the official app.\nDo not click links, scan QR codes, or call phone numbers in unexpected emails.\nDo not assume a logo or colours mean the site is real- check the web address carefully.",
-
+  },
+  {
+    id: "email_booking_legit",
+    type: "email",
+    difficulty: "easy",
+    isScam: false,
+    correctAnswer: "SAFE",
+    content: {
+      imageURL: "/images/questions/legit/email-booking.png",
+      width: 600,
+      height: 300,
+    },
+    infoWhy: "This is a legitimate email from Booking.com, presenting a discount offer. The language and tone used is professional with no attempts at creating urgency or using scare tactics.",
+    tooltipAddress: "noreply@booking.com"
+  },
+  {
+    id: "email_trainline_legit",
+    type: "email",
+    difficulty: "easy",
+    isScam: false,
+    correctAnswer: "SAFE",
+    content: {
+      imageURL: "/images/questions/legit/email-trainline.png",
+      width: 600,
+      height: 300,
+    },
+    infoWhy: "This is a legitimate email from Trainline, showing the user's their savings within the app. There are no suspicious elements or risky actions being promoted.",
+    tooltipAddress: "noreply@comms.trainline.com"
   },
   {
     id: "email_aaa_scam",

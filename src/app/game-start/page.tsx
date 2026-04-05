@@ -53,7 +53,7 @@ export default function GameStart() {
             animate="visible"
             className="flex flex-col items-center justify-center min-h-screen"
         >
-            <h1 className="text-teal-950 text-7xl font-bold tracking-wide mb-10">
+            <h1 className="text-teal-950 page-title font-bold tracking-wide mb-10">
                 GAME WILL BEGIN IN
             </h1>
 

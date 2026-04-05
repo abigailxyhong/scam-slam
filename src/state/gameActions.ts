@@ -1,5 +1,3 @@
-// state/game/gameActions.ts
-
 import { BaseQuestion, Answer } from "@/src/core/game/questions/baseQuestion";
 import { GameState } from "./gameState";
 

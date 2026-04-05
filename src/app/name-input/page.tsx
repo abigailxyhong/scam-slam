@@ -4,9 +4,10 @@ import { useState } from "react"
 import Link from "next/link"
 import { useRouter } from 'next/navigation'
 
+import "./name-input.css"
+
 import { useGame } from "../providers/GameProvider"
 import Transition from "../components/MotionTransition"
-
 
 export default function NameInput() {
     const router = useRouter()
@@ -28,12 +29,7 @@ export default function NameInput() {
         }
 
         setError("");
-
         dispatch({ type: "CREATE_GAME", payload: trimmed })
-        //dispatch({ type: "SET_PHASE", payload: "instructions" })
-
-        // localStorage.setItem("playerName", trimmed)
-
         router.push("/instructions")
     }
 

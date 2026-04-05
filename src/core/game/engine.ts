@@ -1,8 +1,6 @@
-// core/game/engine.ts
-
 import { Answer, BaseQuestion } from "./questions/baseQuestion"
 import { calculateScoreIncrement } from "./scoring"
-import { GameState } from "@/src/state/game/gameState"
+import { GameState } from "@/src/state/gameState"
 import { generateQuestionSet } from "./questionSelection"
 import { GAME_CONFIG } from "@/src/lib/constants/gameConfig"
 
@@ -42,13 +40,4 @@ export function evaluateAnswer(
   }
 }
 
-export function isGameOver(state: GameState){
-  if(state.currentQuestionIndex === GAME_CONFIG.MAX_QUESTIONS ||
-    state.lives === 0){
-      return true;
-    }
-  else{
-    return false;
-  }
-}
 

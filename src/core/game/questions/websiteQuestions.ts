@@ -37,7 +37,6 @@ export const websiteQuestions: WebsiteQuestion[] = [
             height: 400,
         },
         infoWhy: "This is a legitimate website, as indicated by the familiar BBC logo and design. The URL is also a key indicator of legitimacy, ending in .co.uk for the BBC.",
-        //infoHow: "Check the URL carefully - legitimate sites will have a correct domain name (e.g., bbc.co.uk) and often use HTTPS.\nLook for familiar branding and design elements, but don't rely solely on them as scammers can copy these.\nCheck for contact information and verify it through official channels if in doubt.",
         tooltip: "https://www.bbc.co.uk/news",
     },
 
@@ -53,7 +52,6 @@ export const websiteQuestions: WebsiteQuestion[] = [
             height: 450,
         },
         infoWhy: "This is a legitimate website, as indicated by the familiar NHS logo and design. The URL is also a key indicator of legitimacy, ending in .nhs.uk for the NHS.",
-        //infoHow: "Check the URL carefully - legitimate sites will have a correct domain name (e.g., nhs.uk) and often use HTTPS.\nLook for familiar branding and design elements, but don't rely solely on them as scammers can copy these.\nCheck for contact information and verify it through official channels if in doubt.",
         tooltip: "https://www.nhs.uk",
     },
 
@@ -70,7 +68,6 @@ export const websiteQuestions: WebsiteQuestion[] = [
         },
         infoWhy: "This is a legitimate website, as indicated by the familiar UK government logo and design. The URL is also a key indicator of legitimacy, ending in .gov.uk for UK government sites.",
         tooltip: "https://www.gov.uk/log-in-register-hmrc-online-services",
-        //infoHow: "Check the URL carefully - legitimate sites will have a correct domain name (e.g., gov.uk) and often use HTTPS.\nLook for familiar branding and design elements, but don't rely solely on them as scammers can copy these.\nCheck for contact information and verify it through official channels if in doubt.",
     },
 
     {
@@ -86,7 +83,6 @@ export const websiteQuestions: WebsiteQuestion[] = [
         },
         infoWhy: "This one can be tricky, as typically a site with a big focus on money might raise suspicion. However, this is a legitimate website run by the Massachusetts government to help residents find unclaimed money. The URL ending in .gov is a strong indicator of legitimacy.",
         tooltip: "https://www.findmassmoney.gov/",
-        //infoHow: "Check the URL carefully - legitimate sites will have a correct domain name (e.g., mass.gov) and often use HTTPS.\nLook for familiar branding and design elements, but don't rely solely on them as scammers can copy these.\nCheck for contact information and verify it through official channels if in doubt.",
     },
 
     {
@@ -117,7 +113,7 @@ export const websiteQuestions: WebsiteQuestion[] = [
         },
         infoWhy: "This is an extremely sophisticated scam website designed to look like a legitimate charity. The URL is a key indicator of the scam, as it does not end in .org and contains extra words (e.g., verdant-charity.com).",
         infoHow: "Check the URL carefully - For charities, you can also check their legitimacy through charity watchdog websites.",
-        tooltip: "https://verdant-relief-trust[.]com/support",
+        tooltip: "https://verdant-relief-trust.com/support",
     
     }
 ];
