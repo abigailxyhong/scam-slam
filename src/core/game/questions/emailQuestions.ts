@@ -1,5 +1,6 @@
 import { BaseQuestion } from "./baseQuestion";
 
+// Extends the shared BaseQuestion structure with fields specific to email questions
 export interface EmailQuestion extends BaseQuestion {
   id: string
   type: "email"
@@ -18,6 +19,14 @@ export interface EmailQuestion extends BaseQuestion {
   tooltipAddress?: string
 }
 
+/**
+ * A collection of email questions for the game
+ * Each entry include:
+ * - metadata
+ * - email content
+ * - feedback explanations
+ * - sender address for tooltip display
+ */
 export const emailQuestions: EmailQuestion[] = [
   {
     id: "email_ups_scam",

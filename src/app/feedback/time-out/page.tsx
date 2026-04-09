@@ -6,17 +6,22 @@ import { useGame } from "@/src/app/providers/GameProvider"
 import { Button } from "@heroui/react"
 import Transition from "../../components/MotionTransition"
 
-
+/**
+ * Displays the feedback screen for when a user runs out of time
+ * - Shows the correct answer, why it was correct, how it works, and how to protect yourself, 
+ * along with a button to continue to the next question or 
+ * end the game if it was the last question
+ * @returns JSX element showing the time out feedback
+ */
 export default function TimeOut() {
   const { state, dispatch } = useGame()
 
-  const question = state.currentQuestion   // ← Pull the question
+  // Get the question that the player ran out of time on
+  const question = state.currentQuestion   
 
-
+  // Dispatches reducer action to check whether the game is finished
   const handleContinue = () => {
-
     dispatch({ type: "CHECK_GAME_COMPLETE" })
-
   }
 
   return (
@@ -40,7 +45,7 @@ export default function TimeOut() {
           <div className="w-full max-w-6xl space-y-10 mt-4">
 
             {/* WHY */}
-            <div className="bg-red-50 border-l-8 border-red-500 p-6 rounded-lg shadow-sm">
+            <div className="feedback-card bg-red-50 border-l-8 border-red-500 p-6 rounded-lg shadow-sm">
               <h2 className="feedback-section-title text-red-700">
                 <span>⚠️</span> {question?.correctAnswer} WAS THE CORRECT ANSWER
               </h2>
@@ -50,7 +55,7 @@ export default function TimeOut() {
             </div>
 
             {question?.infoHow && (
-            <div className="bg-yellow-50 border-l-8 border-yellow-500 p-6 rounded-lg shadow-sm">
+            <div className="feedback-card bg-yellow-50 border-l-8 border-yellow-500 p-6 rounded-lg shadow-sm">
               <h2 className="text-4xl font-extrabold text-yellow-700 mb-3 flex items-center gap-3">
                 <span>🔍</span> HOW IT WORKS
               </h2>
@@ -61,7 +66,7 @@ export default function TimeOut() {
 
             {/* MORE / PROTECTION */}
             {question?.infoMore && (
-              <div className="feedback-cardbg-blue-50 border-l-8 border-blue-500">
+              <div className="feedback-card bg-blue-50 border-l-8 border-blue-500">
                 <h2 className="feedback-section-title text-blue-700">
                   <span>🛡️</span> HOW TO PROTECT YOURSELF
                 </h2>

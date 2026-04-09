@@ -4,15 +4,22 @@ import { EmailQuestion } from "@/src/core/game/questions/emailQuestions"
 import { Tooltip } from "@heroui/react"
 import ZoomableImage from "./ZoomImage"
 
+/**
+ * Displays and email-style card used in the game
+ * @param param0 The email question object containing content and tooltip information
+ * @returns JSX element representing the email card
+ */
 export default function EmailCard({ email }: { email: EmailQuestion }) {
+    // State to track if the component has mounted, used to prevent hydration mismatch
     const [mounted, setMounted] = useState(false);
 
     useEffect(() => {
         setMounted(true);
     }, []);
-
+    
+    // Avoid rendering until the component is mounted on the client
     if (!mounted) {
-        return null; // Prevent hydration mismatch
+        return null;
     }
     return (
         <div className="bg-zinc-100 p-3 rounded-xl shadow-inner h-full">

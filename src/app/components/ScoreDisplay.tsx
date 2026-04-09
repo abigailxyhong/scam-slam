@@ -2,6 +2,12 @@ interface ScoreDisplayProps {
   score: number
 }
 
+/**
+ * Displays the player's current score in a styled container with a label
+ * 
+ * @param param0 The current score passed as a prop to be displayed in the component
+ * @returns JSX element representing the score display
+ */
 export default function ScoreDisplay({ score }: ScoreDisplayProps) {
   return (
     <div className="flex items-start mt-4 ml-12">

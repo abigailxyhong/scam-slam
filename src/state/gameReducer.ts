@@ -2,6 +2,20 @@ import { GameState } from "./gameState"
 import { GameAction } from "./gameActions"
 import { GAME_CONFIG } from "@/src/lib/constants/gameConfig"
 
+/**
+ * The main reducer controlling all game state transitions
+ * 
+ * Updates:
+ * - gameplay status
+ * - scoring and lives
+ * - timer countdown
+ * - feedback transitions
+ * - question progression
+ * 
+ * @param state the current game state
+ * @param action the action to be processed
+ * @returns the updated game state
+ */
 export function gameReducer(state: GameState, action: GameAction): GameState {
 
   switch (action.type) {
@@ -62,6 +76,12 @@ export function gameReducer(state: GameState, action: GameAction): GameState {
         lastFeedback: "timeout"
       }
 
+    /**
+     * Determines whether the game should end or move to the next question.
+     * Ends the game if:
+     * - the player has no lives left, or
+     * - there are no more questions.
+     */
     case "CHECK_GAME_COMPLETE": {
       const nextIndex = state.currentQuestionIndex + 1
       const isLast = (nextIndex >= state.questions.length || state.lives === 0)
@@ -70,7 +90,6 @@ export function gameReducer(state: GameState, action: GameAction): GameState {
         return {
           ...state,
           status: "completed"
-          // update game details probs
         }
       } else {
         return {
@@ -85,6 +104,10 @@ export function gameReducer(state: GameState, action: GameAction): GameState {
       }
     }
 
+    /**
+     * Moves to the next question after feedback.
+     * Does nothing if already in "playing" mode.
+     */
     case "NEXT_QUESTION": {
       if (state.status === "playing") return state
 
@@ -99,6 +122,10 @@ export function gameReducer(state: GameState, action: GameAction): GameState {
       }
     }
 
+    /**
+     * Decrements the timer once per second.
+     * If time reaches zero, triggers a timeout.
+     */
     case "TICK": {
       if (state.timeLeft <= 1) {
         return {

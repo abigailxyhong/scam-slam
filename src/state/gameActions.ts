@@ -1,6 +1,13 @@
 import { BaseQuestion, Answer } from "@/src/core/game/questions/baseQuestion";
 import { GameState } from "./gameState";
 
+/**
+ * Defines the possible actions that can be dispatched to the reducer and provider
+ * 
+ * Each action describes:
+ * - a type (what kind of update should happen)
+ * - an optional payload (the data needed to perform the update)
+ */
 export type GameAction =
   | { type: "SET_STATE"; payload: GameState}
   | { type: "TOGGLE_BUZZERS"}

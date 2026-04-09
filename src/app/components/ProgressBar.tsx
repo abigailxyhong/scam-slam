@@ -4,14 +4,25 @@ interface ProgressBarProps {
   currentQuestionIndex: number
 }
 
+/**
+ * Display a horizontal profress bar indicating the player's current level in the game
+ * 
+ * - Computer progress based on the current question index
+ * - Renders labelled checkpoints for "Start" and "Complete!" at the beginning and end of the bar
+ * - Animates the fill width for smooth visual feedback
+ * @param param0 The current question index used to calculate the player's progress
+ * @returns JSX element representing the progress bar
+ */
 export default function ProgressBar({ currentQuestionIndex }: ProgressBarProps) {
   const totalQuestions = GAME_CONFIG.MAX_QUESTIONS
   
   const checkpointLabels = ["Start", "Complete!"]
   const checkpoints = checkpointLabels.length
 
+  // Converts from 0-based index to 1-based level for display purposes
   const level = currentQuestionIndex + 1
 
+  // Calculate progress percentage, ensuring it stays between 0% and 100%
   const progressPercentage = Math.min(
     100,
     Math.max(0, (level / totalQuestions) * 100)

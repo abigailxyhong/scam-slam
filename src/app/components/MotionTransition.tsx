@@ -2,6 +2,13 @@
 
 import { motion } from "framer-motion";
 
+/**
+ * Wraps content in an entrance transition
+ * - Uses Framer Motion fade and slide content in on a mount
+ * - Applies a custom easing curve and duration for a smooth effect
+ * @param param0 The children elements to wrap in the transition
+ * @returns JSX element containing the children wrapped in a motion.div with the specified transition effects
+ */
 export default function Transition({ children }: { children: React.ReactNode }) {
   return (
     <motion.div

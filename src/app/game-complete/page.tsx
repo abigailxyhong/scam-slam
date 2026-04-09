@@ -9,9 +9,19 @@ import type { Variants } from "framer-motion"
 import Transition from "../components/MotionTransition"
 import HomePageLink from "../components/LinkHomePage"
 
+/**
+ * Displays the final "Game Over" screen
+ * - Shows the player's final score and a QR code linking to more information
+ * 
+ * @returns JSX element showing the game complete screen, including final score, QR code, and links to the leaderboard and home page
+ */
 export default function GameOver() {
     const { dispatch, state } = useGame()
 
+    /**
+     * Animation variants for the pop-in effect
+     * Each element starts slightly smaller and fades in
+     */
     const popVariants: Variants = {
         hidden: { opacity: 0, scale: 0.8 },
         visible: {
@@ -24,6 +34,7 @@ export default function GameOver() {
     return (
         <Transition>
             <main className="min h-screen items-center justify-center flex flex-col">
+                
                 <motion.h1
                     variants={popVariants}
                     initial="hidden"
@@ -76,6 +87,7 @@ export default function GameOver() {
                     transition={{ delay: 0.5 }}
                     className="flex flex-col items-center space-y-6"
                 >
+                    {/* Updates game state before navigating to the leaderboard */}
                     <Link
                         onClick={() => dispatch({ type: "UPDATE_GAME" })}
 

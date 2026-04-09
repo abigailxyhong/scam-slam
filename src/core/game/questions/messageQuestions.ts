@@ -1,5 +1,6 @@
 import { Answer, BaseQuestion, Difficulty } from "./baseQuestion";
 
+// Extends the shared BaseQuestion structure with fields specific to message questions
 export interface MessageQuestion extends BaseQuestion {
     id: string;
     type: "message";
@@ -22,6 +23,13 @@ export interface MessageQuestion extends BaseQuestion {
     infoMore?: string;
 }
 
+/**
+ * A collection of message questions for the game
+ * Each entry includes:
+ * - metadata
+ * - message content
+ * - feedback explanations
+ */
 export const messageQuestions: MessageQuestion[] = [
     // Easy
     {
@@ -56,7 +64,7 @@ export const messageQuestions: MessageQuestion[] = [
 
     },
 
-    // Medium
+    // Hard
     {
         id: "message_hsbc_safe_1",
         type: "message",
@@ -84,6 +92,4 @@ export const messageQuestions: MessageQuestion[] = [
         },
         infoWhy: "This is an example of a legitimate fraud alert message from HSBC, provided on their official website. While it may look similar to a scam message, the key indicators of legitimacy include the use of the official bank name, a clear explanation of the situation, and instructions to wait for a follow-up message from a specific number. Always verify such messages by contacting your bank directly through official channels if you have any doubts.",
     }
-    
-    // Hard
 ];

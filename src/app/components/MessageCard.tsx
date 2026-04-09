@@ -2,15 +2,28 @@ import { useEffect, useState } from "react"
 import Image from "next/image"
 import { MessageQuestion } from "@/src/core/game/questions/messageQuestions"
 
+/**
+ * Displays a message-style card used in the game
+ * - Supports two message formats:
+ *   1) Image-based messages (e.g., screenshot of a text)
+ *   2) A text bubble with sender, timestamp, and message content
+ * - Uses conditional rendering to determine which format to display based on the presence of an image URL
+ * 
+ * @param param0 The message question object containing content information such as text, image URL, sender, and timestamp
+ * @returns JSX element representing the message card
+ */
 export default function MessageCard({ message }: { message: MessageQuestion }) {
+  // State to track if the component has mounted, used to prevent hydration mismatch
   const [mounted, setMounted] = useState(false)
 
   useEffect(() => {
     setMounted(true)
   }, [])
 
+  // Avoid rendering until the component is mounted on the client to prevent hydration mismatch
   if (!mounted) return null
 
+  // Determine which content type to display based on the presence of an image URL
   const hasImage = Boolean(message.content?.imageURL)
   const hasText = Boolean(message.content?.customText)
 
@@ -28,11 +41,11 @@ export default function MessageCard({ message }: { message: MessageQuestion }) {
         relative
       "
     >
-      
+
       <div className="w-24 h-2 bg-zinc-700 rounded-full opacity-60"></div>
 
       <div className="w-full item-center justify-center mt-6">
-     
+
         {hasImage && (
           <div className="flex justify-center">
             <Image

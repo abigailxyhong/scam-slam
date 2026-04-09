@@ -4,17 +4,27 @@ import { useState } from "react"
 import Link from "next/link"
 import { useRouter } from 'next/navigation'
 
-import "./name-input.css"
-
 import { useGame } from "../providers/GameProvider"
 import Transition from "../components/MotionTransition"
 
+/**
+ * Collects the player's display name before starting the game
+ * 
+ * - Validates that the name is not empty and contains only letters
+ * - Dispatches an action to create a new game with the entered name
+ * - Provides a button to continue to the instructions screen and a link to go back to the home page
+ * 
+ * @returns JSX element showing the name input screen with validation and navigation options
+ */
 export default function NameInput() {
     const router = useRouter()
     const { dispatch } = useGame()
+
+    //Local state for the name input and error message
     const [name, setName] = useState("")
     const [error, setError] = useState("")
 
+    // Validates the name and continues to the next screen
     const handleContinue = () => {
         const trimmed = name.trim();
 
@@ -60,7 +70,7 @@ export default function NameInput() {
                     mb-4"
                 />
                 {error && (
-                    <div className="error-message">
+                    <div className="text-red-500 text-2xl ">
                         {error}
                     </div>
                 )}

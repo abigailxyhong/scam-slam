@@ -2,18 +2,35 @@
 
 import Link from "next/link"
 import { useState } from "react"
+
 import { useGame } from "./providers/GameProvider"
 import Transition from "./components/MotionTransition"
 
+/**
+ * Renders the home page of the game
+ * 
+ * - Allows the player to choose whether to turn on digital buzzers, 
+ *   main use is for when physical buzzers are added in the future
+ * - Provides a button to start the game, which navigates to the name input screen, 
+ *   and a link to go back to the home page
+ * - Displays a footer with a set of icons
+ * @returns JSX element showing the home page with title, description, toggle for digital buzzers, start button, and footer icons
+ */
 export default function HomePage() {
   const [isOn, setIsOn] = useState(false)
   const { state, dispatch } = useGame()
 
+  /**
+   * Toggles the digital buzzers on and off
+   * Updates local UI state for visual feedback
+   * Dispatches an action to update the global game state
+   */
   const handleToggle = () => {
     setIsOn(prev => !prev)
     dispatch({ type: "TOGGLE_BUZZERS" })
   }
 
+  // Dynamic styling for the button based on ON/OFF state
   const toggleButtonClasses = `w-auto px-8 py-4 rounded-full text-2xl font-bold shadow-md transition mt-4 ${isOn ? "bg-teal-400 text-white" : "bg-gray-300 text-zinc-800"}`
 
   return (
@@ -43,7 +60,7 @@ export default function HomePage() {
             </Link>
           </div>
         </div>
-
+    
         <footer className="mt-4 flex justify-center py-4 mb-10 bottom-4">
           <img src="images/icons/Icons(b).svg" alt="Icons" className="h-20 w-auto" />
         </footer>

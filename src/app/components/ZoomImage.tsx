@@ -7,12 +7,19 @@ interface ZoomableImageProps {
   height: number
 }
 
+/**
+ * Renders an image that enlarges when hovered
+ * 
+ * @param ZoomableImageProps The source image URL and its dimensions passed as props to be displayed 
+ * @returns JSX element representing the zoomable image with hover functionality to show an enlarged version in an overlay
+ */
 export default function ZoomableImage({ src, width, height }: ZoomableImageProps) {
+  // Tracks whether the zoom overlay should be visible 
   const [showZoom, setShowZoom] = useState(false)
 
   return (
     <>
-      {/* Trigger image */}
+      {/* Base image */}
       <div
         className="cursor-zoom-in inline-block"
         onMouseEnter={() => setShowZoom(true)}
@@ -35,7 +42,8 @@ export default function ZoomableImage({ src, width, height }: ZoomableImageProps
             bg-black/40 
             z-9999
           "
-        >
+        > 
+          {/* Leaving the area closes the overlay */}
           <div
             onMouseLeave={() => setShowZoom(false)}
             className="cursor-zoom-out"

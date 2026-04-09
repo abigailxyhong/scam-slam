@@ -7,11 +7,17 @@ import type { Variants } from "framer-motion"
 import { GAME_CONFIG } from "@/src/lib/constants/gameConfig"
 import Transition from "../components/MotionTransition"
 
-
+/**
+ * Displays the instructions screen shown before the game begins.
+ * 
+ * - Uses motion animations to sequentially fade in each instruction line
+ * 
+ * @returns JSX element showing the instructions for how to play the game, with a button to start the game and a link to go back to the name input screen
+ */
 export default function Instructions() {
     const { dispatch, state } = useGame()
 
-
+    // Each instruction line, with important keywords highlighted
     const lines = [
         <>
             EACH LEVEL YOU WILL SEE A <span className="font-bold text-blue-700">TEXT, EMAIL</span> OR <span className="font-bold text-blue-700">WEBSITE PAGE</span>.
@@ -30,6 +36,7 @@ export default function Instructions() {
         </>
     ]
 
+    // Parent animation: fades in the list and staggers each line
     const listVariants: Variants = {
         hidden: { opacity: 0 },
         visible: {
@@ -41,6 +48,7 @@ export default function Instructions() {
         }
     }
 
+    // Child animation: each instruction line slides upward and fades in
     const itemVariants: Variants = {
         hidden: { opacity: 0, y: 10 },
         visible: {

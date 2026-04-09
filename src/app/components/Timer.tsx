@@ -1,8 +1,14 @@
-import { useEffect } from "react"
 import Image from "next/image"
-import { useRouter } from "next/navigation"
 import { useGame } from "../providers/GameProvider"
 
+/**
+ * Displays the countdown timer
+ * 
+ * - Reads the remaining time from the global game state using the GameProvider
+ * - Changes the timer text color to red when time is running low (5 seconds or less)
+ * - Uses an icon to visually accompany the numeric timer
+ * @returns JSX element representing the timer
+ */
 export default function Timer() {
   const { state } = useGame()
 

@@ -1,25 +1,32 @@
 "use client"
 
-import Link from "next/link"
 import Image from "next/image"
-import { motion } from "framer-motion"
 import { useGame } from "@/src/app/providers/GameProvider"
-import { GAME_CONFIG } from "@/src/lib/constants/gameConfig"
 import { Button } from "@heroui/react"
 import Transition from "../../components/MotionTransition"
 
+/**
+ * Displays the feedback screen for an incorrect answer,
+ * showing why the answer was incorrect and how it works, 
+ * along with a button to continue to the next question or 
+ * end the game if it was the last question
+ * 
+ * @returns JSX element showing the incorrect feedback
+ */
 export default function IncorrectFeedback() {
   const { state, dispatch } = useGame()
 
-  const question = state.currentQuestion   // ← Pull the full question object
+  // Get the question just answered from the game state
+  const question = state.currentQuestion   
 
-
+  /**
+   * Moves the game forward by dispatching a reducer action to check 
+   * whether the game is finished, which will either move to the next question or 
+   * end the game if it was the last question
+   */
   const handleContinue = () => {
-
     dispatch({ type: "CHECK_GAME_COMPLETE" })
-
   }
-
 
   return (
     <Transition>
@@ -50,7 +57,7 @@ export default function IncorrectFeedback() {
 
             {/* How the scam works */}
             {question?.infoHow && (
-              <div className="bg-yellow-50 border-l-8 border-yellow-500 p-6 rounded-lg shadow-sm">
+              <div className="feedback-card bg-yellow-50 border-l-8 border-yellow-500 p-6 rounded-lg shadow-sm">
                 <h2 className="feedback-section-title text-yellow-700">
                   <span>🔍</span> HOW IT WORKS
                 </h2>
@@ -61,7 +68,7 @@ export default function IncorrectFeedback() {
 
             {/* Extra tips */}
             {question?.infoMore && (
-              <div className="bg-blue-50 border-l-8 border-blue-500 p-6 rounded-lg shadow-sm">
+              <div className="feedback-card bg-blue-50 border-l-8 border-blue-500 p-6 rounded-lg shadow-sm">
                 <h2 className="feedback-section-title text-blue-700">
                   <span>💡</span> WHAT TO DO
                 </h2>

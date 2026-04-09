@@ -1,5 +1,6 @@
 import { Answer, BaseQuestion, Difficulty } from "./baseQuestion";
 
+// Extends the shared BaseQuestion structure with fields specific to website questions
 export interface WebsiteQuestion extends BaseQuestion {
     id: string
     type: "website"
@@ -23,6 +24,14 @@ export interface WebsiteQuestion extends BaseQuestion {
     tooltip?: string;
 }
 
+/**
+ * A collection of website questions for the game
+ * Each entry includes:
+ * - metadata
+ * - website content
+ * - feedback explanations
+ * - URL for players to inspect in-game with hover overlay
+ */
 export const websiteQuestions: WebsiteQuestion[] = [
     
     {

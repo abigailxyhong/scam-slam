@@ -5,11 +5,17 @@ import { useGame } from "@/src/app/providers/GameProvider"
 import Transition from "../../components/MotionTransition"
 import { Button } from "@heroui/react"
 
+/**
+ * Displays the feedback screen for a correct answer
+ * @returns JSX element showing the correct feedback, including why the answer was correct and how it works, along with a button to continue to the next question or end the game if it was the last question
+ */
 export default function CorrectFeedback() {
   const { state, dispatch } = useGame()
 
+  // Get the current question from the game state
   const question = state.currentQuestion
 
+  // Dispatches reducer action to check whether the game is finished
   const handleContinue = () => {
     dispatch({ type: "CHECK_GAME_COMPLETE" })
   }
@@ -38,7 +44,7 @@ export default function CorrectFeedback() {
           </div>
 
           {question?.infoHow && (
-            <div className="bg-yellow-50 border-l-8 border-yellow-500 p-6 rounded-lg shadow-sm">
+            <div className="feedback-card bg-yellow-50 border-l-8 border-yellow-500 p-6 rounded-lg shadow-sm">
               <h2 className="text-4xl font-extrabold text-yellow-700 mb-3 flex items-center gap-3">
                 <span>🔍</span> HOW IT WORKS
               </h2>

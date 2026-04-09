@@ -10,6 +10,7 @@ export type QuestionType =
     | "message"
     | "website"
 
+// Base structure for all question types in the game
 export interface BaseQuestion {
     id: string
     type: QuestionType
@@ -19,8 +20,8 @@ export interface BaseQuestion {
     }
     correctAnswer: Answer
     difficulty: Difficulty
-    infoWhy: string
-    infoHow?: string
-    infoMore?: string
+    infoWhy: string // Explanation of why the correct answer is what it is
+    infoHow?: string // Optional deeper explanation of how the scam works
+    infoMore?: string // Optional additional safety tips or guidance
 }
 

@@ -4,14 +4,38 @@ import { useState } from "react"
 import { useGame } from "../providers/GameProvider"
 import { Answer } from "../../core/game/questions/baseQuestion"
 
+/**
+ * Renders two large buzzer buttons ("SCAM" and "SAFE") 
+ * and dispatches the player's answer to the game state
+ * 
+ * - Prevent double-pressing by locking the buttons after the first click
+ * - Sends both the selected answer and the remaining time to the reducer
+ * - Uses GameProvider's dispatch to update the game state based on the player's choice
+ * 
+ * @returns JSX element containing the buzzer buttons
+ */
 export default function Buzzers() {
     const { state, dispatch } = useGame()
+
+    // Local state to track if a buzzer has been pressed
     const [pressed, setPressed] = useState(false)
 
+    /**
+     * Handles a buzzer press
+     * - Dispatches the answer and remaining time to the game provider
+     * @param choice the player's selected answer ("SCAM" or "SAFE")
+     */
     const handleAnswer = (choice: Answer) => {
         if (pressed) return
         setPressed(true)
-        dispatch({ type: "HANDLE_ANSWER", payload: {answer: choice, timeLeft: state.timeLeft}})
+
+        dispatch({ 
+            type: "HANDLE_ANSWER", 
+            payload: {
+                answer: choice, 
+                timeLeft: state.timeLeft
+            }
+        })
     }
 
     return (

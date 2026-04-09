@@ -1,8 +1,14 @@
 "use client"
 
-import { useGame } from "../providers/GameProvider";
 import Link from "next/link";
+import { useGame } from "../providers/GameProvider";
 
+/**
+ * Renders a navigation link that returns the player to the home page
+ *
+ * - Uses the global GameProvider to reset all game state before navigating
+ * - Wraps the action in a Next.js <Link> so navigation is client‑side and fast
+ */
 export default function HomePageLink() {
     const { state, dispatch } = useGame()
     return (

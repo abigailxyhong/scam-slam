@@ -6,6 +6,10 @@ import { useRouter } from "next/navigation"
 import type { Variants } from "framer-motion"
 import { useGame } from "../providers/GameProvider"
 
+/**
+ * Displays the pre-game countdown screen with a 3-second timer
+ * @returns JSX element showing the countdown before the game starts, with animations for the countdown numbers
+ */
 export default function GameStart() {
     const router = useRouter()
     const [count, setCount] = useState(3)
@@ -15,7 +19,6 @@ export default function GameStart() {
     useEffect(() => {
         if (count === 0) {
             dispatch({type: "START_PLAY"})
-            //router.push("/questions")
             return
         }
 
