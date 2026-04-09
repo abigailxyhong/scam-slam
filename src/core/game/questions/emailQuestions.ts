@@ -136,7 +136,7 @@ export const emailQuestions: EmailQuestion[] = [
   {
     id: "email_paypal_scam",
     type: "email",
-    difficulty: "easy",
+    difficulty: "medium",
     isScam: true,
     correctAnswer: "SCAM",
     content: {
@@ -155,7 +155,7 @@ export const emailQuestions: EmailQuestion[] = [
   {
     id: "email_microsoft_scam",
     type: "email",
-    difficulty: "easy",
+    difficulty: "medium",
     isScam: true,
     correctAnswer: "SCAM",
     content: {

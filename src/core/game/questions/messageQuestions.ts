@@ -60,7 +60,7 @@ export const messageQuestions: MessageQuestion[] = [
     {
         id: "message_hsbc_safe_1",
         type: "message",
-        difficulty: "medium",
+        difficulty: "hard",
         isScam: false,
         correctAnswer: "SAFE",
         content: {
@@ -74,7 +74,7 @@ export const messageQuestions: MessageQuestion[] = [
     {
         id: "message_hsbc_safe_2",
         type: "message",
-        difficulty: "medium",
+        difficulty: "hard",
         isScam: false,
         correctAnswer: "SAFE",
         content: {
