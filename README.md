@@ -2,6 +2,7 @@
 
 Scam Slam is an interactive cybersecurity awareness game designed to help players recognise online scams across emails, messages, and websites. It was created as a part of an undergraduate dissertation project titled: "Raising Online Scam Awareness via CyberSecurity Gamification". It is a quiz-style game that challenges players to correctly identify online media communication examples as legitimate or fraudulent. It uses gamified elements such as levels, score, lives, and a leaderboard, and includes custom question selection logic, Supabase-backed persistence, and a Next.js frontend.
 
+<img width="1497" height="825" alt="scam_slam_home_page" src="https://github.com/user-attachments/assets/f591e314-4eb9-4201-bda2-ba408042b74e" />
 
 ## Technology Stack
 
@@ -24,7 +25,10 @@ Scam Slam is an interactive cybersecurity awareness game designed to help player
 - Difficulty‑based scoring and speed bonuses  
 - Lives, feedback screens, and a final leaderboard
 - Player answer submission using on-screen 'buzzers'
-- Supabase integration for storing game sessions and analytics  
+- Supabase integration for storing game sessions and analytics
+
+<img width="1490" height="815" alt="questions_page" src="https://github.com/user-attachments/assets/9aedd6e3-bc73-486b-bfef-e5b296018318" />
+
 ---
 
 ## Gameplay Flow
