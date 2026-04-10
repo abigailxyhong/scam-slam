@@ -4,7 +4,7 @@ Scam Slam is an interactive cybersecurity awareness game designed to help player
 
 ---
 
-## 🎮 Game Overview
+## Game Overview
 
 Scam Slam challenges players to identify legitimate and fraudulent content correctly. Each round includes a curated mix of question types, difficulty levels, and realistic examples. The game provides immediate feedback explaining why something is a scam and how the scam works to reinforce learning.
 
@@ -17,11 +17,12 @@ Scam Slam challenges players to identify legitimate and fraudulent content corre
 
 ---
 
-## 🧱 Technology Stack
+## Built with
 
 ### Framework & Frontend
 - **Next.js**  
   https://nextjs.org/
+  * [![Next][Next.js]][Next-url]
 
 ### Backend & Database
 - **Supabase**  
@@ -41,24 +42,9 @@ Scam Slam challenges players to identify legitimate and fraudulent content corre
 
 ---
 
-## 📁 Project Structure
-src/
-├─ app/                     # Next.js app router pages
-├─ core/
-│   └─ game/
-│        ├─ questions/      # Question types and datasets
-│        ├─ scoring/        # Score calculation logic
-│        ├─ selection/      # Question selection engine
-│        ├─ state/          # Reducer, actions, game state
-├─ lib/
-│   └─ constants/           # Game configuration values
-├─ components/              # UI components
-├─ providers/               # GameProvider (context + reducer)
+## Running the Project
 
-
----
-
-## 🚀 Running the Project
+### Prerequisites
 
 ### Install dependencies
 npm install
