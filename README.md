@@ -42,4 +42,60 @@ Scam Slam challenges players to identify legitimate and fraudulent content corre
 ---
 
 ## 📁 Project Structure
+src/
+├─ app/                     # Next.js app router pages
+├─ core/
+│   └─ game/
+│        ├─ questions/      # Question types and datasets
+│        ├─ scoring/        # Score calculation logic
+│        ├─ selection/      # Question selection engine
+│        ├─ state/          # Reducer, actions, game state
+├─ lib/
+│   └─ constants/           # Game configuration values
+├─ components/              # UI components
+├─ providers/               # GameProvider (context + reducer)
 
+
+---
+
+## 🚀 Running the Project
+
+### Install dependencies
+npm install
+
+### Start development server
+npm run dev
+
+### Build for production
+
+## 🧪 Gameplay Flow
+
+1. Player enters their name → game record created in Supabase  
+2. A balanced set of questions is generated  
+3. Timer starts → player answers  
+4. Score and lives update  
+5. Feedback screen appears  
+6. Next question or game completion  
+7. Final score saved → leaderboard displayed  
+
+---
+
+## 📊 Research Use
+
+Scam Slam supports academic research into:
+- Cybersecurity awareness  
+- Scam detection behaviour  
+- Time‑pressure decision‑making  
+- Usability and engagement  
+
+Supabase stores detailed analytics, including:
+- Per‑question correctness  
+- Time taken  
+- Question type performance  
+- Difficulty‑based scoring  
+
+---
+
+## 📜 License
+
+This project is intended for academic and educational use. Adjust licensing as needed for distribution.
