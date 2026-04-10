@@ -1,65 +1,31 @@
 # Scam Slam
 
-Scam Slam is an interactive cybersecurity awareness game designed to help players recognise online scams across emails, messages, and websites. It was created as a part of an undergraduate dissertation project titled: "Raising Online Scam Awareness via CyberSecurity Gamification". It is a quiz-style game that challenges players to correctly identify online media communication examples as legitimate or fraudulent. It uses gamified elements such as levels, score, lives, and a leaderboard, and includes custom question selection logic, Supabase-back persistence, and a Next.js frontend.
+Scam Slam is an interactive cybersecurity awareness game designed to help players recognise online scams across emails, messages, and websites. It was created as a part of an undergraduate dissertation project titled: "Raising Online Scam Awareness via CyberSecurity Gamification". It is a quiz-style game that challenges players to correctly identify online media communication examples as legitimate or fraudulent. It uses gamified elements such as levels, score, lives, and a leaderboard, and includes custom question selection logic, Supabase-backed persistence, and a Next.js frontend.
 
----
 
-## Game Overview
-
-Scam Slam challenges players to identify legitimate and fraudulent content correctly. Each round includes a curated mix of question types, difficulty levels, and realistic examples. The game provides immediate feedback explaining why something is a scam and how the scam works to reinforce learning.
-
-### Core Features
-- Email, message, and website scam scenarios  
-- Difficulty‑based scoring and speed bonuses  
-- Lives, feedback screens, and a final leaderboard  
-- Realistic scam examples with detailed educational explanations  
-- Supabase integration for storing game sessions and analytics  
-
----
-
-## Built with
+## Technology Stack
 
 ### Framework & Frontend
-- **Next.js**  
-  https://nextjs.org/
-  * [![Next][Next.js]][Next-url]
+* [![Next.js](https://img.shields.io/badge/Next.js-000000?style=for-the-badge&logo=nextdotjs&logoColor=white)](https://nextjs.org/)
+* [![React](https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB)](https://react.dev/)
 
-### Backend & Database
-- **Supabase**  
-  https://supabase.com/
+### Styling, Animations, and Fonts
+* [![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-38B2AC?style=for-the-badge&logo=tailwind-css&logoColor=white)](https://tailwindcss.com/)
+* [![Framer Motion](https://img.shields.io/badge/Framer_Motion-0055FF?style=for-the-badge&logo=framer&logoColor=white)](https://framer.com/motion/) 
+* [![Google Fonts](https://img.shields.io/badge/Google_Fonts-4285F4?style=for-the-badge&logo=googlefonts&logoColor=white)](https://nextjs.org/docs/app/building-your-application/optimizing/fonts)
 
-### Animation
-- **Framer Motion**  
-  https://www.framer.com/motion/
-
-### Styling
-- **Tailwind CSS**  
-  https://tailwindcss.com/
-
-### Fonts
-- **Google Fonts (Next.js font optimisation)**  
-  https://nextjs.org/docs/app/building-your-application/optimizing/fonts
-
+### Database
+* [![Supabase](https://img.shields.io/badge/Supabase-3ECF8E?style=for-the-badge&logo=supabase&logoColor=white)](https://supabase.com/)
 ---
 
-## Running the Project
-
-### Prerequisites
-* npm
-  
-  ```sh
-  npm install npm@latest
-  ```
-  
-### Installation
-
-
-### Start development server
-  ```sh
-  npm run dev
-```
-
-### Usage
+## Key Features
+- Server-Side Rendering
+- Email, message, and website scam/safe examples 
+- Difficulty‑based scoring and speed bonuses  
+- Lives, feedback screens, and a final leaderboard
+- Player answer submission using on-screen 'buzzers'
+- Supabase integration for storing game sessions and analytics  
+---
 
 ## Gameplay Flow
 
@@ -70,6 +36,31 @@ Scam Slam challenges players to identify legitimate and fraudulent content corre
 5. Feedback screen appears  
 6. Next question or game completion  
 7. Final score saved → leaderboard displayed  
+---
+
+## Getting started
+
+### Prerequisites
+* Node.js
+* npm, yarn, or pnpm
+  
+### Installation
+1. Clone the repo:
+
+2. Install dependencies
+  
+  ```sh
+  npm install 
+  ```
+3. Environment Variables:
+4. Run the development server:
+  ```sh
+  npm run dev
+```
+
+## Project Structure
+
+## Deployment
 
 ---
 
