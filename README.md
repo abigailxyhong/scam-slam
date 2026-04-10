@@ -45,16 +45,23 @@ Scam Slam challenges players to identify legitimate and fraudulent content corre
 ## Running the Project
 
 ### Prerequisites
+* npm
+  
+  ```sh
+  npm install npm@latest
+  ```
+  
+### Installation
 
-### Install dependencies
-npm install
 
 ### Start development server
-npm run dev
+  ```sh
+  npm run dev
+```
 
-### Build for production
+### Usage
 
-## 🧪 Gameplay Flow
+## Gameplay Flow
 
 1. Player enters their name → game record created in Supabase  
 2. A balanced set of questions is generated  
@@ -66,22 +73,6 @@ npm run dev
 
 ---
 
-## 📊 Research Use
-
-Scam Slam supports academic research into:
-- Cybersecurity awareness  
-- Scam detection behaviour  
-- Time‑pressure decision‑making  
-- Usability and engagement  
-
-Supabase stores detailed analytics, including:
-- Per‑question correctness  
-- Time taken  
-- Question type performance  
-- Difficulty‑based scoring  
-
----
-
-## 📜 License
+## License
 
 This project is intended for academic and educational use. Adjust licensing as needed for distribution.
