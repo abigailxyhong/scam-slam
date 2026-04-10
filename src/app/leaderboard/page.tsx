@@ -3,6 +3,8 @@ import HomePageLink from "../components/LinkHomePage";
 import { getTopGames } from "@/src/lib/utils/game";
 import Transition from "../components/MotionTransition";
 
+export const dynamic = "force-dynamic";
+
 /**
  * Renders the leaderboard showing top-scoring completed games
  * @returns JSX element showing the leaderboard with player names and scores, along with a link to return to the home page

@@ -1,4 +1,5 @@
 import { supabaseAdmin } from "@/src/lib/utils/supabase";
+import { NextRequest } from "next/server";
 
 /**
  * Uodates an existing game record with the fields provided in the request body
@@ -35,14 +36,17 @@ export async function PATCH(req: Request, context: { params: Promise<{ id: strin
  * error: any error that occurred during retrieval 
  */
 export async function GET(
-  req: Request,
-  { params }: { params: { id: string } }
+  req: NextRequest,
+   context : { params: Promise<{ id: string }> }
 ) {
+  // Retrieve the game ID from the route parameters
+  const { id } = await context.params;
+  
   // Fetch the game record matching the provided ID
   const { data, error } = await supabaseAdmin
     .from("games")
     .select("*")
-    .eq("id", params.id)
+    .eq("id", id)
     .single();
 
   return Response.json({ data, error });
