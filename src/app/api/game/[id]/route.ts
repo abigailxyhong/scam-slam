@@ -36,13 +36,16 @@ export async function PATCH(req: Request, context: { params: Promise<{ id: strin
  */
 export async function GET(
   req: Request,
-  { params }: { params: { id: string } }
+  context: { params: Promise<{ id: string }> }
 ) {
+  // Retrieve the game ID from the route parameters
+  const { id } = await context.params;
+
   // Fetch the game record matching the provided ID
   const { data, error } = await supabaseAdmin
     .from("games")
     .select("*")
-    .eq("id", params.id)
+    .eq("id", id)
     .single();
 
   return Response.json({ data, error });
