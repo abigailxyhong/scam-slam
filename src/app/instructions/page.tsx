@@ -5,7 +5,7 @@ import { motion } from "framer-motion"
 import { useGame } from "../providers/GameProvider"
 import type { Variants } from "framer-motion"
 import { GAME_CONFIG } from "@/src/lib/constants/gameConfig"
-import Transition from "../components/MotionTransition"
+import Transition from "../components/client/MotionTransition"
 
 /**
  * Displays the instructions screen shown before the game begins.

@@ -4,7 +4,7 @@ import Link from "next/link"
 import Image from "next/image"
 import { useGame } from "@/src/app/providers/GameProvider"
 import { Button } from "@heroui/react"
-import Transition from "../../components/MotionTransition"
+import Transition from "../../components/client/MotionTransition"
 
 /**
  * Displays the feedback screen for when a user runs out of time

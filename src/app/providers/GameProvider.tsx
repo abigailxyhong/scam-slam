@@ -1,14 +1,14 @@
 "use client"
-
+import { useRouter } from "next/navigation"
+import { useState } from "react"
 import { createContext, useContext, useReducer, useEffect } from "react"
+
 import { gameReducer } from "@/src/state/gameReducer"
 import { initialGameState, GameState } from "@/src/state/gameState"
 import { GameAction } from "@/src/state/gameActions"
-import { createGame, updateGame, recordQuestionAttempt } from "@/src/lib/utils/game"
-import { selectQuestions } from "@/src/core/game/engine"
-import { useRouter } from "next/navigation"
-import { calculateScoreIncrement } from "@/src/core/game/scoring"
-import { useState } from "react"
+import { evaluateAnswer, selectQuestions } from "@/src/core/game/engine"
+import { updateGame, recordQuestionAttempt } from "@/src/lib/actions"
+
 
 /**
  * Creates a React context that exposes:
@@ -106,13 +106,6 @@ export function GameProvider({ children }: { children: React.ReactNode }) {
    */
   async function dispatch(action: GameAction) {
     switch (action.type) {
-      
-      // Create a new game entry in the database
-      case "CREATE_GAME": {
-        const game = await createGame(action.payload)
-        baseDispatch({ type: "SET_GAME_ID", payload: game.id})
-        return
-      }
 
       // Select a new set of questions for the game
       case "SELECT_QUESTIONS": {
@@ -128,8 +121,11 @@ export function GameProvider({ children }: { children: React.ReactNode }) {
        * - deducts a life if incorrect
        */
       case "HANDLE_ANSWER": {
+        const {feedback, scoreAwarded} = evaluateAnswer(state, action.payload.answer)
+
         if (!state.currentQuestion) return
-        if (action.payload.answer === state.currentQuestion.correctAnswer) {
+    
+        if (feedback === "CORRECT") {
           await recordQuestionAttempt({
             gameId: state.gameId,
             questionId: state.currentQuestion.id,
@@ -137,10 +133,9 @@ export function GameProvider({ children }: { children: React.ReactNode }) {
             timeTakenMs: timeTaken,
             questionType: state.currentQuestion.type
           })
-          const scoreAwarded = calculateScoreIncrement(state.currentQuestion.difficulty, action.payload.timeLeft)
           baseDispatch({ type: "INCREMENT_SCORE", payload: scoreAwarded })
           return
-        } else if(action.payload.answer !== state.currentQuestion.correctAnswer){
+        } else if(feedback === "INCORRECT" || feedback === "TIME-OUT"){
           await recordQuestionAttempt({
             gameId: state.gameId,
             questionId: state.currentQuestion.id,
@@ -155,10 +150,11 @@ export function GameProvider({ children }: { children: React.ReactNode }) {
 
       // Updates the game record in the database when the game is over
       case "UPDATE_GAME": {
-        await updateGame(state.gameId, {
-          score: state.score,
-          finished_at: new Date().toISOString(),
-        })
+        const finished_at = new Date().toISOString()
+        const gameId = state.gameId
+        console.log('Game ID', gameId)
+        const score = state.score
+        await updateGame({gameId, score, finished_at})
 
         baseDispatch({ type: "COMPLETE_GAME" })
         return

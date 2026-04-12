@@ -4,7 +4,7 @@ import Link from "next/link"
 import { useState } from "react"
 
 import { useGame } from "./providers/GameProvider"
-import Transition from "./components/MotionTransition"
+import Transition from "./components/client/MotionTransition"
 
 /**
  * Renders the home page of the game

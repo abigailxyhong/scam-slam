@@ -6,8 +6,8 @@ import Image from "next/image"
 
 import { useGame } from "../providers/GameProvider"
 import type { Variants } from "framer-motion"
-import Transition from "../components/MotionTransition"
-import HomePageLink from "../components/LinkHomePage"
+import Transition from "../components/client/MotionTransition"
+import HomePageLink from "../components/client/LinkHomePage"
 
 /**
  * Displays the final "Game Over" screen

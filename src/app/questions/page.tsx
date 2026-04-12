@@ -2,13 +2,13 @@
 
 import { useEffect } from "react"
 
-import QuestionHeader from "@/src/app/components/QuestionHeader"
-import ProgressBar from "@/src/app/components/ProgressBar"
-import Buzzers from "@/src/app/components/Buzzers"
+import QuestionHeader from "@/src/app/components/server/QuestionHeader"
+import ProgressBar from "@/src/app/components/server/ProgressBar"
+import Buzzers from "../components/client/Buzzers"
 
-import EmailCard from "@/src/app/components/EmailCard"
-import WebsiteCard from "@/src/app/components/WebsiteCard"
-import MessageCard from "@/src/app/components/MessageCard"
+import EmailCard from "../components/server/EmailCard"
+import WebsiteCard from "@/src/app/components/server/WebsiteCard"
+import MessageCard from "@/src/app/components/server/MessageCard"
 
 import { EmailQuestion } from "@/src/core/game/questions/emailQuestions"
 import { WebsiteQuestion } from "@/src/core/game/questions/websiteQuestions"
@@ -16,8 +16,8 @@ import { MessageQuestion } from "@/src/core/game/questions/messageQuestions"
 
 import { useGame } from "@/src/app/providers/GameProvider"
 
-import Transition from "../components/MotionTransition"
-import AnimatedCard from "../components/AnimatedCard"
+import Transition from "../components/client/MotionTransition"
+import AnimatedCard from "../components/client/AnimatedCard"
 
 /**
  * Renders the main question screen during gameplay
