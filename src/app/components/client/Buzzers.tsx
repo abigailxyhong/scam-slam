@@ -1,8 +1,8 @@
 "use client"
 
 import { useState } from "react"
-import { useGame } from "../providers/GameProvider"
-import { Answer } from "../../core/game/questions/baseQuestion"
+import { useGame } from "../../providers/GameProvider"
+import { Answer } from "@/src/core/game/questions/baseQuestion"
 
 /**
  * Renders two large buzzer buttons ("SCAM" and "SAFE") 

@@ -1,5 +1,5 @@
 import Image from "next/image"
-import { useGame } from "../providers/GameProvider"
+import { useGame } from "../../providers/GameProvider"
 
 /**
  * Displays the countdown timer

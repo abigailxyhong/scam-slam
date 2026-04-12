@@ -1,4 +1,4 @@
-import { GAME_CONFIG } from "../../lib/constants/gameConfig"
+import { GAME_CONFIG } from "../../../lib/constants/gameConfig"
 
 interface ProgressBarProps {
   currentQuestionIndex: number

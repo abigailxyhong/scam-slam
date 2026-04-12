@@ -2,7 +2,7 @@ import Image from "next/image";
 import ScoreDisplay from "./ScoreDisplay";
 import Timer from "./Timer";
 import { useEffect, useState } from "react";
-import { QuestionType} from "../../core/game/questions/baseQuestion";
+import { QuestionType} from "../../../core/game/questions/baseQuestion";
 
 interface QuestionHeaderProps {
   questionType: QuestionType;

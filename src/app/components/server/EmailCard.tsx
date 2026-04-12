@@ -3,7 +3,6 @@ import { useEffect, useState } from "react"
 import { EmailQuestion } from "@/src/core/game/questions/emailQuestions"
 import { Tooltip } from "@heroui/react"
 import ZoomableImage from "./ZoomImage"
-
 /**
  * Displays and email-style card used in the game
  * @param param0 The email question object containing content and tooltip information

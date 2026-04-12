@@ -1,7 +1,7 @@
 "use client"
 
 import Link from "next/link";
-import { useGame } from "../providers/GameProvider";
+import { useGame } from "../../providers/GameProvider";
 
 /**
  * Renders a navigation link that returns the player to the home page

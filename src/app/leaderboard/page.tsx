@@ -1,18 +1,26 @@
 import Image from "next/image"
-import HomePageLink from "../components/LinkHomePage";
-import { getTopGames } from "@/src/lib/utils/game";
-import Transition from "../components/MotionTransition";
+import HomePageLink from "../components/client/LinkHomePage";
+import Transition from "../components/client/MotionTransition";
+import { supabase } from "@/src/lib/supabase";
 
 export const dynamic = "force-dynamic";
 
-/**
- * Renders the leaderboard showing top-scoring completed games
- * @returns JSX element showing the leaderboard with player names and scores, along with a link to return to the home page
- */
 export default async function Leaderboard() {
+    // Fetch the top 15 games from Supabase
+    const { data: topGames, error } = await supabase
+        .from("games")
+        .select("player_name, score") // Adjust playerName to player_name if using snake_case
+        .not("score", "is", "null")
+        .order("score", { ascending: false })
+        .limit(15);
 
-    // Retrieve the top games from the database
-    const topGames = await getTopGames();
+    // Handle potential errors
+    if (error) {
+        console.error("Leaderboard fetch error:", error.message);
+    }
+
+    // Ensure topGames is an array 
+    const gamesList = topGames || [];
 
     return (
         <Transition>
@@ -25,7 +33,6 @@ export default async function Leaderboard() {
                         height={50}
                         className="h-25 w-auto mt-6 mb-6 "
                     />
-
                     <h1 className="page-title mt-6 mb-6">LEADERBOARD</h1>
                 </div>
 
@@ -40,7 +47,7 @@ export default async function Leaderboard() {
                         </thead>
 
                         <tbody>
-                            {topGames.map((game: any, index: number) => (
+                            {gamesList.map((game, index) => (
                                 <tr
                                     key={index}
                                     className="border-b border-white/5 hover:bg-white/5 transition"
@@ -48,11 +55,9 @@ export default async function Leaderboard() {
                                     <td className="py-3 px-2 font-bold text-lg text-purple-300">
                                         #{index + 1}
                                     </td>
-
                                     <td className="py-3 px-2 text-white font-medium">
-                                        {game.playerName || "Unknown Player"}
+                                        {game.player_name || "Unknown Player"}
                                     </td>
-
                                     <td className="py-3 px-2 text-right text-green-300 font-bold">
                                         {game.score}
                                     </td>
@@ -61,7 +66,7 @@ export default async function Leaderboard() {
                         </tbody>
                     </table>
 
-                    {topGames.length === 0 && (
+                    {gamesList.length === 0 && (
                         <p className="text-center text-gray-400 mt-6">
                             No completed games yet — be the first to play!
                         </p>

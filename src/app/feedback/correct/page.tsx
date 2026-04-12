@@ -2,7 +2,7 @@
 
 import Image from "next/image"
 import { useGame } from "@/src/app/providers/GameProvider"
-import Transition from "../../components/MotionTransition"
+import Transition from "../../components/client/MotionTransition"
 import { Button } from "@heroui/react"
 
 /**
