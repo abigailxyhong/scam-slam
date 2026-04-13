@@ -17,10 +17,12 @@ Scam Slam is an interactive cybersecurity awareness game designed to help player
 
 ### Database
 * [![Supabase](https://img.shields.io/badge/Supabase-3ECF8E?style=for-the-badge&logo=supabase&logoColor=white)](https://supabase.com/)
+
+### Deployment
+* ![Vercel](https://img.shields.io/badge/vercel-%23000000.svg?style=for-the-badge&logo=vercel&logoColor=white)
 ---
 
 ## Key Features
-- Server-Side Rendering
 - Email, message, and website scam/safe examples 
 - Difficulty‑based scoring and speed bonuses  
 - Lives, feedback screens, and a final leaderboard
@@ -33,13 +35,14 @@ Scam Slam is an interactive cybersecurity awareness game designed to help player
 
 ## Gameplay Flow
 
-1. Player enters their name → game record created in Supabase  
-2. A balanced set of questions is generated  
-3. Timer starts → player answers  
-4. Score and lives update  
-5. Feedback screen appears  
-6. Next question or game completion  
-7. Final score saved → leaderboard displayed  
+1. Player enters their name → game record created in Supabase
+2. Player views instructions page and presses 'Ready' 
+3. A balanced set of questions is generated  
+4. Game starts with countdown timer → player submits their answer
+5. Score and lives update  
+6. Feedback screen appears  
+7. Next question or game completion  
+8. Final score saved → leaderboard displayed  
 ---
 
 ## Getting started
@@ -47,27 +50,52 @@ Scam Slam is an interactive cybersecurity awareness game designed to help player
 ### Prerequisites
 * Node.js
 * npm, yarn, or pnpm
-  
-### Installation
-1. Clone the repo:
 
-2. Install dependencies
+### System Dependencies
+#### Production Dependencies
+*These libraries are required for the application to function in a production environment*
+| Library | Version | Purpose |
+| :--- | :--- | :--- |
+| **Next.js** | 16.0.7 | Core React framework and routing engine. |
+| **React / React-DOM** | 19.2.0 | UI library and DOM rendering. |
+| **@supabase/supabase-js** | 2.99.0 | Client for database interactions. |
+| **@supabase/ssr** | 0.9.0 | Server-Side Rendering utilities for Supabase. |
+| **@heroui/react** | 3.0.0-beta.7 | UI Component library for buttons, inputs, and layouts. |
+| **Motion** | 12.34.3 | Animation library for game transitions and effects. |
+
+#### Development Dependencies
+*These tools were used during development for styling, type-safety, and code quality*
+* Tailwind CSS (v4): Utility-first CSS framework for UI styling
+* TypeScript (v5): Static type checking to ensure code robustness
+* ESLint (v9): Pluggable linting utility for maintaining code standards
+* PostCSS: Tool for transforming CSS with JavaScript plugins
   
+### Running the Project
+1. CLI navigate to project root directory: scam-slam
+   
+2. Install dependencies
   ```sh
   npm install 
   ```
-3. Environment Variables:
-4. Run the development server:
+3. Create production build:
   ```sh
-  npm run dev
-```
-
-## Project Structure
+  npm run build
+  ```
+4. Launch production server:
+  ```sh
+  npm start
+  ```
+5. Open:
+  ```sh
+  http://localhost:3000
+  ```
+* Note: API keys are usually not distributed to third-parties, but for the purpose of providing a complete executable (and given that no sensitive information is stored), the .env.local file containing the Supabase project URL and Next public anon key is included in the source code .zip file for submission.
 
 ## Deployment
+The project is deployed using Vercel, which integrates with Next.js to provide a globally distributed hosting environment. Scam Slam is live and accessible to the general public at: https://scam-slam.vercel.app/
 
 ---
 
 ## License
 
-This project is intended for academic and educational use. Adjust licensing as needed for distribution.
+This project is intended for academic and educational use. It is licensed under the **Apache License 2.0**, a permissive license that allows for the free use, modification, and distribution of the software while requiring the preservation of original copyright notices and a clear disclaimer of liability.
