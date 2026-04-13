@@ -67,7 +67,7 @@ Scam Slam is an interactive cybersecurity awareness game designed to help player
 *These tools were used during development for styling, type-safety, and code quality*
 * Tailwind CSS (v4): Utility-first CSS framework for UI styling
 * TypeScript (v5): Static type checking to ensure code robustness
-* ESLint (v9): Pluggable linting utility for maintaining code standards
+* ESLint (v9): Code analysis tool for TypeScript (and JavaScript)
 * PostCSS: Tool for transforming CSS with JavaScript plugins
   
 ### Running the Project
