@@ -6,17 +6,16 @@ import { supabase } from "@/src/lib/supabase"
 export const dynamic = "force-dynamic"
 
 /**
- * Leaderboard showing top 15 scoring games
+ * Leaderboard showing completed games with player name and score ranked from highest scoring to lowest
  * @returns JSX element representing the leaderboard
  */
 export default async function Leaderboard() {
-    // Fetch the top 15 games from Supabase
+    // Fetch games from Supabase
     const { data: topGames, error } = await supabase
         .from("games")
         .select("player_name, score") 
         .not("score", "is", "null")
         .order("score", { ascending: false })
-        .limit(15)
 
     // Handle potential errors
     if (error) {
