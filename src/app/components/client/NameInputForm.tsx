@@ -4,7 +4,6 @@ import { useState } from "react"
 import { useRouter } from "next/navigation"
 import { useGame } from "../../providers/GameProvider"
 import { createGame } from "@/src/lib/actions"
-import { createClient } from "@supabase/supabase-js"
 
 export default function NameInputForm() {
     const { dispatch } = useGame()
@@ -27,30 +26,13 @@ export default function NameInputForm() {
         }
 
         setError("");
-
-        const supabase = createClient(
-            process.env.NEXT_PUBLIC_SUPABASE_URL!,
-            process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!
-        );
-
-        console.log("URL exists:", !!process.env.NEXT_PUBLIC_SUPABASE_URL);
-        console.log("Key length:", process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY?.length);
-
-        const { data, error } = await supabase
-            .from('players')
-            .insert({ player_name: name })
-            .select();
-
-        if (error) throw new Error(error.message);
-        return data;
-
+     
         try {
             // Call the server action
             console.log("URL exists:", !!process.env.NEXT_PUBLIC_SUPABASE_URL);
             console.log("Key length:", process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY?.length);
 
             const gameData = await createGame(trimmed)
-
 
             // Dispatch the ID (converted to string) to your context
             dispatch({ type: "SET_GAME_ID", payload: String(gameData.id) })
