@@ -20,8 +20,8 @@ export interface BaseQuestion {
     }
     correctAnswer: Answer
     difficulty: Difficulty
-    infoWhy: string // Explanation of why the correct answer is what it is
-    infoHow?: string // Optional deeper explanation of how the scam works
-    infoMore?: string // Optional additional safety tips or guidance
+    indicators: string,
+    scamInfo?: string // Optional deeper explanation of how the scam works
+    safetyTips?: string // Optional additional safety tips or guidance
 }
 

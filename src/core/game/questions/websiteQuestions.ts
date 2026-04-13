@@ -2,11 +2,7 @@ import { Answer, BaseQuestion, Difficulty } from "./baseQuestion";
 
 // Extends the shared BaseQuestion structure with fields specific to website questions
 export interface WebsiteQuestion extends BaseQuestion {
-    id: string
-    type: "website"
-    difficulty: Difficulty
-    isScam: boolean
-    correctAnswer: Answer
+
     content: {
         url?: string
         title?: string
@@ -18,9 +14,6 @@ export interface WebsiteQuestion extends BaseQuestion {
         width?: number
         height?: number
     };
-    infoWhy: string;
-    infoHow?: string;
-    infoMore?: string;  
     tooltip?: string;
 }
 
@@ -45,7 +38,7 @@ export const websiteQuestions: WebsiteQuestion[] = [
             width: 800,
             height: 400,
         },
-        infoWhy: "This is a legitimate website, as indicated by the familiar BBC logo and design. The URL is also a key indicator of legitimacy, ending in .co.uk for the BBC.",
+        indicators: "This is a legitimate website, as indicated by the familiar BBC logo and design. The URL is also a key indicator of legitimacy, ending in .co.uk for the BBC.",
         tooltip: "https://www.bbc.co.uk/news",
     },
 
@@ -60,7 +53,7 @@ export const websiteQuestions: WebsiteQuestion[] = [
             width: 850,
             height: 450,
         },
-        infoWhy: "This is a legitimate website, as indicated by the familiar NHS logo and design. The URL is also a key indicator of legitimacy, ending in .nhs.uk for the NHS.",
+        indicators: "This is a legitimate website, as indicated by the familiar NHS logo and design. The URL is also a key indicator of legitimacy, ending in .nhs.uk for the NHS.",
         tooltip: "https://www.nhs.uk",
     },
 
@@ -75,7 +68,7 @@ export const websiteQuestions: WebsiteQuestion[] = [
             width: 800,
             height: 400,
         },
-        infoWhy: "This is a legitimate website, as indicated by the familiar UK government logo and design. The URL is also a key indicator of legitimacy, ending in .gov.uk for UK government sites.",
+        indicators: "This is a legitimate website, as indicated by the familiar UK government logo and design. The URL is also a key indicator of legitimacy, ending in .gov.uk for UK government sites.",
         tooltip: "https://www.gov.uk/log-in-register-hmrc-online-services",
     },
 
@@ -90,7 +83,7 @@ export const websiteQuestions: WebsiteQuestion[] = [
             width: 850,
             height: 450,
         },
-        infoWhy: "This one can be tricky, as typically a site with a big focus on money might raise suspicion. However, this is a legitimate website run by the Massachusetts government to help residents find unclaimed money. The URL ending in .gov is a strong indicator of legitimacy.",
+        indicators: "This one can be tricky, as typically a site with a big focus on money might raise suspicion. However, this is a legitimate website run by the Massachusetts government to help residents find unclaimed money. The URL ending in .gov is a strong indicator of legitimacy.",
         tooltip: "https://www.findmassmoney.gov/",
     },
 
@@ -105,9 +98,9 @@ export const websiteQuestions: WebsiteQuestion[] = [
             width: 600,
             height: 200,
         },
-        infoWhy: "This is a fake website designed to look like Google's homepage. The URL is a key indicator of the scam, as it does not end in .com and contains extra words (e.g., google-secure-login.com).",
+        indicators: "This is a fake website designed to look like Google's homepage. The URL is a key indicator of the scam,http is not a secure protocol (look for https),  and although 'accounts.google.com' is a subdomain of google.com, it appears at the start of the URL. The actual domain is the end of the URL which is 'verify-user-auth.co'. This domain is cheap, generic, and unconnected to Google.",
         tooltip: "http://accounts.google.com.security-check-login.verify-user-auth.co/login",
-        infoHow: "Check the URL carefully - http is not a secure protocol (look for https),  and although 'accounts.google.com' is a subdomain of google.com, the actual domain is 'verify-user-auth.co', which is cheap, generic, and unconnected to Google.",
+        safetyTips: "If you suspect a website's legitimacy, look up recent scams related to the situation, or paste the URL into a website scam checker. Avoid clicking unknown links or giving personal information until you're absolutely sure that the website is safe.",
     },
   {
         id: "site_fundraiser_scam",
@@ -120,9 +113,9 @@ export const websiteQuestions: WebsiteQuestion[] = [
             width: 850,
             height: 450,
         },
-        infoWhy: "This is an extremely sophisticated scam website designed to look like a legitimate charity. The URL is a key indicator of the scam, as it does not end in .org and contains extra words (e.g., verdant-charity.com).",
-        infoHow: "Check the URL carefully - For charities, you can also check their legitimacy through charity watchdog websites.",
-        tooltip: "https://verdant-relief-trust.com/support",
-    
+        indicators: "This is an extremely sophisticated scam website designed to look like a legitimate fundraising site. The URL is the most important scam indicator here, 'http' rather than 'https' means there's no website security. Be wary when the domain is shown just as an IP address (just numbers), as you have no way of knowing the real owner of the domain.",
+        scamInfo: "This scam involves a fake fundraising website that fabricate 'donations' to campaigns, these 'donations' are unable to be withdrawn until the user buys 'points', 'badges', 'verification', etc. The goal is to make victims pay these fees, with no real payout ever happening.",
+        safetyTips: "Search the platform's name with words like 'scam' and 'reviews' before you join. Try to use well-known fundraising platforms, and ask a trusted friend or family member to look at the site with you before paying any fee.",
+        tooltip: "http://101.10.1.101", 
     }
 ];

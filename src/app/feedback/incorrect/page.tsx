@@ -47,33 +47,33 @@ export default function IncorrectFeedback() {
 
             {/* Info Section */}
             <div className="feedback-card bg-red-50 border-l-8 border-red-600">
-              <h2 className="feedback-section-title text-red-700">
+              <h2 className="text-4xl text-red-700">
                 <span>⚠️</span> WHY THIS WAS INCORRECT
               </h2>
               <p className="feedback-text">
-                {question?.infoWhy}
+                {question?.indicators}
               </p>
             </div>
 
             {/* How the scam works */}
-            {question?.infoHow && (
+            {question?.scamInfo && (
               <div className="feedback-card bg-yellow-50 border-l-8 border-yellow-500 p-6 rounded-lg shadow-sm">
-                <h2 className="feedback-section-title text-yellow-700">
+                <h2 className="text-4xl text-yellow-700">
                   <span>🔍</span> HOW IT WORKS
                 </h2>
                 <p className="feedback-text">
-                  {question?.infoHow}
+                  {question?.scamInfo}
                 </p>
               </div>)}
 
             {/* Extra tips */}
-            {question?.infoMore && (
+            {question?.safetyTips && (
               <div className="feedback-card bg-blue-50 border-l-8 border-blue-500 p-6 rounded-lg shadow-sm">
-                <h2 className="feedback-section-title text-blue-700">
-                  <span>💡</span> WHAT TO DO
+                <h2 className="text-4xl text-blue-700">
+                  <span>💡</span> SAFETY TIPS
                 </h2>
                 <p className="feedback-text">
-                  {question.infoMore}
+                  {question.safetyTips}
                 </p>
               </div>
             )}
@@ -81,9 +81,8 @@ export default function IncorrectFeedback() {
 
           <Button
             onClick={handleContinue}
-            className="bg-teal-500 hover:bg-teal-300 text-zinc-800
-                       font-semibold px-14 py-6 rounded-full text-4xl
-                       shadow-md transition mb-16 items-center"
+            className="bg-teal-500 hover:bg-teal-300 text-zinc-800 font-semibold px-12 py-8 rounded-full text-4xl
+                       shadow-md transition"
           >
             NEXT
           </Button>
