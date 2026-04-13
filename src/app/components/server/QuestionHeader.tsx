@@ -1,8 +1,8 @@
-import Image from "next/image";
-import ScoreDisplay from "./ScoreDisplay";
-import Timer from "./Timer";
-import { useEffect, useState } from "react";
-import { QuestionType} from "../../../core/game/questions/baseQuestion";
+import Image from "next/image"
+import ScoreDisplay from "./ScoreDisplay"
+import Timer from "./Timer"
+import { useEffect, useState } from "react"
+import { QuestionType} from "../../../core/game/questions/baseQuestion"
 
 interface QuestionHeaderProps {
   questionType: QuestionType;
@@ -15,14 +15,14 @@ const iconMap: Record<QuestionType, string> = {
   email: "/images/icons/email-icon.png",
   website: "/images/icons/website-icon.png",
   message: "/images/icons/message-icon.png",
-};
+}
 
 // Maps remaining lives to the appropriate life-indicator image
 const livesMap: Record<number, string> = {
   3: "/images/icons/3lives.png",
   2: "/images/icons/2lives.png",
   1: "/images/icons/1life.png",
-};
+}
 
 /**
  * Displays the header for a question, including:
@@ -40,14 +40,14 @@ export default function QuestionHeader({
   score,
 }: QuestionHeaderProps) {
   // State to track if the component has mounted, used to prevent hydration mismatch
-  const [mounted, setMounted] = useState(false);
+  const [mounted, setMounted] = useState(false)
 
   // Get the appropriate life image based on the number of lives remaining
-  const lifeImage = livesMap[lives];
+  const lifeImage = livesMap[lives]
 
   useEffect(() => {
-    setMounted(true);
-  }, []);
+    setMounted(true)
+  }, [])
 
   if (!mounted) {
     return null; // Prevent hydration mismatch

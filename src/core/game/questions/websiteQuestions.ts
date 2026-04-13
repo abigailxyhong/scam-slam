@@ -1,4 +1,4 @@
-import { Answer, BaseQuestion, Difficulty } from "./baseQuestion";
+import { BaseQuestion } from "./baseQuestion"
 
 // Extends the shared BaseQuestion structure with fields specific to website questions
 export interface WebsiteQuestion extends BaseQuestion {

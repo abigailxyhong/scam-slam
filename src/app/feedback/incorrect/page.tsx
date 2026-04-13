@@ -2,8 +2,8 @@
 
 import Image from "next/image"
 import { useGame } from "@/src/app/providers/GameProvider"
-import { Button } from "@heroui/react"
 import Transition from "../../components/client/MotionTransition"
+import FeedbackContinueButton from "../../components/client/FeedbackContinueButton"
 
 /**
  * Displays the feedback screen for an incorrect answer,
@@ -14,19 +14,11 @@ import Transition from "../../components/client/MotionTransition"
  * @returns JSX element showing the incorrect feedback
  */
 export default function IncorrectFeedback() {
-  const { state, dispatch } = useGame()
+  const { state } = useGame()
 
   // Get the question just answered from the game state
   const question = state.currentQuestion   
 
-  /**
-   * Moves the game forward by dispatching a reducer action to check 
-   * whether the game is finished, which will either move to the next question or 
-   * end the game if it was the last question
-   */
-  const handleContinue = () => {
-    dispatch({ type: "CHECK_GAME_COMPLETE" })
-  }
 
   return (
     <Transition>
@@ -79,13 +71,7 @@ export default function IncorrectFeedback() {
             )}
           </div>
 
-          <Button
-            onClick={handleContinue}
-            className="bg-teal-500 hover:bg-teal-300 text-zinc-800 font-semibold px-12 py-8 rounded-full text-4xl
-                       shadow-md transition"
-          >
-            NEXT
-          </Button>
+          <FeedbackContinueButton />
       </main>
     </Transition>
   )

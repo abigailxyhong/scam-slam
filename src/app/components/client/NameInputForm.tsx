@@ -5,6 +5,16 @@ import { useRouter } from "next/navigation"
 import { useGame } from "../../providers/GameProvider"
 import { createGame } from "@/src/lib/actions"
 
+/**
+ * Client component that renders an input form for the player to enter their name at the start of the game
+ * 
+ * - Validates that the input is a single word containing only letters
+ * - Displays error messages for invalid input
+ * - On valid submission, calls the createGame server action to initialize a new game in the database
+ * - Dispatches the new game ID to the GameProvider context
+ * - Navigates to the instructions page to start the game flow
+ * @returns JSX client component containing name input field and continue button
+ */
 export default function NameInputForm() {
     const { dispatch } = useGame()
     const router = useRouter()

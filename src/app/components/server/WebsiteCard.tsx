@@ -1,6 +1,6 @@
-import Image from "next/image";
-import { useEffect, useState } from "react";
-import { WebsiteQuestion } from "@/src/core/game/questions/websiteQuestions";
+import Image from "next/image"
+import { useEffect, useState } from "react"
+import { WebsiteQuestion } from "@/src/core/game/questions/websiteQuestions"
 
 /**
  * Displays a website-style card used in the game
@@ -11,15 +11,15 @@ import { WebsiteQuestion } from "@/src/core/game/questions/websiteQuestions";
  */
 export default function WebsiteCard({ site }: { site: WebsiteQuestion }) {
   // State to track if the component has mounted, used to prevent hydration mismatch
-  const [mounted, setMounted] = useState(false);
+  const [mounted, setMounted] = useState(false)
 
   useEffect(() => {
-    setMounted(true); 
-  }, []);
+    setMounted(true)
+  }, [])
 
   // Do not render until mounted, and esure required content exists
   if (!mounted || !site || !site.content.imageURL) {
-    return null;
+    return null
   }
 
   return (

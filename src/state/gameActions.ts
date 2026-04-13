@@ -1,5 +1,5 @@
-import { BaseQuestion, Answer } from "@/src/core/game/questions/baseQuestion";
-import { GameState } from "./gameState";
+import { BaseQuestion, Answer } from "@/src/core/game/questions/baseQuestion"
+import { GameState } from "./gameState"
 
 /**
  * Defines the possible actions that can be dispatched to the reducer and provider

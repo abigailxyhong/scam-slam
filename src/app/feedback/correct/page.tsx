@@ -1,24 +1,19 @@
-"use client"
+'use client'
 
 import Image from "next/image"
 import { useGame } from "@/src/app/providers/GameProvider"
 import Transition from "../../components/client/MotionTransition"
-import { Button } from "@heroui/react"
+import FeedbackContinueButton from "../../components/client/FeedbackContinueButton"
 
 /**
  * Displays the feedback screen for a correct answer
  * @returns JSX element showing the correct feedback, including why the answer was correct and how it works, along with a button to continue to the next question or end the game if it was the last question
  */
 export default function CorrectFeedback() {
-  const { state, dispatch } = useGame()
+  const { state } = useGame()
 
   // Get the current question from the game state
   const question = state.currentQuestion
-
-  // Dispatches reducer action to check whether the game is finished
-  const handleContinue = () => {
-    dispatch({ type: "CHECK_GAME_COMPLETE" })
-  }
 
   return (
     <Transition>
@@ -43,14 +38,7 @@ export default function CorrectFeedback() {
             <p className="feedback-text">{question?.indicators}</p>
           </div>
 
-        <Button
-          onClick={handleContinue}
-          className="bg-teal-500 hover:bg-teal-300 text-zinc-800
-                       font-semibold px-10 py-8 rounded-full text-4xl
-                       shadow-md transition mb-16"
-        >
-          NEXT
-        </Button>
+        <FeedbackContinueButton />
       </main>
     </Transition>
   )

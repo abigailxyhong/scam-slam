@@ -2,7 +2,11 @@ import Transition from "../components/client/MotionTransition"
 import NameInputForm from "../components/client/NameInputForm"
 import Link from "next/link"
 
-export default function JoinPage() {
+/**
+ * Server component separated from client component for interactivity of the name input page
+ * @returns a JSX element representing the Name Input page
+ */
+export default function NameInput() {
     return (
         <Transition>
             <main className="flex flex-col items-center justify-start min-h-screen px-4">

@@ -1,26 +1,30 @@
 import Image from "next/image"
-import HomePageLink from "../components/client/LinkHomePage";
-import Transition from "../components/client/MotionTransition";
-import { supabase } from "@/src/lib/supabase";
+import HomePageLink from "../components/client/LinkHomePage"
+import Transition from "../components/client/MotionTransition"
+import { supabase } from "@/src/lib/supabase"
 
-export const dynamic = "force-dynamic";
+export const dynamic = "force-dynamic"
 
+/**
+ * Leaderboard showing top 15 scoring games
+ * @returns JSX element representing the leaderboard
+ */
 export default async function Leaderboard() {
     // Fetch the top 15 games from Supabase
     const { data: topGames, error } = await supabase
         .from("games")
-        .select("player_name, score") // Adjust playerName to player_name if using snake_case
+        .select("player_name, score") 
         .not("score", "is", "null")
         .order("score", { ascending: false })
-        .limit(15);
+        .limit(15)
 
     // Handle potential errors
     if (error) {
-        console.error("Leaderboard fetch error:", error.message);
+        console.error("Leaderboard fetch error:", error.message)
     }
 
     // Ensure topGames is an array 
-    const gamesList = topGames || [];
+    const gamesList = topGames || []
 
     return (
         <Transition>

@@ -1,4 +1,4 @@
-import { BaseQuestion } from "./baseQuestion";
+import { BaseQuestion } from "./baseQuestion"
 
 // Extends the shared BaseQuestion structure with fields specific to email questions
 export interface EmailQuestion extends BaseQuestion {

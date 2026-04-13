@@ -14,6 +14,12 @@ interface QuestionProps {
     timeTakenMs: number
     questionType: string
 }
+
+/**
+ * Creates a new game entry when a player starts
+ * @param input_name the player's chosen nickname
+ * @returns the newly created game record 
+ */
 export async function createGame(input_name: string) {
     const { data, error } = await supabase
         .from("games")
@@ -21,12 +27,17 @@ export async function createGame(input_name: string) {
             player_name: input_name,
         })
         .select()
-        .single();
+        .single(); 
 
     if (error) throw new Error(error.message)
     return data
 }
 
+/**
+ * Finalises a game session by updating the total score and end time
+ * @param GameProps includes UUID of current session, total points, and timestamp of completion
+ * @returns the inserted game record
+ */
 export async function updateGame({ gameId, score, finished_at}: GameProps) {
     const { data, error } = await supabase
         .from("games")
@@ -42,6 +53,12 @@ export async function updateGame({ gameId, score, finished_at}: GameProps) {
     return data
 }
 
+/**
+ * Logs every individual question attempt for data analysis
+ * Records whether the user was correct and how fast they answered
+ * @param param0 the corresponding values to create a "question_attempts" record
+ * @returns the newly created question attempt record
+ */
 export async function recordQuestionAttempt({gameId, questionId, 
                                             isCorrect, timeTakenMs, 
                                             questionType}: QuestionProps) {

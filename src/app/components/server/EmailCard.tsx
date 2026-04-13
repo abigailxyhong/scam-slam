@@ -10,15 +10,15 @@ import ZoomableImage from "./ZoomImage"
  */
 export default function EmailCard({ email }: { email: EmailQuestion }) {
     // State to track if the component has mounted, used to prevent hydration mismatch
-    const [mounted, setMounted] = useState(false);
+    const [mounted, setMounted] = useState(false)
 
     useEffect(() => {
-        setMounted(true);
-    }, []);
+        setMounted(true)
+    }, [])
     
     // Avoid rendering until the component is mounted on the client
     if (!mounted) {
-        return null;
+        return null
     }
     return (
         <div className="bg-zinc-100 p-3 rounded-xl shadow-inner h-full">

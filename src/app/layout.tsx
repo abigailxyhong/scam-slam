@@ -1,10 +1,9 @@
-import type { Metadata } from "next";
-import { Jaro } from "next/font/google";
+import type { Metadata } from "next"
+import { Jaro } from "next/font/google"
 
-import './globals.css';
+import './globals.css'
 
-import { GameProvider } from "./providers/GameProvider";
-
+import { GameProvider } from "./providers/GameProvider"
 /**
  * Root layout for the entire application
  * 
@@ -27,7 +26,7 @@ export const metadata: Metadata = {
 export default function RootLayout({
   children,
 }: {
-  children: React.ReactNode;
+  children: React.ReactNode
 }) {
   return (
     <html lang="en" className={jaro.className}>

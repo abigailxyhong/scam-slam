@@ -1,6 +1,6 @@
-import "../globals.css";
-import "./feedback.css";
-import { ReactNode } from "react";
+import "../globals.css"
+import "./feedback.css"
+import { ReactNode } from "react"
 
 /**
  * Provides a dedicated layout wrapper for all feedback pages
