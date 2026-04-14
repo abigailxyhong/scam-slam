@@ -39,9 +39,6 @@ export default function NameInputForm() {
      
         try {
             // Call the server action
-            console.log("URL exists:", !!process.env.NEXT_PUBLIC_SUPABASE_URL);
-            console.log("Key length:", process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY?.length);
-
             const gameData = await createGame(trimmed)
 
             // Dispatch the ID (converted to string) to your context

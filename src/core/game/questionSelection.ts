@@ -26,7 +26,7 @@ function getAvailableQuestions(difficulty: Difficulty) {
  * @returns the correct number of a random selection of questions of a given difficulty
  */
 function getRandomSubset(pool: BaseQuestion[], count: number): BaseQuestion[] {
-  // Fisher-Yates shuffle or a simple sort-shuffle
+  // Shuffle the array
   const shuffled = [...pool].sort(() => Math.random() - 0.5);
   return shuffled.slice(0, Math.min(count, pool.length));
 }

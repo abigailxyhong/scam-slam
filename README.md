@@ -99,3 +99,7 @@ The project is deployed using Vercel, which integrates with Next.js to provide a
 ## License
 
 This project is intended for academic and educational use. It is licensed under the **Apache License 2.0**, a permissive license that allows for the free use, modification, and distribution of the software while requiring the preservation of original copyright notices and a clear disclaimer of liability.
+
+## Credits
+
+- **Icons:** [1,300 Free Pixel Icons](https://www.figma.com/community/file/1095321350849641775) by [Realvjy](https://www.figma.com/@realvjy) licensed under [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/).
