@@ -1,0 +1,191 @@
+{
+  "node": {
+    "403551df55886996346332e056a86d59c67d8c2eaa": {
+      "workers": {
+        "app/_not-found/page": {
+          "moduleId": 92453,
+          "async": false,
+          "exportedName": "updateGame",
+          "filename": "git/scam-slam/src/lib/actions.ts"
+        },
+        "app/feedback/correct/page": {
+          "moduleId": 47561,
+          "async": false,
+          "exportedName": "updateGame",
+          "filename": "git/scam-slam/src/lib/actions.ts"
+        },
+        "app/feedback/incorrect/page": {
+          "moduleId": 45488,
+          "async": false,
+          "exportedName": "updateGame",
+          "filename": "git/scam-slam/src/lib/actions.ts"
+        },
+        "app/feedback/time-out/page": {
+          "moduleId": 75564,
+          "async": false,
+          "exportedName": "updateGame",
+          "filename": "git/scam-slam/src/lib/actions.ts"
+        },
+        "app/game-complete/page": {
+          "moduleId": 36862,
+          "async": false,
+          "exportedName": "updateGame",
+          "filename": "git/scam-slam/src/lib/actions.ts"
+        },
+        "app/game-start/page": {
+          "moduleId": 72927,
+          "async": false,
+          "exportedName": "updateGame",
+          "filename": "git/scam-slam/src/lib/actions.ts"
+        },
+        "app/instructions/page": {
+          "moduleId": 63123,
+          "async": false,
+          "exportedName": "updateGame",
+          "filename": "git/scam-slam/src/lib/actions.ts"
+        },
+        "app/leaderboard/page": {
+          "moduleId": 78507,
+          "async": false,
+          "exportedName": "updateGame",
+          "filename": "git/scam-slam/src/lib/actions.ts"
+        },
+        "app/name-input/page": {
+          "moduleId": 75709,
+          "async": false,
+          "exportedName": "updateGame",
+          "filename": "git/scam-slam/src/lib/actions.ts"
+        },
+        "app/page": {
+          "moduleId": 40297,
+          "async": false,
+          "exportedName": "updateGame",
+          "filename": "git/scam-slam/src/lib/actions.ts"
+        },
+        "app/questions/page": {
+          "moduleId": 34377,
+          "async": false,
+          "exportedName": "updateGame",
+          "filename": "git/scam-slam/src/lib/actions.ts"
+        }
+      },
+      "layer": {
+        "app/_not-found/page": "action-browser",
+        "app/feedback/correct/page": "action-browser",
+        "app/feedback/incorrect/page": "action-browser",
+        "app/feedback/time-out/page": "action-browser",
+        "app/game-complete/page": "action-browser",
+        "app/game-start/page": "action-browser",
+        "app/instructions/page": "action-browser",
+        "app/leaderboard/page": "action-browser",
+        "app/name-input/page": "action-browser",
+        "app/page": "action-browser",
+        "app/questions/page": "action-browser"
+      },
+      "filename": "git/scam-slam/src/lib/actions.ts",
+      "exportedName": "updateGame"
+    },
+    "408b0bb139ff3c5f47082c954fa04439431aec754b": {
+      "workers": {
+        "app/_not-found/page": {
+          "moduleId": 92453,
+          "async": false,
+          "exportedName": "recordQuestionAttempt",
+          "filename": "git/scam-slam/src/lib/actions.ts"
+        },
+        "app/feedback/correct/page": {
+          "moduleId": 47561,
+          "async": false,
+          "exportedName": "recordQuestionAttempt",
+          "filename": "git/scam-slam/src/lib/actions.ts"
+        },
+        "app/feedback/incorrect/page": {
+          "moduleId": 45488,
+          "async": false,
+          "exportedName": "recordQuestionAttempt",
+          "filename": "git/scam-slam/src/lib/actions.ts"
+        },
+        "app/feedback/time-out/page": {
+          "moduleId": 75564,
+          "async": false,
+          "exportedName": "recordQuestionAttempt",
+          "filename": "git/scam-slam/src/lib/actions.ts"
+        },
+        "app/game-complete/page": {
+          "moduleId": 36862,
+          "async": false,
+          "exportedName": "recordQuestionAttempt",
+          "filename": "git/scam-slam/src/lib/actions.ts"
+        },
+        "app/game-start/page": {
+          "moduleId": 72927,
+          "async": false,
+          "exportedName": "recordQuestionAttempt",
+          "filename": "git/scam-slam/src/lib/actions.ts"
+        },
+        "app/instructions/page": {
+          "moduleId": 63123,
+          "async": false,
+          "exportedName": "recordQuestionAttempt",
+          "filename": "git/scam-slam/src/lib/actions.ts"
+        },
+        "app/leaderboard/page": {
+          "moduleId": 78507,
+          "async": false,
+          "exportedName": "recordQuestionAttempt",
+          "filename": "git/scam-slam/src/lib/actions.ts"
+        },
+        "app/name-input/page": {
+          "moduleId": 75709,
+          "async": false,
+          "exportedName": "recordQuestionAttempt",
+          "filename": "git/scam-slam/src/lib/actions.ts"
+        },
+        "app/page": {
+          "moduleId": 40297,
+          "async": false,
+          "exportedName": "recordQuestionAttempt",
+          "filename": "git/scam-slam/src/lib/actions.ts"
+        },
+        "app/questions/page": {
+          "moduleId": 34377,
+          "async": false,
+          "exportedName": "recordQuestionAttempt",
+          "filename": "git/scam-slam/src/lib/actions.ts"
+        }
+      },
+      "layer": {
+        "app/_not-found/page": "action-browser",
+        "app/feedback/correct/page": "action-browser",
+        "app/feedback/incorrect/page": "action-browser",
+        "app/feedback/time-out/page": "action-browser",
+        "app/game-complete/page": "action-browser",
+        "app/game-start/page": "action-browser",
+        "app/instructions/page": "action-browser",
+        "app/leaderboard/page": "action-browser",
+        "app/name-input/page": "action-browser",
+        "app/page": "action-browser",
+        "app/questions/page": "action-browser"
+      },
+      "filename": "git/scam-slam/src/lib/actions.ts",
+      "exportedName": "recordQuestionAttempt"
+    },
+    "403863f5856293c871bee89205360a7be587dacfbf": {
+      "workers": {
+        "app/name-input/page": {
+          "moduleId": 75709,
+          "async": false,
+          "exportedName": "createGame",
+          "filename": "git/scam-slam/src/lib/actions.ts"
+        }
+      },
+      "layer": {
+        "app/name-input/page": "action-browser"
+      },
+      "filename": "git/scam-slam/src/lib/actions.ts",
+      "exportedName": "createGame"
+    }
+  },
+  "edge": {},
+  "encryptionKey": "ToG2vCTH9v1gRQfinknJ4wgylpQmMG3qrGEuf57OeYc="
+}

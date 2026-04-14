@@ -1,0 +1,14 @@
+{
+  "/_global-error/page": "/_global-error",
+  "/_not-found/page": "/_not-found",
+  "/feedback/correct/page": "/feedback/correct",
+  "/feedback/incorrect/page": "/feedback/incorrect",
+  "/feedback/time-out/page": "/feedback/time-out",
+  "/game-complete/page": "/game-complete",
+  "/game-start/page": "/game-start",
+  "/instructions/page": "/instructions",
+  "/leaderboard/page": "/leaderboard",
+  "/name-input/page": "/name-input",
+  "/page": "/",
+  "/questions/page": "/questions"
+}

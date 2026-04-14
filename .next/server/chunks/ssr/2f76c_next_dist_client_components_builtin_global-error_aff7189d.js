@@ -1,0 +1,3 @@
+module.exports=[519,(a,b,c)=>{let{createClientModuleProxy:d}=a.r(30881);a.n(d("[project]/git/scam-slam/node_modules/next/dist/client/components/builtin/global-error.js <module evaluation>"))},86106,(a,b,c)=>{let{createClientModuleProxy:d}=a.r(30881);a.n(d("[project]/git/scam-slam/node_modules/next/dist/client/components/builtin/global-error.js"))},13503,a=>{"use strict";a.i(519);var b=a.i(86106);a.n(b)}];
+
+//# sourceMappingURL=2f76c_next_dist_client_components_builtin_global-error_aff7189d.js.map

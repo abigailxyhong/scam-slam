@@ -1,0 +1,15 @@
+{
+  "headers": {
+    "x-nextjs-stale-time": "300",
+    "x-nextjs-prerender": "1",
+    "x-next-cache-tags": "_N_T_/layout,_N_T_/game-complete/layout,_N_T_/game-complete/page,_N_T_/game-complete"
+  },
+  "segmentPaths": [
+    "/_tree",
+    "/_full",
+    "/game-complete/__PAGE__",
+    "/game-complete",
+    "/_index",
+    "/_head"
+  ]
+}

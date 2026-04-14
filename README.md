@@ -89,7 +89,11 @@ Scam Slam is an interactive cybersecurity awareness game designed to help player
   ```sh
   http://localhost:3000
   ```
-* Note: API keys are usually not distributed to third-parties, but for the purpose of providing a complete executable (and given that no sensitive information is stored), the .env.local file containing the Supabase project URL and Next public anon key is included in the source code .zip file for submission.
+---
+## Notes: 
+* API keys are usually not distributed to third-parties, but for the purpose of providing a complete executable (and given that no sensitive information is stored), the .env.local file containing the Supabase project URL and Next public anon key is included in the source code .zip file for submission.
+* During user testing the game used a countdown timer of 60 seconds and 12 questions, and in general use these are the preferred configurations. However, for the project deliverable demo video and in the presentation, a shortened version of a 20 second timer and 6 questions is used for demonstration purposes. Therefore, for consistency, the source code submitted uses the same game configuration of 20 seconds and 6 questions.
+---
 
 ## Deployment
 The project is deployed using Vercel, which integrates with Next.js to provide a globally distributed hosting environment. Scam Slam is live and accessible to the general public at: https://scam-slam.vercel.app/
