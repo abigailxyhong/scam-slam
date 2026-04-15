@@ -1,6 +1,0 @@
-{
-  "version": 3,
-  "sources": [],
-  "sections": [
-    {"offset": {"line": 4, "column": 0}, "map": {"version":3,"sources":["file:///Users/abihong/git/scam-slam/src/app/feedback/layout.tsx"],"sourcesContent":["import \"../globals.css\"\nimport \"./feedback.css\"\nimport { ReactNode } from \"react\"\n\n/**\n * Provides a dedicated layout wrapper for all feedback pages\n * @param children - The content of the feedback page,\n * @returns a JSX element that wraps the feedback content in a styled container\n */\nexport default function FeedbackLayout({ children }: { children: ReactNode }) {\n  return (\n    <div className=\"feedback-container\">\n      {children}\n    </div>\n  );\n}\n"],"names":[],"mappings":";;;;;;;;AASe,SAAS,eAAe,EAAE,QAAQ,EAA2B;IAC1E,qBACE,qQAAC;QAAI,WAAU;kBACZ;;;;;;AAGP"}}]
-}
