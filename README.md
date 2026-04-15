@@ -91,7 +91,7 @@ Scam Slam is an interactive cybersecurity awareness game designed to help player
   ```
 ---
 ## Notes: 
-* API keys are usually not distributed to third-parties, but for the purpose of providing a complete executable (and given that no sensitive information is stored), the .env.local file containing the Supabase project URL and Next public anon key is included in the source code .zip file for submission.
+* API keys are usually not distributed to third-parties, but for the purpose of providing a complete executable (and given that no sensitive information is stored), the API keys are hard coded into the project.
 * During user testing the game used a countdown timer of 60 seconds and 12 questions, and in general use these are the preferred configurations. However, for the project deliverable demo video and in the presentation, a shortened version of a 20 second timer and 6 questions is used for demonstration purposes. Therefore, for consistency, the source code submitted uses the same game configuration of 20 seconds and 6 questions.
 ---
 
